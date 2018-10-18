@@ -6,3 +6,6 @@
 
 ## Toto jsem vytvořil v testovací větvi
 
+---
+
+další řádek
