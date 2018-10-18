@@ -1,0 +1,113 @@
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+button,
+input {
+  font-size: 120%;
+  padding: .5rem 1rem;
+  border: 2px solid #ddd;
+  border-radius: .5rem;
+  margin: 0 1rem;
+}
+
+button {
+  background-color: linen;
+}
+
+label {
+  padding-left: 1rem;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+
+.rounded {
+  border-radius: 50%;
+}
+
+.box {
+  display: inline-block;
+  border: 10px dashed #fff;
+  padding: 1rem;
+  margin: 0 1rem 1rem 0;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+
+.box--blue {
+  background-color: darkblue;
+  color: #fff;  
+}
+
+.box--red {
+  background-color: darkred;
+  color: #fff;  
+}
+
+.box--green {
+  background-color: darkolivegreen;
+  color: #fff;  
+}
+
+.box--200 {
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+}
+
+.box--300 {
+  width: 300px;
+  height: 300px;
+  line-height: 300px;
+}
+
+.c-error {
+  color: darkred;
+}
+
+.validation-message {
+  padding: 1rem;
+  color: darkred;
+  font-size: 120%;
+  font-weight: bold;
+}
+
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.btn:disabled {
+  cursor: inherit;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  transition: background-color .3s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #006ee4;
+}
+
+.btn-primary:disabled {
+  background-color: #ccc;
+  color: #999;
+}
+
+.input-error {
+  border-color: darkred;
+}
