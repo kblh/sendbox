@@ -9,3 +9,7 @@
 ---
 
 další řádek
+
+
+
+Opět něco přímo do masteru, ale z github
