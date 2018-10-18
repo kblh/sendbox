@@ -9,10 +9,24 @@
 <body>
   <h1><a href="https://reqres.in/">reqres</a></h1>
 
-  <div class="users-container">
+  <h2>Add new user</h2>
+  <div>
+    <p><input type="text" id="userName" placeholder="Name" /></p>
+    <p><input type="text" id="userJob" placeholder="Job" /></p>
+    <p><button class="add-user">Add new user</button></p>
   </div>
 
+  <h2>User list</h2>
+  <p id="pager">
+    <button class="link-prev">Prev</button>
+    <button class="link-next">Next</button>
+  </p>
+  <p class="info-container"></p>
+  <div class="users-container"></div>
+
+
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="mustache.min.js"></script>
   <script src="reqres.js"></script>
 
   <!-- or: https://jsonplaceholder.typicode.com/ -->
