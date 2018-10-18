@@ -12,3 +12,6 @@ další řádek
 
 Tady něco lokálně přímo do MASTERU
 
+
+
+Opět něco přímo do masteru, ale z github
