@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<response>
+    <status>OK</status>
+    <update target="basket-element-id">
+    <![CDATA[
+        <li class="product">Apple TV</li>
+        <li class="product">iPhone</li>
+        <li class="product">Apple MacBook</li>
+        <li class="product">Ear pods</li>
+    ]]>  
+    </update>   
+</response>  
