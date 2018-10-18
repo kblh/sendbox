@@ -11,7 +11,11 @@
 další řádek
 
 Tady něco lokálně přímo do MASTERU
-
-
-
 Opět něco přímo do masteru, ale z github
+
+## Feature branche
+
+- další
+- seznam
+- vytvořený
+- ve FEATURE branche
