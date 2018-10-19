@@ -1,0 +1,26 @@
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+button,
+input {
+  font-size: 120%;
+  padding: .5rem 1rem;
+  border: 2px solid #ddd;
+  border-radius: .5rem;
+  margin: 0 1rem;
+}
+
+button {
+  background-color: linen;
+}
+
+label {
+  padding-left: 1rem;
+}
+
+button:disabled {
+  background-color: #ccc;
+}

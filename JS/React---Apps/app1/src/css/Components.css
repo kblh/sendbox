@@ -1,0 +1,97 @@
+.box {
+  display: inline-block;
+  border: 10px dashed #fff;
+  padding: 1rem;
+  margin: 0 1rem 1rem 0;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+
+.box--blue {
+  background-color: darkblue;
+  color: #fff;  
+}
+
+.box--red {
+  background-color: darkred;
+  color: #fff;  
+}
+
+.box--green {
+  background-color: darkolivegreen;
+  color: #fff;  
+}
+
+.box--200 {
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+}
+
+.box--300 {
+  width: 300px;
+  height: 300px;
+  line-height: 300px;
+}
+
+
+.validation-message {
+  padding: 1rem;
+  color: darkred;
+  font-size: 120%;
+  font-weight: bold;
+}
+
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.btn:disabled {
+  cursor: inherit;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  transition: background-color .3s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #006ee4;
+}
+
+.btn-primary:disabled {
+  background-color: #ccc;
+  color: #999;
+}
+
+.input-error {
+  border-color: darkred;
+}
+
+/* Navigation */
+.nav {
+  /* border-bottom: 1px solid #006ee4; */
+  display: flex;
+}
+
+.nav a {
+  /* display: inline-block; */
+  padding: 1rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  color: #006ee4;
+  border: 1px solid #006ee4;
+  border-width: 0 1px 1px 0;
+}
