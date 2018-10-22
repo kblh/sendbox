@@ -9,6 +9,7 @@ const Menu = () => {
       <Link to="/image-slider">Image Slider</Link>
       <Link to="/todo-list">Todo list</Link>
       <Link to="/fetch-random-user">Random user</Link>
+      <Link to="/reqres">Reqres API</Link>
     </nav>
   )
 }

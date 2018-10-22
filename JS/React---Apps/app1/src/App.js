@@ -1,30 +1,14 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from './components/Header';
 import Menu from './components/Menu';
-// import ImageSlider from './components/ImageSlider';
-// import TodoList from "./components/TodoList";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-// import ImageSliderPage from './pages/ImageSliderPage'
-import HomePage from './pages/HomePage';
-import SimpleFormPage from './pages/SimpleFormPage';
 import ErrorPage from './pages/ErrorPage';
-import ImageSliderPage from './pages/ImageSliderPage'
+import FetchRandomUserPage from './pages/FetchRandomUserPage';
+import HomePage from './pages/HomePage';
+import ImageSliderPage from './pages/ImageSliderPage';
+import ReqresPage from './pages/ReqresPage';
+import SimpleFormPage from './pages/SimpleFormPage';
 import TodoListPage from './pages/TodoListPage';
-import FetchRandomUserPage from './pages/FetchRandomUserPage'
-
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <Header className="App-header bg-primary" />
-//         <div className="p2">
-//           <SimpleForm />
-//         </div>
-//       </div>
-//     );
-//   }
-// }
 
 class App extends Component {
   state = {
@@ -56,19 +40,10 @@ class App extends Component {
               <Route path="/image-slider" component={ImageSliderPage} />
               <Route path="/todo-list" component={TodoListPage} />
               <Route path="/fetch-random-user" component={FetchRandomUserPage} />
+              <Route path="/reqres" component={ReqresPage} />
               <Route component={ErrorPage} />
             </Switch>
           </div>
-
-
-          {/* <h2>TodoList</h2>
-          <div className="p2">
-            <TodoList />
-          </div>
-          <h2>ImageSlider</h2>
-          <div className="p2">
-            <ImageSlider />
-          </div> */}
         </div>
       </BrowserRouter>
     );
