@@ -1,9 +1,11 @@
 import React from "react";
+import LoadingImage from '../images/loading.gif';
 
 class Reqres extends React.Component {
 
   state = {
     loading: true,
+    error: false,
     users: [],
     currentPage: 1,
     totalPages: 0,
@@ -26,17 +28,20 @@ componentDidMount(){
 }
 
 fetchData = () => {
+  console.log("fetching ... currentPage is: " + this.state.currentPage);
   let fetchUrl = 'https://reqres.in/api/users?page=' + this.state.currentPage;
-  fetch(fetchUrl, {
-    method: "GET",
-    dataType: "JSON",
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
+
+  fetch(fetchUrl)
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error('Something went wrong ...');
     }
   })
-  .then((resp) => {
-    return resp.json()
-  }) 
+  // .then((response) => {
+  //   return response.json()
+  // }) 
   .then((data) => {
     this.setState({ 
       loading: false,
@@ -47,25 +52,58 @@ fetchData = () => {
     console.log(data);
     console.log(fetchUrl);
   })
-  .catch((error) => {
-    console.log(error, "catch the hoop")
-  })
+  .catch(error => this.setState({ error, loading: false }));
 }
 
+  alertMe = () => { alert('hahaha'); }
 
   handleNext = () => {
+    console.log("current page: " + this.state.currentPage);
+    // let nextPage = this.state.currentPage + 1;
+    // console.log("next page: " + nextPage);
     this.setState({
-      currentPage: this.state.currentPage + 1,
+      currentPage: this.state.currentPage + 1
+    })
+    this.fetchData();
+
+    // setTimeout(this.fetchData, 10);
+
+    // this.setState({
+    //   currentPage: nextPage
+    // })
+
+    // this.fetchData();
+    console.log("current page: " + this.state.currentPage);
+  };
+
+  
+
+  handlePrev = () => {
+    this.setState({
+      currentPage: this.state.currentPage - 1,
     })
     this.fetchData();
   };
 
-  handlePrev = () => {
-  };
-
   render() {
+    const { loading, error } = this.state;
+
     if(this.state.loading) {
-      return <div>loading ...</div> 
+      return (
+        <>
+          <h2>Loading ...</h2>
+          <p><img src={LoadingImage} alt="loading" /></p>
+        </>
+      )
+    }
+
+    if(this.state.error) {
+      return (
+        <>
+          <h2>!!! E R R O R !!!</h2>
+          <p>{error.message}</p>
+        </>
+      );
     }
 
     if(!this.state.users.length) {
@@ -77,6 +115,7 @@ fetchData = () => {
         <p>
           <button onClick={this.handlePrev}>prev</button>
           <button onClick={this.handleNext}>next</button>
+          <button onClick={this.fetchData}>fetchData</button>
         </p>
         <p>{this.state.currentPage} / {this.state.totalPages}</p>
         {this.state.users.map((user, i) => (
