@@ -2,7 +2,6 @@
 // var m = new SMap(JAK.gel("m"), center, 16);
 // m.addDefaultLayer(SMap.DEF_BASE).enable();
 
-
 window.load = function () {
   Loader.async = true;
   Loader.load(null, null, createMap);
@@ -11,8 +10,6 @@ window.load = function () {
 window.createMap = function () {
   let center = SMap.Coords.fromWGS84(14.4542156, 50.1075022);
   let m = new SMap(JAK.gel("m"), center, 15);
-
-
 
   m.addDefaultLayer(SMap.DEF_OPHOTO);
   m.addDefaultLayer(SMap.DEF_OPHOTO0203);
@@ -33,7 +30,10 @@ window.createMap = function () {
   layerSwitch.addDefaultLayer(SMap.DEF_OPHOTO0406);
   layerSwitch.addDefaultLayer(SMap.DEF_OPHOTO0203);
   layerSwitch.addDefaultLayer(SMap.DEF_HISTORIC);
-  m.addControl(layerSwitch, {left:"8px", top:"80px"});
+  m.addControl(layerSwitch, {
+    left: "8px",
+    top: "80px"
+  });
 
 
   /**
@@ -148,59 +148,185 @@ window.createMap = function () {
   // marker01.decorate(SMap.Marker.Feature.Card, card);
 
 
-  var obrazek = "marker.png";
 
-  var data = {
-    "Etnetera": "50°6'27.008\"N,14°27'15.176\"E",
-    "Avion": "50°6'21.239\"N, 14°27'0.719\"E",
-    "Banh-Mi-Ba": "50°6'19.532\"N, 14°27'22.567\"E",
-    "Karlštejn": "49°56'21.57\"N,14°11'17.96\"E",
-    "Křivoklát": "50°2'16.36\"N,13°52'18.59\"E",
-    "Kost": "50°29'24.83\"N,15°8'6.38\"E",
-    "Lípa v Jistebsku": "50°41'19.525\"N, 15°13'19.168\"E",
-  };
 
-  var znacky = [];
+  // var obrazek = "marker.png";
+
+  // var data = {
+  //   "Etnetera": "50°6'27.008\"N,14°27'15.176\"E",
+  //   "Avion": "50°6'21.239\"N, 14°27'0.719\"E",
+  //   "Banh-Mi-Ba": "50°6'19.532\"N, 14°27'22.567\"E",
+  //   "Karlštejn": "49°56'21.57\"N,14°11'17.96\"E",
+  //   "Křivoklát": "50°2'16.36\"N,13°52'18.59\"E",
+  //   "Kost": "50°29'24.83\"N,15°8'6.38\"E",
+  //   "Domů": "50°1'54.121\"N 14°32'22.198\"E",
+  //   "Lípa v Jistebsku": "50°41'19.525\"N, 15°13'19.168\"E",
+  // };
+
+  // var znacky = [];
+  // var souradnice = [];
+  // var karticky = [];
+
+  // for (var name in data) { /* Vyrobit značky */
+  //   var c = SMap.Coords.fromWGS84(data[name]); /* Souřadnice značky, z textového formátu souřadnic */
+
+  //   var options = {
+  //     url: obrazek,
+  //     title: name,
+  //     anchor: {
+  //       left: 15,
+  //       bottom: 1,
+  //     } /* Ukotvení značky za bod uprostřed dole */
+  //   }
+
+  //   var znacka = new SMap.Marker(c, null, options);
+
+  //   let card = new SMap.Card();
+  //   card.getHeader().innerHTML = "<strong>" + name + "</strong>";
+  //   card.getBody().innerHTML = "Bydlím zde:<br>" + data[name] + "<br> Nadmořská výška:";
+
+
+  //   souradnice.push(c);
+  //   znacky.push(znacka);
+  //   karticky.push(card);
+  // }
+
+
+
+  // var vrstva = new SMap.Layer.Marker(); /* Vrstva se značkami */
+  // var clusterer = new SMap.Marker.Clusterer(m); /* Nový shlukovač */
+  // vrstva.setClusterer(clusterer); /* Přidání shlukovače do vrstvy značek */
+  // m.addLayer(vrstva); /* Přidat ji do mapy */
+  // vrstva.enable(); /* A povolit */
+
+  // for (var i = 0; i < znacky.length; i++) {
+  //   znacky[i].decorate(SMap.Marker.Feature.Card, karticky[i]);
+  //   vrstva.addMarker(znacky[i]);
+  // }
+
+  // var cz = m.computeCenterZoom(souradnice); /* Spočítat pozici mapy tak, aby značky byly vidět */
+  // m.setCenterZoom(cz[0], cz[1]);
+
+
+
+  var vrstva = new SMap.Layer.Marker(); /* Vrstva se značkami */
   var souradnice = [];
-  var karticky = [];
 
-  for (var name in data) { /* Vyrobit značky */
-    var c = SMap.Coords.fromWGS84(data[name]); /* Souřadnice značky, z textového formátu souřadnic */
+  // data pro markery
+  var markers = [
+    {
+      name: "Karlštejn",
+      description: "Karel! Karel! Karel!",
+      id: 1,
+      lon: 14.1882903,
+      lat: 49.9391167,
+      icon: "icons/hrad.png",
+    },
+    {
+      name: "Křivoklát",
+      description: "samé křivé klády :-(",
+      id: 2,
+      lon: 13.8722575,
+      lat: 50.0378419,
+      icon: "icons/hrad.png",
+    }, {
+      name: "Kost",
+      description: "dobrák od kosti",
+      id: 3,
+      lon: 15.1350694,
+      lat: 50.4901828,
+      icon: "icons/hrad.png",
+    }, {
+      name: "Chalupa",
+      description: "... cha cha lupa ...",
+      id: 4,
+      lon: 15.2224125,
+      lat: 50.6878075,
+      icon: "icons/marker.png",
+    }, {
+      name: "Etnetera",
+      description: "prgači a jiná zvěř",
+      id: 5,
+      lon: 14.4542156,
+      lat: 50.1075022,
+      icon: "icons/etnetera.png",
+    }, {
+      name: "banh-mi-ba",
+      description: "mňam, mňam",
+      id: 6,
+      lon: 14.4562686,
+      lat: 50.1054256,
+      icon: "icons/marker.png",
+    }
+  ];
+
+
+
+  // vytvoreni markeru
+  markers.forEach(function (marker) {
+    var c = SMap.Coords.fromWGS84(marker.lon, marker.lat); /* Souřadnice značky, z textového formátu souřadnic */
 
     var options = {
-      url: obrazek,
-      title: name,
+      url: marker.icon,
+      title: marker.name,
       anchor: {
-        left: 15,
-        bottom: 1,
+        left: 10,
+        bottom: 1
       } /* Ukotvení značky za bod uprostřed dole */
     }
 
-    var znacka = new SMap.Marker(c, null, options);
+    let karticka = new SMap.Card();
+    karticka.getHeader().innerHTML = "<strong>" + marker.name + "</strong><br><br>";
+    karticka.getBody().innerHTML = marker.description;
 
-    let card = new SMap.Card();
-    card.getHeader().innerHTML = "<strong>" + name + "</strong>";
-    card.getBody().innerHTML = "Bydlím zde:<br>" + data[name];
-
+    // duletize je prirazeni id jednotlivemu markeru - vlastni id, jinak se generuje nahodne
+    var znacka = new SMap.Marker(c, marker.id, options);
+    znacka.decorate(SMap.Marker.Feature.Card, karticka)
     souradnice.push(c);
-    znacky.push(znacka);
-    karticky.push(card);
-  }
+    vrstva.addMarker(znacka);
 
-  var vrstva = new SMap.Layer.Marker(); /* Vrstva se značkami */
+
+  });
+
   var clusterer = new SMap.Marker.Clusterer(m); /* Nový shlukovač */
   vrstva.setClusterer(clusterer); /* Přidání shlukovače do vrstvy značek */
+
+  // zobrazime a povolime vrstvu - pokud by se vrstva povolila pred vkladanim markeru, tak by se s kazdym vlozenym markerem prekreslovala mapa a pocitaly pozice vsech markeru
   m.addLayer(vrstva); /* Přidat ji do mapy */
   vrstva.enable(); /* A povolit */
 
-  for (var i = 0; i < znacky.length; i++) {
-    znacky[i].decorate(SMap.Marker.Feature.Card, karticky[i]);
-    vrstva.addMarker(znacky[i]);
+  function centerTheView(souradnice) {
+    var cz = m.computeCenterZoom(souradnice); /* Spočítat pozici mapy tak, aby značky byly vidět */
+    console.log(souradnice);
+    console.log(cz[0]);
+    m.setCenterZoom(cz[0], cz[1]);
+  }
+  centerTheView(souradnice);
+
+  function zoomIn(marker) {
+    var coords = {
+        x: marker.lon,
+        y: marker.lat,
+      }
+
+    // m.setCenterZoom(coords, 6);
+    console.log(coords);
   }
 
-  var cz = m.computeCenterZoom(souradnice); /* Spočítat pozici mapy tak, aby značky byly vidět */
-  m.setCenterZoom(cz[0], cz[1]);
-
+  // poslouchani na kliknuti u markeru
+  m.getSignals().addListener(this, "marker-click", function(e) {
+    // vybrany marker
+    var marker = e.target;
+    var id = marker.getId();
+    // zobrazime jeho jmeno - parovani vybraneho markeru pomoci jeho id a nasich vstupnich dat
+    for (var i = 0; i < markers.length; i++) {
+      if (markers[i].id == id) {
+        console.log("Tož jsi klikl na: " + markers[i]);
+        zoomIn(markers[i]);
+        break;
+      }
+    }
+  });
 
 }
 
