@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Custom properties</title>
+
+
+<style>
+  :root {
+    --dot2Width: 100;
+    --positionOnPage: 0;
+    --positionOnPagePercentage: 0;
+  }
+
+  body {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 120%;
+    background: lightblue;
+  }
+
+  p {
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+
+  .content {
+    width: 600px;
+    margin: 2rem auto;
+    background: #fff;
+    padding: 2rem;
+  }
+
+  .dot1 {
+    position: fixed;
+    top: calc(var(--positionOnPagePercentage) * 10px);
+    left: -3rem;
+    background-color: rgba(0,0,0,.5);
+    width: calc(var(--positionOnPagePercentage) * 10px);
+    height: calc(var(--positionOnPagePercentage) * 5px);
+    border-radius: 50%;
+  }
+
+  .dot2 {
+    background-color: lightcoral;
+    width: calc(var(--dot2Width) * 1px);
+    height: calc(var(--dot2Width) * 1px);
+    border-radius: 50%;
+  }
+
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: darkorange;
+    height: 10px;
+    width: calc(var(--positionOnPagePercentage) * 1%);
+  }
+
+  .parallax {
+    height: 300px;
+    background-image: url('armenia.jpg');
+    background-size: cover;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="content">
+
+  <h1>CSS Custom properties</h1>
+
+  <p>
+    <input id="dot2Width" class="slider" type="range" min="100" max="500" value="100">    
+  </p>
+
+  <div class="progress-bar"></div>
+  <div class="dot1"></div>
+  <div class="dot2"></div>
+
+  <div class="pars">
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla quis diam. Integer vulputate sem a nibh rutrum consequat. Integer pellentesque quam vel velit. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Maecenas lorem. Phasellus et lorem id felis nonummy placerat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Donec quis nibh at felis congue commodo. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Integer pellentesque quam vel velit.</p>
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nulla non arcu lacinia neque faucibus fringilla. Aliquam ante. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Donec iaculis gravida nulla. Etiam neque. Curabitur vitae diam non enim vestibulum interdum. Integer vulputate sem a nibh rutrum consequat. Suspendisse sagittis ultrices augue. Integer lacinia. Fusce consectetuer risus a nunc. Suspendisse nisl. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</p>
+    <div class="parallax"></div>
+    <p>Duis viverra diam non justo. Fusce tellus. Integer imperdiet lectus quis justo. Nam quis nulla. Curabitur ligula sapien, pulvinar a vestibulum quis, facilisis vel sapien. Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu, orci. Nulla non lectus sed nisl molestie malesuada. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Mauris metus. Fusce tellus odio, dapibus id fermentum quis, suscipit id erat. Integer malesuada. Phasellus rhoncus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Quisque tincidunt scelerisque libero. Suspendisse sagittis ultrices augue. Curabitur sagittis hendrerit ante. Mauris suscipit, ligula sit amet pharetra semper, nibh ante cursus purus, vel sagittis velit mauris vel metus. Fusce wisi. Phasellus faucibus molestie nisl. Maecenas libero.</p>
+    <p>Mauris dictum facilisis augue. Etiam posuere lacus quis dolor. Phasellus et lorem id felis nonummy placerat. Mauris dictum facilisis augue. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean vel massa quis mauris vehicula lacinia. Phasellus faucibus molestie nisl. Nam sed tellus id magna elementum tincidunt. Phasellus rhoncus. Aliquam erat volutpat. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Nulla pulvinar eleifend sem. Quisque porta. Etiam neque. Suspendisse nisl. Quisque tincidunt scelerisque libero. Aenean id metus id velit ullamcorper pulvinar. Praesent dapibus.</p>
+    <p>Maecenas libero. Duis condimentum augue id magna semper rutrum. Praesent vitae arcu tempor neque lacinia pretium. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla pulvinar eleifend sem. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Mauris tincidunt sem sed arcu. Etiam neque. Nullam feugiat, turpis at pulvinar vulputate, erat libero tristique tellus, nec bibendum odio risus sit amet ante. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Maecenas sollicitudin. Etiam neque.</p>
+    <p>Fusce tellus odio, dapibus id fermentum quis, suscipit id erat. Duis risus. Aenean id metus id velit ullamcorper pulvinar. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Integer tempor. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Nullam justo enim, consectetuer nec, ullamcorper ac, vestibulum in, elit. Etiam ligula pede, sagittis quis, interdum ultricies, scelerisque eu. Nullam sapien sem, ornare ac, nonummy non, lobortis a enim. Mauris suscipit, ligula sit amet pharetra semper, nibh ante cursus purus, vel sagittis velit mauris vel metus. Duis pulvinar. Vivamus ac leo pretium faucibus. Fusce aliquam vestibulum ipsum. Quisque porta. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Integer in sapien. Curabitur ligula sapien, pulvinar a vestibulum quis, facilisis vel sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.</p>
+    <p>Nulla non arcu lacinia neque faucibus fringilla. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat. Nam quis nulla. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Curabitur ligula sapien, pulvinar a vestibulum quis, facilisis vel sapien. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Integer tempor. Duis pulvinar. Nullam faucibus mi quis velit. Vestibulum fermentum tortor id mi. Vivamus porttitor turpis ac leo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    <p>Mauris metus. Duis pulvinar. Aenean id metus id velit ullamcorper pulvinar. Pellentesque ipsum. Nam quis nulla. Fusce wisi. Nulla quis diam. Nullam sit amet magna in magna gravida vehicula. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo. Nullam dapibus fermentum ipsum. Integer malesuada.</p>
+    <p>Sed convallis magna eu sem. Etiam posuere lacus quis dolor. Etiam ligula pede, sagittis quis, interdum ultricies, scelerisque eu. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Aliquam id dolor. Phasellus enim erat, vestibulum vel, aliquam a, posuere eu, velit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+    <p>Nullam lectus justo, vulputate eget mollis sed, tempor sed magna. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nunc auctor. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Praesent vitae arcu tempor neque lacinia pretium. Etiam ligula pede, sagittis quis, interdum ultricies, scelerisque eu. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam feugiat, turpis at pulvinar vulputate, erat libero tristique tellus, nec bibendum odio risus sit amet ante. Mauris elementum mauris vitae tortor. Maecenas sollicitudin. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Quisque tincidunt scelerisque libero. Nullam eget nisl. Praesent vitae arcu tempor neque lacinia pretium. Nullam dapibus fermentum ipsum. Fusce tellus odio, dapibus id fermentum quis, suscipit id erat. Donec quis nibh at felis congue commodo. Aenean placerat. Etiam neque.</p>
+    <p>Phasellus rhoncus. Integer lacinia. Etiam quis quam. Maecenas libero. Integer pellentesque quam vel velit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede. Donec quis nibh at felis congue commodo. Aenean vel massa quis mauris vehicula lacinia. Curabitur ligula sapien, pulvinar a vestibulum quis, facilisis vel sapien. Fusce nibh.</p>
+    <p>Phasellus faucibus molestie nisl. Vivamus luctus egestas leo. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. Maecenas libero. Etiam bibendum elit eget erat. Mauris elementum mauris vitae tortor. Integer lacinia. Fusce tellus odio, dapibus id fermentum quis, suscipit id erat. Aenean id metus id velit ullamcorper pulvinar. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero.</p>
+    <p>Ut tempus purus at lorem. Nullam dapibus fermentum ipsum. Etiam neque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. Duis viverra diam non justo. Donec quis nibh at felis congue commodo. Suspendisse sagittis ultrices augue. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Fusce nibh. Maecenas libero. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui. Phasellus faucibus molestie nisl. Praesent id justo in neque elementum ultrices.</p>
+    <p>Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo. Etiam ligula pede, sagittis quis, interdum ultricies, scelerisque eu. Phasellus rhoncus. Maecenas lorem. Integer lacinia. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quisque tincidunt scelerisque libero. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Integer malesuada. Aliquam id dolor. Proin mattis lacinia justo. Etiam commodo dui eget wisi. Praesent in mauris eu tortor porttitor accumsan. Et harum quidem rerum facilis est et expedita distinctio. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Maecenas sollicitudin.</p>
+    <p>Maecenas aliquet accumsan leo. Vivamus ac leo pretium faucibus. Pellentesque sapien. Nunc dapibus tortor vel mi dapibus sollicitudin. Maecenas aliquet accumsan leo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Aliquam erat volutpat. In dapibus augue non sapien. Sed ac dolor sit amet purus malesuada congue. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Etiam egestas wisi a erat. Integer tempor. Duis risus.</p>
+  </div>
+  
+</div>
+
+
+
+<script>
+
+const inputs = [].slice.call(document.querySelectorAll('.slider'));
+
+function handleUpdate(e) {
+  document.documentElement.style.setProperty(`--${this.id}`, this.value);
+}
+
+
+inputs.forEach(input => input.addEventListener('change', handleUpdate));
+inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+
+
+function verticalScrollPercentage() {
+  let h = document.documentElement, 
+      b = document.body,
+      st = 'scrollTop',
+      sh = 'scrollHeight';
+
+  let percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+  // return Math.round(percent, 0);
+  return percent;
+}
+
+document.onscroll = () => {
+  let positionOnPage = document.documentElement.scrollTop || document.body.scrollTop;
+  let pageHeight = document.documentElement.scrollHeight;
+
+  document.documentElement.style.setProperty(`--positionOnPage`, positionOnPage);
+  document.documentElement.style.setProperty(`--positionOnPagePercentage`, verticalScrollPercentage());
+
+  // console.log("documentElement: " + document.documentElement.scrollTop);
+  // console.log("body: " + document.body.scrollTop);
+  // console.log('------');
+
+}
+
+</script>
+
+</body>
+</html>
