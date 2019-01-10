@@ -264,8 +264,8 @@
   --c-danger: red;
   --c-warning: orange;
   --c-info: yellow;
-  --c-light: #ccc;
   --c-dark: #666;
+  --c-light: #ccc;
   --c-muted: #eee;
   --c-white: white;
 
@@ -281,8 +281,8 @@
 .c-danger { color: var(--c-danger) }
 .c-warning { color: var(--c-warning) }
 .c-info { color: var(--c-info) }
-.c-light { color: var(--c-light) }
 .c-dark { color: var(--c-dark) }
+.c-light { color: var(--c-light) }
 .c-muted { color: var(--c-muted) }
 .c-white { color: var(--c-white) }
 
@@ -293,8 +293,8 @@
 .bg-danger { background-color: var(--c-danger) }
 .bg-warning { background-color: var(--c-warning) }
 .bg-info { background-color: var(--c-info) }
-.bg-light { background-color: var(--c-light) }
 .bg-dark { background-color: var(--c-dark) }
+.bg-light { background-color: var(--c-light) }
 .bg-muted { background-color: var(--c-muted) }
 .bg-white { background-color: var(--c-white) }
 
