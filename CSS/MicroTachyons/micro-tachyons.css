@@ -300,7 +300,7 @@
 
 
 /* boxes */
-.circle { border-radius: 50% }
-.rounded { border-radius: var(--radius) }
+.box-circle { border-radius: 50% }
+.box-rounded { border-radius: var(--radius) }
 
 
