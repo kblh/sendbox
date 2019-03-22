@@ -20,6 +20,8 @@
     background: lightblue;
   }
 
+  body[data-position*="position10"] { background: red; }
+
   p {
     line-height: 1.5;
     margin-bottom: 2rem;
@@ -127,12 +129,21 @@ function verticalScrollPercentage() {
   return percent;
 }
 
+function removeClassByPrefix(el, prefix) {
+  var regx = new RegExp('\\b' + prefix + '.*?\\b', 'g');
+  el.className = el.className.replace(regx, '');
+  return el;
+}
+
 document.onscroll = () => {
   let positionOnPage = document.documentElement.scrollTop || document.body.scrollTop;
   let pageHeight = document.documentElement.scrollHeight;
 
   document.documentElement.style.setProperty(`--positionOnPage`, positionOnPage);
   document.documentElement.style.setProperty(`--positionOnPagePercentage`, verticalScrollPercentage());
+
+  removeClassByPrefix(document.body,'position');
+  document.body.classList.add("position"+positionOnPage);
 
   // console.log("documentElement: " + document.documentElement.scrollTop);
   // console.log("body: " + document.body.scrollTop);
