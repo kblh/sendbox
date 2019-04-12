@@ -1,0 +1,193 @@
+<!doctype html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>Hello, AMPs</title>
+    <link rel="amphtml" href="https://amp.dev/documentation/guides-and-tutorials/start/create/basic_markup.html">
+    <link rel="canonical" href="https://amp.dev/documentation/guides-and-tutorials/start/create/basic_markup.html">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Open-source framework for publishing content",
+        "datePublished": "2015-10-07T12:02:41Z",
+        "image": [
+          "logo.jpg"
+        ]
+      }
+    </script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+      body {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        padding: 1rem;
+        max-width: 600px;
+      }
+      amp-img {
+        border: 5px dotted #999;
+      }
+
+      .carousel { margin: 0 -1rem; }
+      .carousel amp-img { border: 0; }
+
+      .sidebar { 
+        padding: 2rem; width: 400px;
+        background-color: rgba(0,0,0,.9); 
+        color: #fff;
+      }
+      .sidebar button { color: #fff; }
+
+      .nav-button { position: absolute; top: 1rem; right: 1rem; }
+
+      .background-green { background: green; }
+      .background-red { background: red; }
+
+    </style>
+    <script async custom-element="amp-image-lightbox" src="https://cdn.ampproject.org/v0/amp-image-lightbox-0.1.js"></script>
+    <script async custom-element="amp-lightbox-gallery" src="https://cdn.ampproject.org/v0/amp-lightbox-gallery-0.1.js"></script>
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
+    <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+  </head>
+  <body>
+
+    <h1>Welcome to the mobile web</h1>
+    <button class="nav-button" on="tap:sidebar.toggle">sidebar</button>
+
+    <amp-sidebar id="sidebar" class="sidebar" layout="nodisplay" side="right">
+      <h3>Sidebar</h3>
+      <button class="nav-button" on="tap:sidebar.toggle">[ x ]</button>
+    </amp-sidebar>
+
+    <h2>amp-carousel</h2>
+    <p>
+      <amp-carousel class="carousel" lightbox width="400" height="270" layout="responsive" type="slides">
+        <amp-img src="road-1.jpg" width="400" height="300" layout="responsive"></amp-img>
+        <amp-img src="road-2.jpg" width="400" height="300" layout="responsive"></amp-img>
+        <amp-img src="road-3.jpg" width="400" height="300" layout="responsive"></amp-img>
+      </amp-carousel>
+    </p>
+
+    <h2>amp-bind</h2>
+    <div>
+      <div class="background-red" [class]="myClass">Hello World</div>
+      <button on="tap:AMP.setState({ myClass: 'background-green' })">Change class to green</button>
+      <button on="tap:AMP.setState({ myClass: 'background-red' })">Change class to red</button>
+    </div>
+
+
+    <h3 [text]="'Hello ' + foo">Hello World</h3>
+    <button on="tap:AMP.setState({foo: 'amp-bind'})">Say "Hello amp-bind"</button>
+    <button on="tap:AMP.setState({foo: 'bubak'})">Say "Hello bubak"</button>
+
+
+  <!-- Store complex nested JSON data in <amp-state> elements. -->
+  <amp-state id="myAnimals">
+    <script type="application/json">
+      {
+        "dog": {
+          "imageUrl": "dog.jpg",
+          "style": "greenBackground"
+        },
+        "cat": {
+          "imageUrl": "cat.jpg",
+          "style": "redBackground"
+        }
+      }
+    </script>
+  </amp-state>
+
+  <p [text]="'This is a ' + currentAnimal + '.'">This is a dog.</p>
+
+  <!-- CSS classes can also be added or removed with [class]. -->
+  <p class="greenBackground" [class]="myAnimals[currentAnimal].style">
+    Each animal has a different background color.
+  </p>
+
+  <!-- Or change an image's src with the [src] binding. -->
+  <amp-img width="300" height="200" src="dog.jpg"
+      [src]="myAnimals[currentAnimal].imageUrl">
+  </amp-img>
+
+  <button on="tap:AMP.setState({currentAnimal: 'cat'})">Set to Cat</button>
+
+
+
+
+    <h2>amp-social-share</h2>
+    <p>
+      <amp-social-share class="rounded" type="email" width="48" height="48"></amp-social-share>
+      <amp-social-share class="rounded" type="facebook" data-param-app_id="254325784911610" width="48" height="48"></amp-social-share>
+      <amp-social-share class="rounded" type="gplus" width="48" height="48"></amp-social-share>
+      <amp-social-share class="rounded" type="linkedin" width="48" height="48"></amp-social-share>
+      <amp-social-share class="rounded" type="pinterest" data-param-media="https://ampbyexample.com/img/amp.jpg" width="48" height="48"></amp-social-share>
+      <amp-social-share class="rounded" type="tumblr" width="48" height="48"></amp-social-share>
+      <amp-social-share class="rounded" type="twitter" width="48" height="48"></amp-social-share>
+      <amp-social-share class="rounded" type="whatsapp" width="48" height="48"></amp-social-share>
+      <amp-social-share class="rounded" type="line" width="48" height="48"></amp-social-share>
+    </p>
+
+
+    <h2>amp-accordion</h2>
+    <amp-accordion class="sample" animate>
+      <section>
+        <h4>Section 1</h4>
+        <p>Id lacus amet. Aliquam eos nunc ut scelerisque lacinia, eu rutrum id, vestibulum aliqua vivamus luctus eu rhoncus ut, sodales id. Velit lacus, fermentum neque et sagittis, ac venenatis volutpat, dolore neque feugiat proin fermentum odio, odio arcu in eu wisi. </p>
+      </section>
+      <section>
+        <h4>Section 2</h4>
+          <amp-img src="road-1.jpg"
+          layout="intrinsic"
+          width="400"
+          height="300"></amp-img>
+      </section>
+      <section>
+        <h4>Section 3</h4>
+        <p>Id lacus amet. Aliquam eos nunc ut scelerisque lacinia, eu rutrum id, vestibulum aliqua vivamus luctus eu rhoncus ut, sodales id. Velit lacus, fermentum neque et sagittis, ac venenatis volutpat, dolore neque feugiat proin fermentum odio, odio arcu in eu wisi. </p>
+      </section>
+    </amp-accordion>
+
+
+
+    <h2>amp-lightbox-gallery</h2>
+    <div>
+      <amp-img lightbox src="road-1.jpg" width="300" height="200" layout="responsive"></amp-img>
+      <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <amp-img lightbox src="road-2.jpg" width="300" height="200" layout="responsive"></amp-img>
+      <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <amp-img lightbox src="road-3.jpg" width="300" height="200" layout="responsive"></amp-img>
+      <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+
+
+    <h2>amp-image-lightbox</h2>
+    <p>
+      <amp-img on="tap:lightbox1"
+        role="button"
+        tabindex="0"
+        src="welcome.jpg"
+        alt="Picture of a dog"
+        aria-describedby="imageDescription"
+        title="Picture of a dog, view in lightbox"
+        layout="responsive"
+        width="300"
+        height="200"></amp-img>
+      <amp-image-lightbox id="lightbox1"
+        layout="nodisplay"></amp-image-lightbox>
+      <div id="imageDescription">
+        This is a border collie.
+      </div>
+    </p>
+
+
+    <h2>amp-img</h2>
+    <amp-img src="welcome.jpg" layout="responsive" alt="Welcome" width="900" height="600"></amp-img>
+
+
+  </body>
+</html>

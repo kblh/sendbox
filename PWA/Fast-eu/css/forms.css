@@ -1,0 +1,95 @@
+/*******************************************
+  FORMS
+********************************************/
+
+.form-group { margin-bottom: 1rem; position: relative; }
+
+.form-input {
+  width: 100%;
+  min-height: 40px;
+  line-height: 40px;
+  background-color: transparent;
+  color: var(--c-text-inverse);
+  border: 1px solid var(--c-background);
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+/*********************
+  select
+*********************/
+
+.form-select { position: relative; }
+  .form-select:after {
+    position: absolute;
+    right: 20px; top: 17px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid var(--c-secondary);
+    z-index: 10;
+  }
+.form-select select {
+  position: absolute;
+  top: 0;
+  height: 50px;
+  min-height: 50px;
+  width: 100%;
+  opacity: 0;
+  z-index: 11;
+}
+.form-select option { width: 100%; }
+
+@media only screen and (max-width: 1200px) {
+  .form-select select { max-width: 100%; }
+}
+
+/*********************
+  buttons
+*********************/
+
+.btn {
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 30px;
+  text-transform: uppercase;
+  border: 0;
+  cursor: pointer;
+  font-weight: bold
+}
+
+.btn:focus { outline: none; }
+
+.btn-secondary { 
+  background-color: var(--c-secondary); 
+  color: var(--c-text); 
+  transition: all .3s ease-in-out; 
+}
+.btn-secondary:hover { background-color: #d2b700; }
+
+.btn-secondary-cut { margin-left: 40px; }
+.btn-secondary-cut:before {
+  content:"";
+  position:absolute;
+  top: 0;
+  left: -40px;
+  border-width: 0 0 40px 40px;
+  border-style:solid;
+  border-color: transparent transparent var(--c-secondary) transparent;
+  transition: all .3s ease-in-out; 
+}
+  .btn-secondary-cut:hover:before { border-color: transparent transparent #d2b700 transparent; }
+.btn-secondary-cut:after {
+  content:"";
+  position:absolute;
+  top:0;
+  right:-40px;
+  border-width: 0 0 40px 40px;
+  border-style:solid;
+  border-color: var(--c-secondary) var(--c-secondary) transparent var(--c-secondary);
+  transition: all .3s ease-in-out; 
+}
+  .btn-secondary-cut:hover:after { border-color: #d2b700 #d2b700 transparent #d2b700; }

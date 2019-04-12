@@ -1,0 +1,17 @@
+/*******************************************
+  FONTS
+********************************************/
+
+@font-face {
+  font-family: 'PT Sans';
+  src: url('../fonts/PTS55F-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PT Sans';
+  src: url('../fonts/PTS75F-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}

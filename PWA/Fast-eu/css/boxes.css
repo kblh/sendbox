@@ -1,0 +1,81 @@
+/*******************************************
+  BOXES
+********************************************/
+
+.box { padding: 2rem; overflow: hidden; }
+
+@media only screen and (max-width: 450px) {
+  .box { padding: 10px; }
+}
+
+.box-primary { background-color: var(--c-primary); color: var(--c-text-inverse); }
+.box-shadow { box-shadow: 0 0 15px 0 rgba(0, 0, 0, .5); }
+
+.box-border-white {
+  border: 1px solid #fff;
+}
+
+.box-principle {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  border: 1px solid var(--c-text-inverse);
+  color: var(--c-text-inverse);
+  margin-bottom: 20px;
+  min-height: 50px;
+}
+
+/* box-tertiary-cut */
+.box-tertiary-cut { position: relative; height: 60px; margin: 0 80px; }
+.box-tertiary-cut:before {
+  content:"";
+  position:absolute;
+  top: 0;
+  left: -80px;
+  border-width: 0 0 80px 80px;
+  border-style:solid;
+  border-color: transparent transparent var(--c-tertiary) transparent;
+  transition: all .3s ease-in-out; 
+}
+.box-tertiary-cut:after {
+  content:"";
+  position:absolute;
+  top:0;
+  right:-80px;
+  border-width: 0 0 80px 80px;
+  border-style:solid;
+  border-color: var(--c-tertiary) var(--c-tertiary) transparent var(--c-tertiary);
+  transition: all .3s ease-in-out; 
+}
+
+/* zoom */
+.box-zoom-in        { transition: all .2s ease-in-out; }
+.box-zoom-in:hover  { transform: scale(1.1); }
+
+.box-zoom-out        { transition: all .2s ease-in-out; }
+.box-zoom-out:hover  { transform: scale(0.9); }
+
+/* columns */
+.box-column { column-gap: 40px }
+.box-column-2 { column-count: 2; }
+.box-column-3 { column-count: 3; }
+.box-column-4 { column-count: 4; }
+.box-column-5 { column-count: 5; }
+.box-column-6 { column-count: 6; }
+
+@media only screen and (max-width: 800px) {
+  .box-column { column-gap: 30px }
+  .box-column-3 { column-count: 2; }
+  .box-column-4 { column-count: 2; }
+  .box-column-5 { column-count: 3; }
+  .box-column-6 { column-count: 3; }
+}
+
+@media only screen and (max-width: 450px) {
+  .box-column-2 { column-count: 1; }
+  .box-column-3 { column-count: 1; }
+  .box-column-4 { column-count: 1; }
+  .box-column-5 { column-count: 1; }
+  .box-column-6 { column-count: 1; }
+}
