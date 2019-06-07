@@ -35,7 +35,6 @@ window.createMap = function () {
     top: "80px"
   });
 
-
   /**
    * controls
    */
@@ -83,7 +82,6 @@ window.createMap = function () {
   let controlMouse = new SMap.Control.Mouse(SMap.MOUSE_PAN | SMap.MOUSE_WHEEL | SMap.MOUSE_ZOOM);
   m.addControl(controlMouse);
 
-
   /**
    * dynamická velikost mapy
    * roztahuje se na výšku okna
@@ -91,8 +89,6 @@ window.createMap = function () {
 
   // let sync = new SMap.Control.Sync({bottomSpace:30});
   // m.addControl(sync);
-
-
 
   /**
    * Odečítání souřadnic  
@@ -109,7 +105,6 @@ window.createMap = function () {
   function altitudeResponse(a) {
     console.log("Nadmořská výška je " + a + "m");
   }
-
 
   /**
    * Markers
@@ -147,9 +142,6 @@ window.createMap = function () {
   // console.log(marker1gps);
   // marker01.decorate(SMap.Marker.Feature.Card, card);
 
-
-
-
   // var obrazek = "marker.png";
 
   // var data = {
@@ -185,13 +177,10 @@ window.createMap = function () {
   //   card.getHeader().innerHTML = "<strong>" + name + "</strong>";
   //   card.getBody().innerHTML = "Bydlím zde:<br>" + data[name] + "<br> Nadmořská výška:";
 
-
   //   souradnice.push(c);
   //   znacky.push(znacka);
   //   karticky.push(card);
   // }
-
-
 
   // var vrstva = new SMap.Layer.Marker(); /* Vrstva se značkami */
   // var clusterer = new SMap.Marker.Clusterer(m); /* Nový shlukovač */
@@ -206,8 +195,6 @@ window.createMap = function () {
 
   // var cz = m.computeCenterZoom(souradnice); /* Spočítat pozici mapy tak, aby značky byly vidět */
   // m.setCenterZoom(cz[0], cz[1]);
-
-
 
   var vrstva = new SMap.Layer.Marker(); /* Vrstva se značkami */
   var souradnice = [];
@@ -260,8 +247,6 @@ window.createMap = function () {
     }
   ];
 
-
-
   // vytvoreni markeru
   markers.forEach(function (marker) {
     var c = SMap.Coords.fromWGS84(marker.lon, marker.lat); /* Souřadnice značky, z textového formátu souřadnic */
@@ -284,7 +269,6 @@ window.createMap = function () {
     znacka.decorate(SMap.Marker.Feature.Card, karticka)
     souradnice.push(c);
     vrstva.addMarker(znacka);
-
 
   });
 
@@ -330,4 +314,5 @@ window.createMap = function () {
 
 }
 
+Loader.lang = "sk";
 load();
