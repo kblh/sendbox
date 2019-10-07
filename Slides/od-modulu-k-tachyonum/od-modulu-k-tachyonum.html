@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Od modulů k tachyonům</title>
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../_reveal.js_/css/reveal.css">
+		<link rel="stylesheet" href="../_reveal.js_/css/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../_reveal.js_/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background="images/etn-bg.png">
+					<div style="width: 200px;">&nbsp;</div>
+					<h1>Od modulů</h1>
+					<h2>k tachyonům</h2>
+					<h3>a zase zpět</h3>
+					<p>
+						<small>Petr Koláček</small>
+					</p>
+					<div><img src="images/etn-logo.png" class="plain" width="200"></div>
+				</section>
+
+
+				<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+					<h2>Máme rádi nové hračky</h2>
+					<p>
+						<iframe width="800" height="500" src="https://www.youtube.com/embed/cBhl0X_jHEg?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+					</p>
+					<!--
+					<p>A jdem něco sejmout ... jóóóóó</p>
+					<img src="images/smrtak.png">
+
+					<img src="images/smrtak.gif">
+					<p>A jdem něco sejmout ... jóóóóó</p>
+					<div data-vide-bg="video/smrtak1" data-vide-options="position: 50% 50%" style="width: 800px; height: 500px;margin: auto;">
+					</div>
+					-->
+				</section>
+
+				<section>
+					<h2>Ale bohužel je <br>chceme i používat</h2>
+					<ul>
+						<li class="fragment">frameworky (Bootstrap, Foundation, Skeleton, &hellip;)</li>
+						<li class="fragment">preprocesory (LESS, SASS, Stylus, &hellip;)</li>
+						<li class="fragment">PostCSS (CSS Lint, CSS Minifier, &hellip;)</li>
+						<li class="fragment">metodologie (OOCSS, BEM, SMACSS, &hellip;)</li>
+					</ul>
+					<br><br>
+					<h4 class="fragment">nic nás zatím nedovedlo k cíli</h4>
+				</section>
+
+				<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+					<h2>Hledání svatého grálu pokračuje ...</h2>
+					<img class="plain" src="images/Indy-drinks-grail.jpg">
+				</section>
+
+				<section>
+					<h2>Který přístup je ten nejlepší?</h2>
+					<br><br>
+					<ul>
+						<li class="fragment">Subatomární (utilitární) třídy</li>
+						<li class="fragment">Moduly</li>
+						<li class="fragment">CSS in JS</li>
+					</ul>
+				</section>
+
+
+				<section>
+					<h2>Naučit se přemýšlet v modulech je zásadní!</h2>
+					<ul>
+						<li>přehlednější</li>
+						<li>zapouzdřené = méně náchylné na chyby</li>
+						<li>umožňuje práci několika vývojářů najednou</li>
+					</ul>
+				</section>
+
+
+				<section>
+					<h2>Moduly jsou super, ale ...</h2>
+					<h3>... co s projektem, kde se grafik rozjde naplno?</h3>
+				</section>
+
+				<section>
+					<img src="images/rossmann-1.png">
+				</section>
+
+				<section>
+					<img src="images/rossmann-2.png">
+				</section>
+
+				<section>
+					<img src="images/rossmann-4.png">
+				</section>
+
+				<section>
+					<img src="images/rossmann-3.png">
+				</section>
+
+				<section>
+					<h4>více než</h4>
+					<h1>30 %</h1>
+					<h4>CSS předpisů se stále opakuje</h4>
+				</section>
+
+				<section>
+					<h2>Utilitární třídy nejsou nic nového</h2>
+					<p>projekt z roku 2004</p>
+					<p data-markdown>
+					```
+					.ifl { float: left; margin: 0 1em 1em 0; }
+					.ifr { float: right; margin: 0 0 1em 1em; }
+					.fr { float: right; }
+					.fl { float: left; }
+					.cb { clear: both; font-size: 1px; line-height: 0; }
+					.cl { clear: left; line-height: 0; }
+					.cr { clear: right; line-height: 0; }
+					.nw { white-space: nowrap; }
+					.b { border: 3px double #ddd; }
+					.dn { display: none; }
+					.sep2 { height: 2em; }
+					.sep3 { height: 3em; }
+					.sep4 { height: 4em; }
+					```
+					</p>
+				</section>
+
+				<section>
+					<h2>Co takhle použít utilitární toolkit nebo framework?</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Toolkits:</th>
+								<th>Frameworks:</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><a target="_blank" href="https://tedconf.github.io/shed-css/">Shed.css</a></td>
+								<td>turretcss</td>
+							</tr>
+							<tr>
+								<td><a target="_blank" href="https://tachyons.io/#style"><strong style="color: #e06436;">Tachyons (73 kB)</strong></a></td>
+								<td>Expressive CSS</td>
+							</tr>
+							<tr>
+								<td><a target="_blank" href="https://basscss.com/">Basscss</a></td>
+								<td>Tailwind CSS</td>
+							</tr>
+							<tr>
+								<td>Beard</td>
+								<td>Solid</td>
+							</tr>
+							<!-- <tr>
+								<td>&nbsp;</td>
+								<td>Bootstrap</td>
+							</tr> -->
+						</tbody>
+					</table>
+				</section>
+
+
+				<section>
+					<div><img style="height: 150px" src="images/emmet.png" alt="EMMET"></div>
+					<h2>EMMET</h2>
+					<ul>
+						<li class="fragment">umí ho <strong>nativně</strong> kdejaký editor (Aptana/Eclipse, Atom, VS Code, Notepad++)</li>
+						<li class="fragment">používá <strong>krátké</strong> a poměrně srozumitelné zkratky - ideální pro názvy našich subatomárních tříd (dn, posa, mb1r)</li>
+						<li class="fragment">díky tomu lze knihovnu jednoduše rozšiřovat při zachování <strong>konvence</strong> pojmenovávání</li>
+					</ul>
+				</section>
+
+
+				<section>
+					<h2>Micro Tachyons (5 kB)</h2>
+					<p data-markdown>
+						```
+/*******************************************
+  MICRO TACHYONS
+
+  based on Emmet notation
+  https://docs.emmet.io/cheat-sheet/
+********************************************/
+
+/* display */
+.dn { display: none }
+.db { display: block }
+.di { display: inline }
+.dib { display: inline-block }
+.dt { display: table }
+.dtr { display: table-row }
+.dtc { display: table-cell }
+
+/* visibility / position */
+.vv { visibility: visible }
+.vh { visibility: hidden }
+
+.poss { position: static }
+.posa { position: absolute; }
+.posf { position: fixed }
+.posr { position: relative }
+
+.t0 { top: 0 }
+.t2r { top: 2rem }
+.t3r { top: 3rem }
+.t4r { top: 4rem }
+.t5r { top: 5rem }
+.t6r { top: 6rem }
+
+.r0 { right: 0 }
+.r1r { right: 1rem }
+.r2r { right: 2rem }
+.r3r { right: 3rem }
+.r4r { right: 4rem }
+.r5r { right: 5rem }
+
+.b0 { bottom: 0 }
+.b1r { bottom: 1rem }
+.b2r { bottom: 2rem }
+.b3r { bottom: 3rem }
+.b4r { bottom: 4rem }
+.b5r { bottom: 5rem }
+
+.l0 { left: 0 }
+.l1r { left: 1rem }
+.l2r { left: 2rem }
+.l3r { left: 3rem }
+.l4r { left: 4rem }
+.l5r { left: 5rem }
+
+.z-1 { z-index: -1 }
+.z1 { z-index: 1 }
+.z10 { z-index: 10 }
+.z100 { z-index: 100 }
+.z1000 { z-index: 1000 }
+.z10000 { z-index: 10000 }
+
+/* float */
+.fll { float: left }
+.flr { float: right }
+
+.cll { clear: left }
+.clr { clear: right }
+.clb { clear: both }
+
+/* flexbox */
+.dfl { display: flex }
+.fxg1 { flex-grow: 1 }
+
+/* typography */
+.tal { text-align: left }
+.tar { text-align: right }
+.tac { text-align: center }
+.taj { text-align: justify }
+
+.lh1 { line-height: 1 }
+.lh15 { line-height: 1.5 }
+.lh2 { line-height: 2 }
+
+.fz70p { font-size: 70% }
+.fz80p { font-size: 80% }
+.fz90p { font-size: 90% }
+.fz100p { font-size: 100% }
+.fz110p { font-size: 110% }
+.fz120p { font-size: 120% }
+.fz130p { font-size: 130% }
+.fz140p { font-size: 140% }
+.fz150p { font-size: 150% }
+
+.fwb { font-weight: bold }
+.fw100 { font-weight: 100 }
+.fw200 { font-weight: 200 }
+.fw300 { font-weight: 300 }
+.fw400 { font-weight: 400 }
+.fw500 { font-weight: 500 }
+.fw600 { font-weight: 600 }
+.fw700 { font-weight: 700 }
+.fw800 { font-weight: 800 }
+.fw900 { font-weight: 900 }
+
+.fsi { font-style: italic }
+
+.tdn { text-decoration: none }
+.tdu { text-decoration: underline }
+
+.ttc { text-transform: capitalize }
+.ttu { text-transform: uppercase }
+.ttl { text-transform: lowercase }
+
+.ovh { overflow: hidden }
+.ova { overflow: auto; }
+
+.whsn { white-space: nowrap }
+.whsp { white-space: pre }
+
+.curp { cursor: pointer }
+
+/* spacing */
+.ma { margin: auto }
+
+.m0 { margin: 0 }
+.m1r { margin: 1rem }
+.m2r { margin: 2rem }
+.m3r { margin: 3rem }
+.m4r { margin: 4rem }
+.m5r { margin: 5rem }
+
+.mt0 { margin-top: 0 }
+.mt1r { margin-top: 1rem }
+.mt2r { margin-top: 2rem }
+.mt3r { margin-top: 3rem }
+.mt4r { margin-top: 4rem }
+.mt5r { margin-top: 5rem }
+
+.mb0 { margin-bottom: 0 }
+.mb1r { margin-bottom: 1rem }
+.mb2r { margin-bottom: 2rem }
+.mb3r { margin-bottom: 3rem }
+.mb4r { margin-bottom: 4rem }
+.mb5r { margin-bottom: 5rem }
+
+.ml0 { margin-left: 0 }
+.ml1r { margin-left: 1rem }
+.ml2r { margin-left: 2rem }
+.ml3r { margin-left: 3rem }
+.ml4r { margin-left: 4rem }
+.ml5r { margin-left: 5rem }
+
+.mr0 { margin-right: 0 }
+.mr1r { margin-right: 1rem }
+.mr2r { margin-right: 2rem }
+.mr3r { margin-right: 3rem }
+.mr4r { margin-right: 4rem }
+.mr5r { margin-right: 5rem }
+
+.p0 { padding: 0 }
+.p1r { padding: 1rem }
+.p2r { padding: 2rem }
+.p3r { padding: 3rem }
+.p4r { padding: 4rem }
+.p5r { padding: 5rem }
+
+.pt0 { padding-top: 0 }
+.pt1r { padding-top: 1rem }
+.pt2r { padding-top: 2rem }
+.pt3r { padding-top: 3rem }
+.pt4r { padding-top: 4rem }
+.pt5r { padding-top: 5rem }
+
+.pb0 { padding-bottom: 0 }
+.pb1r { padding-bottom: 1rem }
+.pb2r { padding-bottom: 2rem }
+.pb3r { padding-bottom: 3rem }
+.pb4r { padding-bottom: 4rem }
+.pb5r { padding-bottom: 5rem }
+
+/* width / height */
+.w1p { width: 1% }
+.w5p { width: 5% }
+.w10p { width: 10% }
+.w20p { width: 20% }
+.w30p { width: 30% }
+.w33p { width: calc(100% / 3) }
+.w40p { width: 40% }
+.w50p { width: 50% }
+.w60p { width: 60% }
+.w66p { width: calc(100% / 1.5) }
+.w70p { width: 70% }
+.w80p { width: 80% }
+.w90p { width: 90% }
+.w100p { width: 100% }
+
+.miw0 { min-width: 0 }
+.miw10r { min-width: 10rem }
+.miw15r { min-width: 15rem }
+.miw20r { min-width: 25rem }
+.miw25r { min-width: 20rem }
+.miw30r { min-width: 30rem }
+.miw40r { min-width: 40rem }
+.miw50r { min-width: 50rem }
+
+.maw0 { max-width: 0; }
+.maw10r { max-width: 10rem }
+.maw15r { max-width: 15rem }
+.maw20r { max-width: 20rem }
+.maw25r { max-width: 25rem }
+.maw30r { max-width: 30rem }
+.maw40r { max-width: 40rem }
+.maw50r { max-width: 50rem }
+
+.mih0 { min-height: 0; }
+.mih10r { min-height: 10rem }
+.mih15r { min-height: 15rem }
+.mih20r { min-height: 20rem }
+.mih25r { min-height: 25rem }
+.mih30r { min-height: 30rem }
+.mih40r { min-height: 40rem }
+.mih50r { min-height: 50rem }
+
+						```
+					</p>
+				</section>
+
+				<section>
+					<h2>Tak moduly nebo tachyony?</h2>
+					<img class="plain" height="500" src="images/fry.png">
+				</section>
+
+<!--
+				<section>
+					<h1>Zachovejte si zdravý rozum!</h1>
+					<br><br>
+					<h2>Nemusíte nutně použít vše, co je možné používat. </h2>
+				</section>
+-->
+
+				<section style="text-align: left;" data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+					<h1>Díky za pozornost.</h1>
+					<h2>Dotazy?</h2>
+				</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="../_reveal.js_/lib/js/head.min.js"></script>
+		<script src="../_reveal.js_/js/reveal.js"></script>
+		<script src="../_reveal.js_/js/jQuery.js"></script>
+		<script src="../_reveal.js_/js/jquery.vide.min.js"></script>
+		
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '../_reveal.js_/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../_reveal.js_/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../_reveal.js_/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../_reveal.js_/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../_reveal.js_/plugin/search/search.js', async: true },
+					{ src: '../_reveal.js_/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../_reveal.js_/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
