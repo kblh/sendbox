@@ -22,7 +22,7 @@
 			var link = document.createElement( 'link' );
 			link.rel = 'stylesheet';
 			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../_reveal.js_/css/print/pdf.css' : '../_reveal.js_/css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 
@@ -49,39 +49,6 @@
 				</section>
 
 
-				<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
-					<h2>Máme rádi nové hračky</h2>
-					<p>
-						<iframe width="800" height="500" src="https://www.youtube.com/embed/cBhl0X_jHEg?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-					</p>
-					<!--
-					<p>A jdem něco sejmout ... jóóóóó</p>
-					<img src="images/smrtak.png">
-
-					<img src="images/smrtak.gif">
-					<p>A jdem něco sejmout ... jóóóóó</p>
-					<div data-vide-bg="video/smrtak1" data-vide-options="position: 50% 50%" style="width: 800px; height: 500px;margin: auto;">
-					</div>
-					-->
-				</section>
-
-				<section>
-					<h2>Ale bohužel je <br>chceme i používat</h2>
-					<ul>
-						<li class="fragment">frameworky (Bootstrap, Foundation, Skeleton, &hellip;)</li>
-						<li class="fragment">preprocesory (LESS, SASS, Stylus, &hellip;)</li>
-						<li class="fragment">PostCSS (CSS Lint, CSS Minifier, &hellip;)</li>
-						<li class="fragment">metodologie (OOCSS, BEM, SMACSS, &hellip;)</li>
-					</ul>
-					<br><br>
-					<h4 class="fragment">nic nás zatím nedovedlo k cíli</h4>
-				</section>
-
-				<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
-					<h2>Hledání svatého grálu pokračuje ...</h2>
-					<img class="plain" src="images/Indy-drinks-grail.jpg">
-				</section>
-
 				<section>
 					<h2>Který přístup je ten nejlepší?</h2>
 					<br><br>
@@ -96,9 +63,9 @@
 				<section>
 					<h2>Naučit se přemýšlet v modulech je zásadní!</h2>
 					<ul>
-						<li>přehlednější</li>
-						<li>zapouzdřené = méně náchylné na chyby</li>
-						<li>umožňuje práci několika vývojářů najednou</li>
+						<li class="fragment">přehlednější</li>
+						<li class="fragment">zapouzdřené = méně náchylné na chyby</li>
+						<li class="fragment">umožňuje práci několika vývojářů najednou</li>
 					</ul>
 				</section>
 
