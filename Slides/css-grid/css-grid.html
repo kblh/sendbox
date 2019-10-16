@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>CSS Grid</title>
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="../_reveal.js_/css/reveal.css">
+	<link rel="stylesheet" href="../_reveal.js_/css/theme/white.css" id="theme">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../_reveal.js_/lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? '../_reveal.js_/css/print/pdf.css' : '../_reveal.js_/css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+</head>
+
+<body>
+<div class="reveal">
+
+	<!-- Any section element inside of this container is displayed as a slide -->
+	<div class="slides">
+		<section data-background="images/etn-bg.png">
+			<h1>CSS Grid</h1>
+			<h3>Flexbox je mrtvý. Ať žije CSS Grid!</h3>
+			<p>
+				<small>Petr Koláček</small>
+			</p>
+			<div><img src="images/etn-logo.png" class="plain" width="200"></div>
+		</section>
+
+		<section>
+			<h3>Od floatů, přes flexbox k CSS Gridu</h3>
+			<div>
+				<img class="plain" src="images/table-float-inline-block.png" alt="table, float, inline-block">
+			</div>
+			<ul>
+				<li class="fragment">table</li>
+				<li class="fragment">float</li>
+				<li class="fragment">inline-block</li>
+			</ul>
+		</section>
+
+		<section>
+			<h3>Od floatů, přes flexbox k CSS Gridu</h3>
+			<div>
+				<img class="plain" src="images/flexbox.png" alt="flexbox">
+			</div>
+			<ul>
+				<li class="fragment">flexbox (jednodimenzionální)</li>
+			</ul>
+		</section>
+
+		<section>
+			<h3>Od floatů, přes flexbox k CSS Gridu</h3>
+			<div>
+				<img class="plain" src="images/css-grid.png" alt="css grid">
+			</div>
+			<ul>
+				<li class="fragment">CSS Grid (dvoudimenzionální)</li>
+			</ul>
+		</section>
+
+		<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+			<h2>sneek peek</h2>
+		</section>
+
+		<section>
+			<h3>
+				grid-template-columns
+				<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns">&#8599;</a>
+			</h3>
+			<div data-markdown>
+				```
+.grid-container {
+	display: grid;
+	grid-gap: 15px; /* grid-column-gap a grid-row-gap */
+	grid-template-columns: auto auto auto;
+}				```
+			</div>
+			<div>
+				<img src="images/grid-template-columns.png" class="plain" alt="">
+			</div>
+		</section>
+
+		<section>
+			<h3>Libovolné jednotky</h3>
+			<div data-markdown>
+				```
+.grid-container {
+	display: grid;
+	grid-gap: 15px; /* grid-column-gap a grid-row-gap */
+	grid-template-columns: 150px 70% auto;
+}				```
+			</div>
+			<div>
+				<img src="images/libovolne-jednotky.png" class="plain" alt="">
+			</div>
+		</section>
+
+		<section>
+			<h3>novinka: fr units</h3>
+			<div data-markdown>
+				```
+.grid-container {
+	display: grid;
+	grid-gap: 15px; /* grid-column-gap a grid-row-gap */
+	grid-template-columns: 1fr 3fr 1fr;
+}				```
+			</div>
+			<div>
+				<img src="images/fr-units.png" class="plain" alt="">
+			</div>
+		</section>
+
+		<section>
+			<h3>
+				funkce repeat()
+				<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat">&#8599;</a>
+			</h3>
+			<div data-markdown>
+				```
+.grid-container {
+	display: grid;
+	grid-gap: 15px; /* grid-column-gap a grid-row-gap */
+	grid-template-columns: repeat(12, 1fr);
+}				```
+			</div>
+			<div>
+				<img src="images/repeat.png" class="plain" alt="">
+			</div>
+		</section>
+
+		<section>
+			<h3>
+				funkce minmax()
+				<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/minmax">&#8599;</a>
+			</h3>
+			<div data-markdown>
+				```
+.grid-container {
+	display: grid;
+	grid-gap: 15px; /* grid-column-gap a grid-row-gap */
+	grid-template-columns: minmax(100px, 350px) 1fr 1fr;
+}
+				```
+			</div>
+			<div>
+				<img src="images/min-max.gif" class="plain" alt="">
+			</div>
+		</section>
+
+		<section>
+			<h3>
+				kombinace funkcí + auto-fill
+			</h3>
+			<div data-markdown>
+				```
+.grid-container {
+	display: grid;
+	grid-gap: 15px; /* grid-column-gap a grid-row-gap */
+	grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+}
+				```
+			</div>
+			<div>
+				<img src="images/auto-fill.gif" class="plain" alt="">
+			</div>
+		</section>
+
+		<section>
+			<h3>
+				grid-template-rows
+				<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows">&#8599;</a>
+			</h3>
+			<div data-markdown>
+				```
+.grid-container {
+	display: grid;
+	grid-gap: 15px; /* grid-column-gap a grid-row-gap */
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 100px);
+}
+				```
+			</div>
+			<div>
+				<img src="images/grid-template-rows.png" class="plain" alt="">
+			</div>
+		</section>
+
+		<section>
+			<h3>
+				grid-columns-end 
+				<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end">&#8599;</a>
+				/ grid-row-end
+			</h3>
+			<div data-markdown>
+				```
+.grid-container {
+	display: grid; grid-gap: 15px;	
+	grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+}
+
+.span-2-column { grid-column-end: span 2; }
+.span-2-all { 
+	grid-column-end: span 2; 
+	grid-row-end: span 2; 
+}
+				```
+			</div>
+			<div>
+				<img src="images/span.png" class="plain" alt="">
+			</div>
+		</section>
+
+		<section>
+			<h3>order</h3>
+			<div data-markdown>
+				```
+.grid-container {
+	display: grid; grid-gap: 15px;	
+	grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+}
+
+.span-2-column { grid-column-end: span 2; order: 1; }
+.span-2-all { 
+	grid-column-end: span 2; 
+	grid-row-end: span 2; 
+}
+				```
+			</div>
+			<div>
+				<img src="images/order.png" class="plain" alt="">
+			</div>
+		</section>
+
+
+
+		<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+			<h2>Co neumí nikdo jiný</h2>
+		</section>
+
+		<section>
+			<h3>grid-template-areas</h3>
+			<div data-markdown style="width: 45%; float: left;">
+				```
+.grid-container {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-areas: 
+  "a b b g"
+  "c c d g"
+  "e f d g"
+}
+				```
+			</div>
+			<div data-markdown style="width: 55%; float: right;">
+				```
+.grid-item--a { grid-area: a; }
+.grid-item--b { grid-area: b; }
+.grid-item--c { grid-area: c; }
+.grid-item--d { grid-area: d; }
+.grid-item--e { grid-area: e; }
+.grid-item--f { grid-area: f; }
+.grid-item--g { grid-area: g; }
+
+				```
+			</div>
+			<div>
+				<img src="images/complex.png" class="plain" alt="">
+			</div>
+		</section>
+
+		<section>
+			<h3>responzivní layout s CSS Grid</h3>
+			<div>
+				<img src="images/skeleton.gif" class="plain" alt="">
+			</div>
+		</section>
+
+
+
+
+		<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+			<h2>Boží ... až na jednu drobnost</h2>
+		</section>
+
+		<section>
+			<div>
+				<img src="images/ie11.png" class="plain" alt="IE11">
+			</div>
+		</section>
+
+		<section data-background-iframe="https://caniuse.com/#search=css%20grid" data-background-interactive>
+		</section>
+
+		<section>
+			<h3>Zdroje informací</h3>
+			<div style="text-align: center; font-size: 70%;">
+				<ul>
+					<li>Rachel Andrew: <a target="_blank" href="https://gridbyexample.com/">gridbyexample.com</a>, <a target="_blank" href="https://www.youtube.com/watch?v=N5Lt1SLqBmQ">přednáška</a></li>
+					<li>Jen Simmons: <a target="_blank" href="https://www.youtube.com/channel/UC7TizprGknbDalbHplROtag">Layout Land (YouTube channel)</a></li>
+					<li><a target="_blank" href="https://css-tricks.com/snippets/css/complete-guide-grid/">A Complete Guide to Grid</a></li>
+					<li><a target="_blank" href="https://www.w3.org/TR/css-grid-1/">CSS Grid Layout Module Level 1</a></li>
+					<li><a target="_blank" href="http://alistapart.com/article/the-story-of-css-grid-from-its-creators">The Story of CSS Grid, from Its Creators</a></li>
+					<li><a target="_blank" href="https://css-tricks.com/collection-interesting-facts-css-grid-layout/">A Collection of Interesting Facts about CSS Grid Layout</a></li>
+					<li><a target="_blank" href="http://labs.jensimmons.com/2016/">Layout demos</a></li>
+				</ul>
+		</section>
+
+		<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+			<h3>Flexbox není mrtvý a už nemusí předstírat, že je grid.</h3>
+			<h1>Ať žije CSS Grid!</h1>
+		</section>
+
+		<section style="text-align: left;" data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+			<h1>Díky za pozornost.</h1>
+			<h2>Dotazy?</h2>
+		</section>
+
+
+
+
+	</div>
+
+</div>
+
+
+<script src="../_reveal.js_/lib/js/head.min.js"></script>
+<script src="../_reveal.js_/js/reveal.js"></script>
+<script src="../_reveal.js_/js/jQuery.js"></script>
+<script src="../_reveal.js_/js/jquery.vide.min.js"></script>
+
+<script>
+	// More info https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		history: true,
+		// hash: true,
+		center: true,
+
+		transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+		// More info https://github.com/hakimel/reveal.js#dependencies
+		dependencies: [
+			{ src: '../_reveal.js_/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+			{ src: '../_reveal.js_/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: '../_reveal.js_/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: '../_reveal.js_/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+			{ src: '../_reveal.js_/plugin/search/search.js', async: true },
+			{ src: '../_reveal.js_/plugin/zoom-js/zoom.js', async: true },
+			{ src: '../_reveal.js_/plugin/notes/notes.js', async: true }
+		]
+	});
+</script>
+
+</body>
+</html>

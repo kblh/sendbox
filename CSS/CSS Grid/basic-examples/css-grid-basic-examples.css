@@ -1,0 +1,300 @@
+/*******************************************
+  CSS Grid system
+  barvy: https://coolors.co/177e89-f2c078-faedca-db3a34-084c61
+********************************************/
+
+* {
+  box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+}
+
+.spacer { margin-bottom: 150px; }
+
+.message {
+  background-color: lightcoral; color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+@supports (display: grid) {
+  .message { display: none; }
+}
+
+
+
+.grid {
+  max-width: 992px;
+  display: grid;
+
+  /* grid-column-gap: 10px; */
+  /* grid-row-gap: 10px; */
+  grid-gap: 15px;
+}
+
+.grid > * {
+  order: 2;
+  padding: 20px;
+  text-align: center;
+  vertical-align: middle;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 20px;
+  background: brown;
+}
+
+.grid div:nth-child(even) { background-color: #e06436; }
+.grid div:nth-child(odd) { background-color: #084C61; }
+
+
+/* .grid div:nth-child(4) { background-color: red; order: 1; } */
+
+
+div.grid-1--sub {
+  display: none;
+  font-size: 14px;
+}
+
+.grid-1 {
+  /*
+  grid-template-columns: auto auto auto;
+  grid-template-columns: 150px 70% auto;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: minmax(100px, 350px) 1fr 1fr;
+
+  grid-template-columns: repeat(2, 1fr 2fr);
+  grid-template-columns: 2fr 1fr 200px;
+  */
+  grid-template-columns: minmax(100px, 350px) 1fr 1fr;
+
+  grid-template-columns: 1fr 3fr 1fr;
+
+  /*
+  grid-template-rows: repeat(3, 100px);
+  */
+  
+
+  /* 
+  grid-auto-flow: column;
+  grid-auto-flow: row; 
+  */
+
+ 
+  /*
+  grid-auto-rows: 150px;
+  grid-auto-rows: minmax(50px, auto);
+  */
+
+
+  /* auto, baseline, top */
+  /*
+  align-items: auto;
+  */
+ 
+}
+
+.grid-auto-fill {
+  grid-template-columns: repeat(auto-fill, minmax(100px,1fr));
+}
+
+.span-2-column {
+  grid-column-end: span 2;
+  order: 1;
+}
+
+.span-2-all {
+  grid-column-end: span 2;
+  grid-row-end: span 2;
+}
+
+
+.grid-auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(100px,1fr));
+}
+
+.grid-12 {
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, minmax(50px,150px));
+  /* grid-auto-rows: 100px; */
+  border: 2px dashed black;
+  max-width: 900px;
+  height: 120px;
+  margin: auto;
+
+  /* horizontaly */
+  /* flex-start, flex-end, center, space-around*, space-between */
+  justify-content: space-between;
+  
+  /* verticaly */
+  align-content: center;
+}
+
+
+.grid-5 {
+  grid-template-areas: 
+  "a b b g"
+  "c c d g"
+  "e f d g"
+}
+
+.grid-5--a { grid-area: a; }
+.grid-5--b { grid-area: b; }
+.grid-5--c { grid-area: c; }
+.grid-5--d { grid-area: d; }
+.grid-5--e { grid-area: e; }
+.grid-5--f { grid-area: f; }
+.grid-5--g { grid-area: g; }
+
+
+
+.grid-6 {
+  /*
+  grid-template-columns: repeat(4, minmax(50px,150px));
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  */
+  grid-template-columns: repeat(auto-fit, minmax(50px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(50px,150px));
+  
+
+  border: 2px dashed black;
+  height: 120px;
+
+  justify-content: space-between;
+  align-content: center;  
+  
+}
+
+.second-item { order: 1; }
+
+
+
+/*********************
+  skeleton
+*********************/
+
+.skeleton {
+  color: #fff;
+  max-width: 992px;
+  margin: auto;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas: 
+  "hdr"
+  "asd"
+  "art"
+  "ftr"
+}
+  .skeleton > * {
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+@media (min-width: 768px) {
+  .skeleton {
+    grid-template-columns: 2fr 3fr;
+    grid-template-areas: 
+    "hdr hdr"
+    "asd art"
+    "ftr ftr"
+  }
+}
+
+@media (min-width: 992px) {
+  .skeleton {
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: 
+    "hdr hdr"
+    "asd art"
+    "asd ftr"
+  }
+}
+
+
+header { background-color: #084C61; grid-area: hdr; }
+aside { background-color: #FAEDCA; grid-area: asd; color: #000; }
+article { background-color: #e06436; grid-area: art; }
+footer { background-color: #084C61; grid-area: ftr; }
+
+
+
+
+
+
+.row div {
+  background-color: #084C61;
+  color: #fff;
+}
+
+/*********************
+  CSS Grid system (Bootstrap compatible)
+  63 radek vs Bootstrap Grid (cca 2000)
+*********************/
+
+/* ROW */
+.row { display: grid; grid-template-columns: repeat(12, 1fr); grid-gap: 20px; }
+
+.col-xs-12 { grid-column: span 12 }
+.col-xs-11 { grid-column: span 11; }
+.col-xs-10 { grid-column: span 10 }
+.col-xs-9 { grid-column: span 9 }
+.col-xs-8 { grid-column: span 8 }
+.col-xs-7 { grid-column: span 7 }
+.col-xs-6 { grid-column: span 6 }
+.col-xs-5 { grid-column: span 5 }
+.col-xs-4 { grid-column: span 4 }
+.col-xs-3 { grid-column: span 3 }
+.col-xs-2 { grid-column: span 2 }
+.col-xs-1 { grid-column: span 1 }
+
+@media (min-width: 768px) {
+  .col-sm-12 { grid-column: span 12 }
+  .col-sm-11 { grid-column: span 11; }
+  .col-sm-10 { grid-column: span 10 }
+  .col-sm-9 { grid-column: span 9 }
+  .col-sm-8 { grid-column: span 8 }
+  .col-sm-7 { grid-column: span 7 }
+  .col-sm-6 { grid-column: span 6 }
+  .col-sm-5 { grid-column: span 5 }
+  .col-sm-4 { grid-column: span 4 }
+  .col-sm-3 { grid-column: span 3 }
+  .col-sm-2 { grid-column: span 2 }
+  .col-sm-1 { grid-column: span 1 }
+}
+
+@media (min-width: 992px) {
+  .col-md-12 { grid-column: span 12 }
+  .col-md-11 { grid-column: span 11; }
+  .col-md-10 { grid-column: span 10 }
+  .col-md-9 { grid-column: span 9 }
+  .col-md-8 { grid-column: span 8 }
+  .col-md-7 { grid-column: span 7 }
+  .col-md-6 { grid-column: span 6 }
+  .col-md-5 { grid-column: span 5 }
+  .col-md-4 { grid-column: span 4 }
+  .col-md-3 { grid-column: span 3 }
+  .col-md-2 { grid-column: span 2 }
+  .col-md-1 { grid-column: span 1 }
+}
+
+@media (min-width: 1200px) {
+  .col-lg-12 { grid-column: span 12 }
+  .col-lg-11 { grid-column: span 11; }
+  .col-lg-10 { grid-column: span 10 }
+  .col-lg-9 { grid-column: span 9 }
+  .col-lg-8 { grid-column: span 8 }
+  .col-lg-7 { grid-column: span 7 }
+  .col-lg-6 { grid-column: span 6 }
+  .col-lg-5 { grid-column: span 5 }
+  .col-lg-4 { grid-column: span 4 }
+  .col-lg-3 { grid-column: span 3 }
+  .col-lg-2 { grid-column: span 2 }
+  .col-lg-1 { grid-column: span 1 }
+}
