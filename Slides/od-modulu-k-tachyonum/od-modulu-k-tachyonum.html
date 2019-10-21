@@ -13,6 +13,7 @@
 
 		<link rel="stylesheet" href="../_reveal.js_/css/reveal.css">
 		<link rel="stylesheet" href="../_reveal.js_/css/theme/white.css" id="theme">
+		<link rel="stylesheet" href="../../CSS/MicroTachyons/micro-tachyons.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="../_reveal.js_/lib/css/zenburn.css">
@@ -37,6 +38,23 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+
+				<section>
+					<div>
+						<img src="images/front&cookies.jpg" alt="Front & Cookies">
+					</div>
+					<aside class="notes">
+						<ul>
+							<li>před 20 lety nebyli kodéři</li>
+							<li>UX / grafika / kódování / SEO / hosting / PPC</li>
+							<li>inspirace Frontnedisti (mini / mikro konference)</li>
+							<li>Struktura: Novinky / TÉMA / diskuze</li>
+							<li>kdo by se chtěl aktivně zapojit (přednáška, novinky) - vítán!!!</li>
+							<li>kontroverze - mír</li>
+						</ul>
+					</aside>
+				</section>
+
 				<section data-background="images/etn-bg.png">
 					<div style="width: 200px;">&nbsp;</div>
 					<h1>Od modulů</h1>
@@ -49,17 +67,20 @@
 				</section>
 
 				<section>
-					<h2>Naučit se přemýšlet v modulech je zásadní!</h2>
-					<ul>
-						<li class="fragment">přehlednější</li>
-						<li class="fragment">zapouzdřené = méně náchylné na chyby</li>
-						<li class="fragment">umožňuje práci několika vývojářů najednou</li>
-					</ul>
+					<h2>Moduly</h2>
+					<img src="images/modules.png" class="plain" alt="modules">
 				</section>
 
 				<section>
-					<img src="images/modules.png" class="plain" alt="modules">
+					<h2>Naučit se přemýšlet v modulech je zásadní!</h2>
+					<ul>
+						<li class="fragment"><strong>přehlednější</strong></li>
+						<li class="fragment"><strong>zapouzdřené</strong> = méně náchylné na chyby</li>
+						<li class="fragment"><strong>znovupoužitelné</strong> na různých částech webu</li>
+						<li class="fragment">umožňuje práci několika vývojářů <strong>najednou</strong></li>
+					</ul>
 				</section>
+
 
 
 				<section>
@@ -135,30 +156,50 @@
 								<td>Beard</td>
 								<td>Solid</td>
 							</tr>
-							<!-- <tr>
+							<tr>
 								<td>&nbsp;</td>
 								<td>Bootstrap</td>
-							</tr> -->
+							</tr>
 						</tbody>
 					</table>
 				</section>
 
-
 				<section>
-					<h2>Micro Tachyons (7 kB)</h2>
-					<p data-markdown="code/micro-tachyons-v1.md"></p>
-					<aside class="notes">
-						<ul>
-							<li>před 2 roky</li>
-							<li>má ještě znaky frameworku - variables</li>
-							<li>nebyl jsem si stále jistý názvy tříd</li>
-						</ul>
-					</aside>
+					<h2>Problémy utilitárních tookitů</h2>
+					<ul>
+						<li>neexistuje <strong>standard</strong> v názvech tříd<br>(v-top, v-a:t, align-top)</li>
+						<li class="fragment">snaží se <strong>nahradit</strong> modulární metodiky<br>(SMACSS, OOCSS, BEM)</li>
+						<li class="fragment">využijete max 10 % - 20 % tříd</li>
+					</ul>
 				</section>
 
 				<section>
-					<div><img style="height: 150px" src="images/emmet.png" alt="EMMET"></div>
+					<h2>Micro Tachyons (7 kB)</h2>
+					<div data-markdown="code/micro-tachyons-v1.md"></div>
+				</section>
+				<section>
+					<h2>Zkušenosti s Micro Tachyons</h2>
+					<ul>
+						<li>už jsem ho několikrát použil (Logio)</li>
+						<li class="fragment">má ještě znaky frameworku (proměnné)</li>
+						<li class="fragment">nemá standardizované názvy tříd</li>
+						<li class="fragment">není standard - problematické rozšiřování</li>
+					</ul>
+				</section>
+
+				<section>
+					<div><img style="height: 150px" src="images/emmet-lego.jpg" class="plain" alt="EMMET"></div>
 					<h2>EMMET</h2>
+				</section>
+
+				<section>
+					<div><img style="height: 150px" src="images/emmet.png" class="plain" alt="EMMET"></div>
+					<h2>EMMET</h2>
+				</section>
+
+				<section>
+					<h2>EMMET</h2>
+					<p style="font-size: 70%;">Emmet (formerly Zen Coding) is a set of plug-ins for text editors that allow for high-speed coding and editing in HTML, XML, XSL, and other structured code formats via content assist.</p>
 					<ul>
 						<li class="fragment">umí ho <strong>nativně</strong> kdejaký editor (Aptana/Eclipse, Atom, VS Code, Notepad++)</li>
 						<li class="fragment">používá <strong>krátké</strong> a poměrně srozumitelné zkratky - ideální pro názvy našich subatomárních tříd (dn, posa, mb1r)</li>
@@ -168,8 +209,15 @@
 
 
 				<section>
-					<h2>Micro Tachyons v2 (5 kB)</h2>
-					<p data-markdown="code/micro-tachyons-v2.md"></p>
+					<h2>Micro Tachyons ver. 2 (5 kB)</h2>
+					<div data-markdown="code/micro-tachyons-v2.md"></div>
+				</section>
+				<section>
+					<h2>Micro Tachyons ver. 2 (5 kB)</h2>
+					<ul>
+						<li>použitá notace EMMET</li>
+						<li class="fragment">-> lze libovolně a bezbolestně rozšiřovat</li>
+					</ul>
 				</section>
 
 				<section>
