@@ -3,9 +3,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../init.css">
   <link rel="stylesheet" href="style.css">
   <title>Viewport Units</title>
+
+<style>
+.container {
+  /* scroll-padding: 50% 0; */
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  max-height: 100vh;  
+}
+
+.container h1 {
+  font-size: 15vmin;
+}
+
+.page {
+  padding: 10vh 10vmin;
+  height: 80vh;
+  scroll-snap-align: start;
+}
+
+.page1 { background: #abc; }
+.page2 { background: #acb; }
+.page3 { background: #cab; }
+</style>  
 </head>
+
 <body>
 <div class="container">
   <div class="page page1">

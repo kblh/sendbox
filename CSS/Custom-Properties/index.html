@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1200, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../init.css">
   <title>Custom properties</title>
-
 
 <style>
   :root {
@@ -20,7 +20,9 @@
     background: lightblue;
   }
 
-  body[data-position*="position10"] { background: red; }
+  body[data-position^="11"] { background: red; }
+
+  /* body[data-position*="position10"] { background: red; } */
 
   p {
     line-height: 1.5;
@@ -144,6 +146,7 @@ document.onscroll = () => {
 
   removeClassByPrefix(document.body,'position');
   document.body.classList.add("position"+positionOnPage);
+  document.body.setAttribute('data-position', positionOnPage);
 
   // console.log("documentElement: " + document.documentElement.scrollTop);
   // console.log("body: " + document.body.scrollTop);

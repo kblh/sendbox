@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans');
+@import url('https://fonts.googleapis.com/css?family=Monoton');
+@import url('https://fonts.googleapis.com/css?family=Gravitas+One');
+
+body {
+  margin: 0; padding: 0;
+  font-family: arial, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Black Han Sans', sans-serif;
+}
+
+a { color: #084C61; }
+
+.ff-monoton { font-family: 'Monoton', cursive; }
+.ff-gravitas { font-family: 'Gravitas One', cursive; }
+
+.box { border-radius: .5rem; padding: 1rem; }
+.box-blue { background-color: #084C61; color: #fff; }
+.box-blue-light { background-color: rgba(8,76,97,.2); }
+.box-orange { background-color: #e06436; color: #fff; }
+.box-orange-light { background-color: rgba(224,100,54,.2); }
+
