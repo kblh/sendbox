@@ -1,0 +1,23 @@
+body { padding: 0; margin: 0; }
+
+.container {
+  /* scroll-padding: 50% 0; */
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  max-height: 100vh;  
+}
+
+.container h1 {
+  font-size: 15vmin;
+}
+
+.page {
+  padding: 10vh 10vmin;
+  height: 80vh;
+  scroll-snap-align: start;
+}
+
+.page1 { background: #abc; }
+.page2 { background: #acb; }
+.page3 { background: #cab; }
+
