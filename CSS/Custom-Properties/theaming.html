@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Theaming with CSS variables</title>
+<style>
+:root {
+  --bg: #fff;
+  --color: #000;
+  --titleFont: 'Gravitas One', cursive; 
+  --titleSize: 3.5rem;
+  --paragraphFont: serif;
+  --imageBorder: 10px double #000;
+  --baseline: 1.5;
+}
+
+body { padding: 0; margin: 0; }
+
+.wrapper {
+  background: var(--bg); 
+  color: var(--color);
+  padding: 2rem 20vw;
+}
+
+h1 { 
+  font-family: var(--titleFont); 
+  font-size: var(--titleSize); 
+}
+
+h2 { font-family: var(--titleFont); }
+
+p { 
+  font-family: var(--paragraphFont);
+  line-height: var(--baseline); 
+  margin: 0 0 2rem 0; 
+}
+
+img { border: var(--imageBorder); max-width: calc(100% - 20px); }
+
+.perex { font-size: 130%; }
+
+
+/* Blue */
+.theme-blue {
+  --bg: repeating-linear-gradient(
+    45deg, 
+    #606dbc, 
+    #606dbc 20px, 
+    #465298 20px,
+    #465298 40px);
+
+  --color: #fff;
+  
+  --titleFont: 'Black Han Sans', sans-serif;
+  --titleSize: 3rem;
+  
+  --paragraphFont: sans-serif;
+  
+  --imageBorder: 10px dashed #fff;
+}
+</style>  
+</head>
+<body>
+<div class="wrapper">
+  
+  <h1>Theaming with CSS variables</h1>
+  <p class="perex">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</p>
+  <p><img src="https://picsum.photos/g/700/250" alt="photo"></p>
+
+  <h2>Heading 2</h2>
+  <p>In convallis. Fusce consectetuer risus a nunc. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Aliquam erat volutpat. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Etiam dictum tincidunt diam. Donec vitae arcu. Nulla non lectus sed nisl molestie malesuada. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam. Quisque porta. Duis bibendum, lectus ut viverra rhoncus, dolor nunc faucibus libero, eget facilisis enim ipsum id lacus. Suspendisse nisl. Quisque porta.</p>
+  <p>Nullam faucibus mi quis velit. Etiam ligula pede, sagittis quis, interdum ultricies, scelerisque eu. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Mauris tincidunt sem sed arcu. Nullam faucibus mi quis velit. Cras pede libero, dapibus nec, pretium sit amet, tempor quis. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Proin in tellus sit amet nibh dignissim sagittis. In dapibus augue non sapien. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Aenean placerat. Aliquam erat volutpat. Vivamus porttitor turpis ac leo. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Integer tempor. Curabitur vitae diam non enim vestibulum interdum. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.</p>
+  <p>Curabitur vitae diam non enim vestibulum interdum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nunc tincidunt ante vitae massa. Etiam posuere lacus quis dolor. Etiam ligula pede, sagittis quis, interdum ultricies, scelerisque eu. Integer tempor. Nullam lectus justo, vulputate eget mollis sed, tempor sed magna. Phasellus rhoncus. Nulla est. Aliquam erat volutpat. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Suspendisse nisl. Fusce aliquam vestibulum ipsum. Morbi leo mi, nonummy eget tristique non, rhoncus non leo. Integer imperdiet lectus quis justo. Etiam posuere lacus quis dolor. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Nullam eget nisl.</p>
+  <p>Aenean fermentum risus id tortor. Cras elementum. Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede. Suspendisse sagittis ultrices augue. Pellentesque ipsum. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Phasellus faucibus molestie nisl. In rutrum. Sed convallis magna eu sem. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nulla non lectus sed nisl molestie malesuada. Mauris metus. Nullam faucibus mi quis velit. Vivamus porttitor turpis ac leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Et harum quidem rerum facilis est et expedita distinctio. Aliquam id dolor.</p>
+  <p>Mauris dictum facilisis augue. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Aenean id metus id velit ullamcorper pulvinar. Aenean fermentum risus id tortor. Fusce suscipit libero eget elit. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui. Integer pellentesque quam vel velit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Aliquam erat volutpat. Sed convallis magna eu sem. Cras pede libero, dapibus nec, pretium sit amet, tempor quis. Curabitur bibendum justo non orci.</p>
+
+</div>
+
+<script>
+(function () {
+
+  var wrapper = document.querySelector(".wrapper");
+  wrapper.addEventListener("click", toggleClass);
+
+  function toggleClass() {
+    wrapper.classList.toggle("theme-blue");
+  }
+
+})();
+</script>
+</body>
+</html>
