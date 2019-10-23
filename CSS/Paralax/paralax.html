@@ -1,0 +1,96 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../init.css">
+  <title>Paralax with CSS</title>
+
+<style>
+html { overflow: hidden; }
+
+header {
+  padding: 30px;
+  text-align: center;
+  height: 200px;
+}
+body {
+    margin: 0;
+    height: 100vh;
+    perspective: 1px;
+    transform-style: preserve-3d;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+.parallax-wrapper {
+    width: 100vw;
+    height:100vh;
+    padding-top:20vh;
+    box-sizing: border-box;
+    transform-style: preserve-3d;
+}
+.parallax-wrapper::before {
+    content:"";
+    width: 100vw;
+    height: 100vh;
+    top:0;
+    left:0;
+    background-image: url('https://picsum.photos/id/800/600/300?blur=2&grayscale');
+    background-size: cover;
+    position: absolute;
+    z-index: -1;
+    transform: translateZ(-1px) scale(2);
+}
+.regular-wrapper {
+    width: 100vw;
+    height:100vh;
+    padding-top:20vh;
+    background-color: #606dbc;
+    background: repeating-linear-gradient(
+    45deg, 
+    #606dbc, 
+    #606dbc 20px, 
+    #465298 20px,
+    #465298 40px);
+    z-index: 2;
+    position: relative;
+}
+.content {
+    margin: 0 auto;
+    padding: 50px;
+    width: 50%;
+    background: #aaa;
+}  
+</style>  
+</head>
+<body>
+  <header>
+    <h1>Paralax with CSS</h1>
+  </header>
+  <div class="parallax-wrapper">
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        ....
+        ....
+        Donec in justo eu ligula semper consequat sed a risus.</p>
+    </div>
+  </div>
+  <div class="regular-wrapper">
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        ....
+        ....
+        Donec in justo eu ligula semper consequat sed a risus.</p>
+    </div>
+  </div>
+  <div class="parallax-wrapper">
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        ....
+        ....
+        Donec in justo eu ligula semper consequat sed a risus.</p>
+    </div>
+  </div>
+</body>
+</html>
