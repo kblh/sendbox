@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test</title>
+<style>
+  body {
+    margin: 0;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+  }
+  .col {
+    background: slategray;
+    padding: 10px;
+    font-size: 150%;
+  }
+
+@media screen and (min-width: 800px) {
+  .row { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media screen and (min-width: 1200px) {
+  .row { grid-template-columns: repeat(3, 1fr); }
+}
+
+/*
+@media screen and (min-width: 800px) {
+  .col { width: calc(100%/2); }
+}
+@media screen and (min-width: 1200px) {
+  .col { width: calc(100%/3); }
+}
+*/
+</style>  
+</head>
+<body>
+  <div class="row">
+    <div class="col">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora animi quisquam consectetur laboriosam quas quasi! Quam, nostrum aliquid earum sapiente error a at natus harum, nobis velit, sunt temporibus soluta? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus quam doloribus repellat, praesentium ullam quibusdam officia vel assumenda reprehenderit est asperiores voluptatum dicta dolore numquam quis dignissimos repudiandae tenetur labore.</div>
+    <div class="col">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora animi quisquam consectetur laboriosam quas quasi! Quam, nostrum aliquid earum sapiente error a at natus harum, nobis velit, sunt temporibus soluta? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus quam doloribus repellat, praesentium ullam quibusdam officia vel assumenda reprehenderit est asperiores voluptatum dicta dolore numquam quis dignissimos repudiandae tenetur labore.</div>
+    <div class="col">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora animi quisquam consectetur laboriosam quas quasi! Quam, nostrum aliquid earum sapiente error a at natus harum, nobis velit, sunt temporibus soluta? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus quam doloribus repellat, praesentium ullam quibusdam officia vel assumenda reprehenderit est asperiores voluptatum dicta dolore numquam quis dignissimos repudiandae tenetur labore.</div>
+  </div>
+</body>
+</html>
