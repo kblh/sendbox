@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CSS Grid Image Gallery</title>
+  <link rel="stylesheet" href="../init.css">
+<style>
+body {
+  padding: 20px;
+}
+img {
+  display: block;
+  width: 100%;
+}
+img:nth-child(3) {
+  grid-column-end: span 2; 
+  grid-row-end: span 2;
+  outline: 5px solid yellow;
+}
+
+img:nth-child(1) {
+  grid-column-end: span 2; 
+  outline: 5px solid red;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+  /* grid-auto-rows: 150px; */
+  grid-auto-flow: row dense;
+}
+
+</style>  
+</head>
+<body>
+  <h1>CSS Grid Image Gallery</h1>
+
+  <div class="gallery">
+    <img src="https://picsum.photos/seed/picsum1/300/150" alt="">
+    <img src="https://picsum.photos/seed/picsum2/300/300" alt="">
+    <img src="https://picsum.photos/seed/picsum3/300/300" alt="">
+    <img src="https://picsum.photos/seed/picsum4/300/300" alt="">
+    <img src="https://picsum.photos/seed/picsum5/300/300" alt="">
+    <img src="https://picsum.photos/seed/picsum6/300/300" alt="">
+    <img src="https://picsum.photos/seed/picsum7/300/300" alt="">
+    <img src="https://picsum.photos/seed/picsum8/300/300" alt="">
+    <img src="https://picsum.photos/seed/picsum9/300/300" alt="">
+    <img src="https://picsum.photos/seed/picsum10/300/300" alt="">
+    <img src="https://picsum.photos/seed/picsum11/300/300" alt="">
+    <img src="https://picsum.photos/seed/picsum12/300/300" alt="">
+    <img src="https://picsum.photos/seed/picsum13/300/300" alt="">
+    <img src="https://picsum.photos/seed/picsum14/300/300" alt="">
+    <img src="https://picsum.photos/seed/picsum15/300/300" alt="">
+    <img src="https://picsum.photos/seed/picsum16/300/300" alt="">
+  </div>
+</body>
+</html>
