@@ -22,3 +22,4 @@ a { color: #084C61; }
 .box-orange { background-color: #e06436; color: #fff; }
 .box-orange-light { background-color: rgba(224,100,54,.2); }
 
+.shadow { box-shadow: 0 0 10px rgba(0,0,0,.4); }
