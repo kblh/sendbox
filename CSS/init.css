@@ -2,6 +2,15 @@
 @import url('https://fonts.googleapis.com/css?family=Monoton');
 @import url('https://fonts.googleapis.com/css?family=Gravitas+One');
 
+:root {
+  --colorPrimary: #084C61;
+  --colorSecondary: #e06436;
+
+  --colorSuccess: #83B18A;
+  --colorDanger: #bf2d23;
+  --colorWarning: #e4c705;
+}
+
 body {
   margin: 0; padding: 0;
   font-family: arial, sans-serif;
@@ -11,24 +20,33 @@ h1, h2, h3 {
   font-family: 'Black Han Sans', sans-serif;
 }
 
-a { color: #084C61; }
+a { color: var(--colorPrimary); }
 
 .ff-monoton { font-family: 'Monoton', cursive; }
 .ff-gravitas { font-family: 'Gravitas One', cursive; }
 
+/********************
+  BOX
+********************/
+
 .box { border-radius: .5rem; padding: 1rem; }
-.box-blue { background-color: #084C61; color: #fff; }
+.box-blue { background-color: var(--colorPrimary); color: #fff; }
 .box-blue-light { background-color: rgba(8,76,97,.2); }
-.box-orange { background-color: #e06436; color: #fff; }
+.box-orange { background-color: var(--colorSecondary); color: #fff; }
 .box-orange-light { background-color: rgba(224,100,54,.2); }
 
-.shadow { box-shadow: 0 0 10px rgba(0,0,0,.4); }
+.box-shadow { box-shadow: 0 0 10px rgba(0,0,0,.4); }
+
+/********************
+  caniuse
+********************/
 
 .caniuse {
   position: relative;
   display: inline-block;
   width: 40px; height: 40px;
   background-size: contain;
+  margin: 0 15px 30px 15px;
 }
 
 .caniuse:after {
@@ -39,8 +57,9 @@ a { color: #084C61; }
   border-radius: 50%;
 }
 
-.caniuse--yes::after { background: green; }
-.caniuse--no::after { background: red; }
+.caniuse--yes::after { background: var(--colorSuccess); }
+.caniuse--no::after { background: var(--colorDanger); }
+.caniuse--partial::after { background: var(--colorWarning); }
 
 .caniuse__chrome { background-image: url('../images/svg/chrome.svg'); }
 .caniuse__firefox { background-image: url('../images/svg/firefox.svg'); }
@@ -49,3 +68,13 @@ a { color: #084C61; }
 .caniuse__edge { background-image: url('../images/svg/edge.svg'); }
 .caniuse__opera { background-image: url('../images/svg/opera.svg'); }
 
+/*
+<div>
+  <div class="caniuse caniuse__chrome caniuse--yes"></div>
+  <div class="caniuse caniuse__firefox caniuse--yes"></div>
+  <div class="caniuse caniuse__edge caniuse--yes"></div>
+  <div class="caniuse caniuse__safari caniuse--yes"></div>
+  <div class="caniuse caniuse__ie11 caniuse--no"></div>
+  <div class="caniuse caniuse__opera caniuse--yes"></div>
+</div>
+*/

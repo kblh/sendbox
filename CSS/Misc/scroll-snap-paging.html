@@ -23,18 +23,19 @@
   padding: 10vh 10vmin;
   height: 80vh;
   scroll-snap-align: start;
+  color: #fff;
 }
 
-.page1 { background: #abc; }
-.page2 { background: #acb; }
-.page3 { background: #cab; }
+.page1 { background: var(--colorPrimary); }
+.page2 { background: var(--colorSecondary); }
+.page3 { background: var(--colorSuccess); }
 </style>  
 </head>
 
 <body>
 <div class="container">
   <div class="page page1">
-    <h1>Viewport Units</h1>
+    <h1>scroll-snap<br>Paging</h1>
   </div>
   <div class="page page2">
     <h2>Page 2</h2>
