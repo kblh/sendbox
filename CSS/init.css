@@ -23,3 +23,29 @@ a { color: #084C61; }
 .box-orange-light { background-color: rgba(224,100,54,.2); }
 
 .shadow { box-shadow: 0 0 10px rgba(0,0,0,.4); }
+
+.caniuse {
+  position: relative;
+  display: inline-block;
+  width: 40px; height: 40px;
+  background-size: contain;
+}
+
+.caniuse:after {
+  position: absolute;
+  bottom: -15px; left: 15px;
+  content: "";
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+
+.caniuse--yes::after { background: green; }
+.caniuse--no::after { background: red; }
+
+.caniuse__chrome { background-image: url('../images/svg/chrome.svg'); }
+.caniuse__firefox { background-image: url('../images/svg/firefox.svg'); }
+.caniuse__safari { background-image: url('../images/svg/safari.svg'); }
+.caniuse__ie11 { background-image: url('../images/svg/ie11.svg'); }
+.caniuse__edge { background-image: url('../images/svg/edge.svg'); }
+.caniuse__opera { background-image: url('../images/svg/opera.svg'); }
+
