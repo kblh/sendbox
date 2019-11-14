@@ -3,12 +3,39 @@
 @import url('https://fonts.googleapis.com/css?family=Gravitas+One');
 
 :root {
-  --colorPrimary: #084C61;
-  --colorSecondary: #e06436;
+  /* https://material.io/resources/color */
 
-  --colorSuccess: #83B18A;
-  --colorDanger: #bf2d23;
-  --colorWarning: #e4c705;
+  /* cyan */
+  --colorPrimary700: #0097a7;
+  /* orange */
+  --colorSecondary700: #f57c00;
+  /* light green */
+  --colorSuccess700: #689f38;
+  /* red */
+  --colorDanger700: #d32f2f;
+
+  /* --colorPrimary700: #084C61;
+  --colorPrimary400: #4B7C8C;
+  --colorPrimary200: #789DA8;
+  --colorPrimary100: #8EADB7;
+
+  --colorSecondary700: #e06436;
+  --colorSecondary400: #EEAA91;
+  --colorSecondary200: #F3C6B5;
+  --colorSecondary100: #F6D4C8;
+
+  --colorSuccess700: #78A17E;
+  --colorSuccess400: #83B18A;
+  --colorSuccess200: #B0CDB4;
+  --colorSuccess100: #BBD4BF;
+
+  --colorDanger700: #AE2920;
+  --colorDanger400: #bf2d23;
+  --colorDanger200: #D67973;
+  --colorDanger100: #DC8C87;
+
+  --colorWarning700: #D0B505;
+  --colorWarning400: #e4c705; */
 }
 
 body {
@@ -20,7 +47,7 @@ h1, h2, h3 {
   font-family: 'Black Han Sans', sans-serif;
 }
 
-a { color: var(--colorPrimary); }
+a { color: var(--colorPrimary700); }
 
 .ff-monoton { font-family: 'Monoton', cursive; }
 .ff-gravitas { font-family: 'Gravitas One', cursive; }
@@ -30,9 +57,9 @@ a { color: var(--colorPrimary); }
 ********************/
 
 .box { border-radius: .5rem; padding: 1rem; }
-.box-blue { background-color: var(--colorPrimary); color: #fff; }
+.box-blue { background-color: var(--colorPrimary700); color: #fff; }
 .box-blue-light { background-color: rgba(8,76,97,.2); }
-.box-orange { background-color: var(--colorSecondary); color: #fff; }
+.box-orange { background-color: var(--colorSecondary700); color: #fff; }
 .box-orange-light { background-color: rgba(224,100,54,.2); }
 
 .box-shadow { box-shadow: 0 0 10px rgba(0,0,0,.4); }
@@ -57,9 +84,9 @@ a { color: var(--colorPrimary); }
   border-radius: 50%;
 }
 
-.caniuse--yes::after { background: var(--colorSuccess); }
-.caniuse--no::after { background: var(--colorDanger); }
-.caniuse--partial::after { background: var(--colorWarning); }
+.caniuse--yes::after { background: var(--colorSuccess700); }
+.caniuse--no::after { background: var(--colorDanger700); }
+.caniuse--partial::after { background: var(--colorSecondary700); }
 
 .caniuse__chrome { background-image: url('../images/svg/chrome.svg'); }
 .caniuse__firefox { background-image: url('../images/svg/firefox.svg'); }
