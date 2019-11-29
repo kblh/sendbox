@@ -76,6 +76,52 @@
 				</section>
 
 
+				<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+					<h1>IE10 + detection</h1>
+				</section>
+				<section>
+					<h2>IE10 + detection</h2>
+					<div data-markdown>
+						```css
+@media screen and (-ms-high-contrast: active), 
+                  (-ms-high-contrast: none) {  
+  /* code for IE10 + */
+}
+						```
+					</div>
+					<p>
+						<a target="_blank" href="http://browserhacks.com/">http://browserhacks.com/</a>
+					</p>
+				</section>
+
+
+				<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+					<h1>prefers-color-scheme</h1>
+				</section>
+				<section>
+					<h2>prefers-color-scheme</h2>
+					<div data-markdown>
+						```css
+@media (prefers-color-scheme: dark) {
+  /* code for DARK theme */
+}
+
+@media (prefers-color-scheme: light) {
+  /* code for LIGHT theme */
+}
+						```
+					</div>
+					<p>
+						<div class="caniuse caniuse__chrome caniuse--yes"></div>
+						<div class="caniuse caniuse__firefox caniuse--yes"></div>
+						<div class="caniuse caniuse__edge caniuse--no"></div>
+						<div class="caniuse caniuse__safari caniuse--yes"></div>
+						<div class="caniuse caniuse__ie11 caniuse--no"></div>
+						<div class="caniuse caniuse__opera caniuse--no"></div>
+					</p>
+				</section>
+
+
 
 				<section style="text-align: left;" data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
 					<h1>A to je konec.</h1>
