@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CSS tabs</title>
+  <link rel="stylesheet" href="../init.css">
+
+<style>
+
+  body { max-width: 400px; margin: auto; }
+
+  label {
+    display: inline-block;
+    padding: 1rem 0;
+    margin-right: 2rem;
+    cursor: pointer;
+  }
+
+  .tab__container { position: relative; }
+  .tab { display: inline-block; }
+  .tab__content { padding: 1rem 0; position: absolute; left: 0; right: 0; width: 100%; }
+
+  input[type="radio"],
+  .tab__content { display: none; }
+
+  input[type="radio"]:checked + label + .tab__content { display: block; }
+  input[type="radio"]:checked + label { 
+    font-weight: bold; 
+    color: var(--colorPrimary700);
+    border-bottom: 3px solid var(--colorPrimary700); 
+  }
+
+
+
+</style>
+</head>
+<body>
+  <h1>CSS tabs</h1>
+
+  <div class="tab__container">
+    <div class="tab">
+      <input type="radio" id="tab1" name="tabs">
+      <label for="tab1">Prima</label>
+      <div class="tab__content">
+        <h2>Prima</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident velit odit repellendus! Ad ipsum earum animi quae! Iusto aperiam tempora nesciunt! Sit adipisci modi reprehenderit, obcaecati quam beatae nemo exercitationem.</p>
+      </div>
+    </div>
+
+    <div class="tab">
+      <input type="radio" id="tab2" name="tabs" checked>
+      <label for="tab2">Secunda</label>
+      <div class="tab__content">
+        <p>Provident velit odit repellendus! Ad ipsum earum animi quae! Iusto aperiam tempora nesciunt! Sit adipisci modi reprehenderit, obcaecati quam beatae nemo exercitationem. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p> 
+        <h2>Secunda</h2>
+      </div>
+    </div>
+
+    <div class="tab">
+      <input type="radio" id="tab3" name="tabs">
+      <label for="tab3">Tercie</label>
+      <div class="tab__content">
+        <h2>Tercie</h2>
+        <p>Iusto aperiam tempora nesciunt! Sit adipisci modi reprehenderit, obcaecati quam beatae nemo exercitationem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident velit odit repellendus! Ad ipsum earum animi quae! </p>
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+</html>
