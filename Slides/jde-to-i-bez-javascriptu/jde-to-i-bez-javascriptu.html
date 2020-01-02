@@ -6,6 +6,13 @@
 
 		<title>Jde to i bez javasriptu</title>
 
+		<!-- 
+			Jde to i bez javasriptu
+			Deset praktických příkladů, kde se můžeme vyhnout použití scriptů a situaci elegantně vyřešit jen pomocí stále mocnějšího CSS.
+
+			CSS je čím dál mocnější a situací, kdy se můžeme vyhnout použití scriptů je naštěstí stále více a více. 
+		-->
+
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
@@ -57,10 +64,6 @@
 				</section>
 				<section>
 					<h2>Pure CSS tabs</h2>
-					<div data-markdown="code/tabs.md"></div>
-				</section>
-				<section>
-					<h2>Pure CSS tabs</h2>
 					<p>
 						<div class="caniuse caniuse__chrome caniuse--yes"></div>
 						<div class="caniuse caniuse__firefox caniuse--yes"></div>
@@ -70,9 +73,14 @@
 						<div class="caniuse caniuse__opera caniuse--yes"></div>
 					</p>
 					<p>
-						<a target="_blank" href="../../CSS/Misc/tabs.html">example 1</a>
-						<!-- <a target="_blank" href="https://www.planeo.cz/">example 2 (Planeo.cz - navigation)</a> -->
+						<a target="_blank" href="../../CSS/Misc/tabs.html">example 1</a><br>
+						<a target="_blank" href="https://codepen.io/ancaspatariu/pen/WpQYOP">Slider</a><br>
+						<a target="_blank" href="https://www.planeo.cz/">Navigation (planeo.cz)</a>
 					</p>
+				</section>
+				<section>
+					<h2>Pure CSS tabs</h2>
+					<div data-markdown="code/tabs.md"></div>
 				</section>
 
 
@@ -80,10 +88,6 @@
 <!-- ############################################### -->
 				<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
 					<h1>position: sticky</h1>
-				</section>
-				<section>
-					<h2>position: sticky</h2>
-					<div data-markdown="code/position-sticky.md"></div>
 				</section>
 				<section>
 					<h2>position: sticky</h2>
@@ -100,21 +104,15 @@
 						<a target="_blank" href="../../CSS/Misc/position-sticky-banner.html">example 1 (Banner)</a>
 					</p>
 				</section>
+				<section>
+					<h2>position: sticky</h2>
+					<div data-markdown="code/position-sticky.md"></div>
+				</section>
 
 
 <!-- ############################################### -->
 				<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
 					<h1>scroll-behavior: smooth</h1>
-				</section>
-				<section>
-					<h2>scroll-behavior: smooth</h2>
-					<div data-markdown>
-						```css
-html {
-  scroll-behavior: smooth;
-}
-						```
-					</div>
 				</section>
 				<section>
 					<h2>scroll-behavior: smooth</h2>
@@ -130,7 +128,40 @@ html {
 						<a target="_blank" href="../../CSS/Misc/scroll-behavior-smooth.html">example</a>
 					</p>
 				</section>
+				<section>
+					<h2>scroll-behavior: smooth</h2>
+					<div data-markdown>
+						```css
+html {
+  scroll-behavior: smooth;
+}
+						```
+					</div>
+				</section>
 
+
+<!-- ############################################### -->
+				<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+					<h1>scroll-snap-type</h1>
+				</section>
+				<section>
+					<h2>scroll-snap-type</h2>
+					<p>
+						<div class="caniuse caniuse__chrome caniuse--yes"></div>
+						<div class="caniuse caniuse__firefox caniuse--yes"></div>
+						<div class="caniuse caniuse__edge caniuse--no"></div>
+						<div class="caniuse caniuse__safari caniuse--yes"></div>
+						<div class="caniuse caniuse__ie11 caniuse--no"></div>
+						<div class="caniuse caniuse__opera caniuse--yes"></div>
+					</p>
+					<p>
+						<a target="_blank" href="../../CSS/Misc/scroll-snap-paging.html">example</a>
+					</p>
+				</section>
+				<section>
+					<h2>scroll-snap-type</h2>
+					<div data-markdown="code/scroll-snap-type.md"></div>
+				</section>
 
 <!-- ############################################### -->
 				<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
@@ -153,40 +184,8 @@ html {
 
 
 <!-- ############################################### -->
-				<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+				<!-- <section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
 					<h1>Theaming with CSS variables</h1>
-				</section>
-				<section>
-					<h2>Theaming with CSS variables</h2>
-					<div data-markdown>
-						```css
-:root {
-  --bg: #fff;
-  --color: #000;
-  --titleFont: 'Gravitas One', cursive; 
-  --titleSize: 3.5rem;
-  --paragraphFont: serif;
-  --imageBorder: 10px double #000;
-  --baseline: 1.5;
-}
-
-/* Blue */
-.theme-blue {
-  --bg: repeating-linear-gradient(
-    45deg, 
-    #606dbc, 
-    #606dbc 20px, 
-    #465298 20px,
-    #465298 40px);
-
-  --color: #fff;
-  --titleFont: 'Black Han Sans', sans-serif;
-  --titleSize: 3rem;
-  --paragraphFont: sans-serif;
-  --imageBorder: 10px dashed #fff;
-}
-						```
-					</div>
 				</section>
 				<section>
 					<h2>Theaming with CSS variables</h2>
@@ -202,35 +201,15 @@ html {
 						<a target="_blank" href="../../CSS/Custom-Properties/theaming.html">example</a>
 					</p>
 				</section>
+				<section>
+					<h2>Theaming with CSS variables</h2>
+					<div data-markdown="code/theaming.md"></div>
+				</section> -->
 
 
 <!-- ############################################### -->
 				<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
 					<h1>Vertical rhythm with CSS variables</h1>
-				</section>
-				<section>
-					<h2>Vertical rhythm with CSS variables</h2>
-					<div data-markdown>
-						```css
-:root {
-  --baseline: 2.5;
-  line-height: 2.5; /* fallback */ 
-  line-height: var(--baseline) 
-}
-
-@media (max-width: 50rem) { 
-  :root { 
-  --baseline: 2; 
-  } 
-}
-
-@media (max-width: 30rem) { 
-  :root { 
-  --baseline: 1.5; 
-  } 
-}
-						```
-					</div>
 				</section>
 				<section>
 					<h2>Vertical rhythm with CSS variables</h2>
@@ -246,47 +225,15 @@ html {
 						<a target="_blank" href="../../CSS/Custom-Properties/vertical-rhythm.html">example</a>
 					</p>
 				</section>
+				<section>
+					<h2>Vertical rhythm with CSS variables</h2>
+					<div data-markdown="code/vertical-rhythm.md"></div>
+				</section>
 
 
 <!-- ############################################### -->
 				<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
 					<h1>Parallax effect</h1>
-				</section>
-				<section>
-					<h2>Parallax effect</h2>
-					<div data-markdown>
-						```css
-body {
-    margin: 0;
-    height: 100vh;
-    perspective: 1px;
-    transform-style: preserve-3d;
-    overflow-x:hidden;
-    overflow-y:auto;
-}
-
-.parallax-wrapper {
-    width: 100vw;
-    height:100vh;
-    padding-top:20vh;
-    box-sizing: border-box;
-    transform-style: preserve-3d;
-}
-
-.parallax-wrapper::before {
-    content:"";
-    width: 100vw;
-    height: 100vh;
-    top:0;
-    left:0;
-    background-image: url('https://picsum.photos/id/800/600/300?blur=2&grayscale');
-    background-size: cover;
-    position: absolute;
-    z-index: -1;
-    transform: translateZ(-1px) scale(2);
-}
-						```
-					</div>
 				</section>
 				<section>
 					<h2>Parallax effect</h2>
@@ -301,6 +248,10 @@ body {
 					<p>
 						<a target="_blank" href="../../CSS/Misc/paralax.html">example</a>
 					</p>
+				</section>
+				<section>
+					<h2>Parallax effect</h2>
+					<div data-markdown="code/paralax.md"></div>
 				</section>
 
 
@@ -349,8 +300,34 @@ body {
 						<div class="caniuse caniuse__ie11 caniuse--no"></div>
 						<div class="caniuse caniuse__opera caniuse--no"></div>
 					</p>
+					<p>
+						<a target="_blank" href="https://frontend.garden/">frontend.garden (Adam Kudrna)</a>
+					</p>
 				</section>
 
+
+<!-- ############################################### -->
+				<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+					<h1>Random Numbers</h1>
+				</section>
+				<section>
+					<h2>Random Numbers</h2>
+					<p>
+						<div class="caniuse caniuse__chrome caniuse--yes"></div>
+						<div class="caniuse caniuse__firefox caniuse--yes"></div>
+						<div class="caniuse caniuse__edge caniuse--yes"></div>
+						<div class="caniuse caniuse__safari caniuse--yes"></div>
+						<div class="caniuse caniuse__ie11 caniuse--yes"></div>
+						<div class="caniuse caniuse__opera caniuse--yes"></div>
+					</p>
+					<p>
+						<a target="_blank" href="https://css-tricks.com/are-there-random-numbers-in-css/">example</a>
+					</p>
+				</section>
+				<section>
+					<h2>Random Numbers</h2>
+					<div data-markdown="code/random.md"></div>
+				</section>
 
 
 <!-- ############################################### -->
