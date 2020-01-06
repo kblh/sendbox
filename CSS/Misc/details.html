@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>details - summary</title>
+  <link rel="stylesheet" href="../init.css">
+
+<style>
+
+.content {
+  width: 600px;
+  margin: 60px auto;
+}
+
+details {
+  font-size: 140%;
+  border-top: 1px solid #aaa;
+  padding: .5em .5em 0;
+  cursor: pointer;
+}
+  details:last-child {
+    border-bottom: 1px solid #aaa;
+  }
+
+summary {
+  font-weight: bold;
+  margin: -.5em -.5em 0;
+  padding: .5em;
+  outline: none;
+}
+
+details[open] {
+  padding: .5em;
+}
+
+details[open] summary {
+  margin-bottom: .5em;
+}
+
+</style>
+
+</head>
+<body>
+<div class="content">
+
+  <h1>FAQ with details / summary</h1>
+
+  <details>
+    <summary>Jules Verne?</summary>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo voluptatibus dolores porro vel enim, doloremque exercitationem, quos omnis facere reiciendis fugit commodi quasi libero numquam, hic nam qui ad assumenda?
+  </details>
+  <details>
+    <summary>Bil Gates?</summary>
+    Explicabo voluptatibus dolores porro vel enim, doloremque exercitationem, quos omnis facere reiciendis fugit commodi quasi libero numquam, hic nam qui ad assumenda? Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+  </details>
+  <details>
+    <summary>Je žíš?</summary>
+    Quos omnis facere reiciendis fugit commodi quasi libero numquam, hic nam qui ad assumenda? Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo voluptatibus dolores porro vel enim, doloremque exercitationem.
+  </details>
+
+</div>
+</body>
+</html>
