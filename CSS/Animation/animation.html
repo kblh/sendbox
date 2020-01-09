@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Animation</title>
+  <link rel="stylesheet" href="../init.css">
+<style>
+body {
+  max-width: 800px;
+  padding: 20px;
+  margin: auto;
+}
+
+img { max-width: 100%; }
+
+
+.zoom-in:hover {
+  animation-name: zoomIn;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes zoomIn {
+  from { zoom: 1; }
+  50% { zoom: 1.2; }
+  to { zoom: 1; }
+}
+
+.slide-in-right {
+  animation-name: slideIn;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  /* animation-iteration-count: infinite;
+  animation-direction: alternate; */
+  animation-fill-mode: forwards;
+  background-color: lime;
+}
+
+@keyframes slideIn {
+  from {
+    margin-left: 100%;
+    width: 300%; 
+    opacity: 0;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.bounce-in {
+  animation-name: bounceIn;
+  animation-duration: 2s;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+</style>  
+</head>
+<body>
+  <h1 class="slide-in-rightX">CSS Animation</h1 class="slide-in-right">
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem facere deserunt laudantium ea facilis. Fugiat repellendus eos odio voluptatum itaque? Reiciendis illo atque odio error animi necessitatibus repudiandae reprehenderit nostrum.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem facere deserunt laudantium ea facilis. Fugiat repellendus eos odio voluptatum itaque? Reiciendis illo atque odio error animi necessitatibus repudiandae reprehenderit nostrum.</p>
+  <p class="bounce-in">
+    <picture>
+        <source srcset="http://satyr.io/800x16:9" media="(min-width: 800px)">
+        <source srcset="http://satyr.io/650x16:9" media="(min-width: 650px)">
+        <source srcset="http://satyr.io/480x4:3" media="(min-width: 480px)">
+        <img srcset="http://satyr.io/320x4:3" alt="">
+    </picture>
+  </p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem facere deserunt laudantium ea facilis. Fugiat repellendus eos odio voluptatum itaque? Reiciendis illo atque odio error animi necessitatibus repudiandae reprehenderit nostrum.</p>
+  <p class="slide-in-right">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam illo esse magni cumque vel cupiditate vero quos id deleniti cum distinctio quis est, veniam sed sint fugiat dolore debitis! Deleniti.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam illo esse magni cumque vel cupiditate vero quos id deleniti cum distinctio quis est, veniam sed sint fugiat dolore debitis! Deleniti.</p>
+  <ul>
+    <li>one</li>
+    <li>two</li>
+    <li>three</li>
+  </ul>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam illo esse magni cumque vel cupiditate vero quos id deleniti cum distinctio quis est, veniam sed sint fugiat dolore debitis! Deleniti.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam illo esse magni cumque vel cupiditate vero quos id deleniti cum distinctio quis est, veniam sed sint fugiat dolore debitis! Deleniti.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam illo esse magni cumque vel cupiditate vero quos id deleniti cum distinctio quis est, veniam sed sint fugiat dolore debitis! Deleniti.</p>
+
+</body>
+</html>
