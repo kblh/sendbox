@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>scroll-snap image slider</title>
+  <link rel="stylesheet" href="../init.css">
+<style>
+
+* { box-sizing: border-box; }
+body { margin: auto; padding: 2rem; max-width: 800px; }
+img { max-width: 100%; }
+
+.image-slider { max-width: 600px; }
+.image-slider__slides {
+  overflow: hidden;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.image-slider__slide {
+  width: 600px;
+  height: 400px;
+  max-width: 100%;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+  .image-slider__slide > img { 
+    height: 400px;
+    width: 600px;
+    object-fit: cover; 
+    object-position: right; 
+  }
+
+.image-slider__thumbnails {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+</style>
+</head>
+<body>
+  <h1>scroll-snap image slider</h1>
+
+  <div class="image-slider">
+
+    <div class="image-slider__slides">
+      <div id="slide1" class="image-slider__slide">
+        <img loading="lazy" src="https://picsum.photos/id/1015/600/400" alt="">
+      </div>
+      <div id="slide2" class="image-slider__slide">
+        <img loading="lazy" src="https://picsum.photos/id/1016/600/400" alt="">
+      </div>
+      <div id="slide3" class="image-slider__slide">
+        <img loading="lazy" src="https://picsum.photos/id/1018/600/400" alt="">
+      </div>
+      <div id="slide4" class="image-slider__slide">
+        <img loading="lazy" src="https://picsum.photos/id/1019/600/400" alt="">
+      </div>
+      <div id="slide5" class="image-slider__slide">
+        <img loading="lazy" src="https://picsum.photos/id/1022/600/400" alt="">
+      </div>
+    </div>
+
+    <div class="image-slider__thumbnails">
+      <a href="#slide1">
+        <img src="https://picsum.photos/id/1015/100/70" alt="">
+      </a>
+      <a href="#slide2">
+        <img src="https://picsum.photos/id/1016/100/70" alt="">
+      </a>
+      <a href="#slide3">
+        <img src="https://picsum.photos/id/1018/100/70" alt="">
+      </a>
+      <a href="#slide4">
+        <img src="https://picsum.photos/id/1019/100/70" alt="">
+      </a>
+      <a href="#slide5">
+        <img src="https://picsum.photos/id/1022/100/70" alt="">
+      </a>
+    </div>
+
+  </div>
+</body>
+</html>
