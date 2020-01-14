@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>object-fit a object-position</title>
+  <link rel="stylesheet" href="../init.css">
+<style>
+.container {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  border: 5px dashed #666;
+  float: left; margin: 0 20px 20px 0;
+}
+
+h3 { position: absolute; top: 0; left: 20px; }
+
+img { 
+  width: 300px;
+  height: 400px;
+  object-position: right;
+}
+
+.box-contain > img { object-fit: contain; }
+.box-cover > img { object-fit: cover; }
+.box-fill > img { object-fit: fill; }
+.box-scale-down > img { object-fit: scale-down; }
+</style>
+</head>
+<body>
+
+<h1>object-fit a object-position</h1>
+
+<div class="container box-contain">
+  <h3>box-contain</h3>
+  <img class="image" src="https://picsum.photos/id/1084/200/150">
+</div>
+
+<div class="container box-cover">
+  <h3>box-cover</h3>
+  <img class="image" src="https://picsum.photos/id/1084/200/150">
+</div>
+
+<div class="container box-fill">
+  <h3>box-fill</h3>
+  <img class="image" src="https://picsum.photos/id/1084/200/150">
+</div>
+
+<div class="container box-scale-down">
+  <h3>box-scale-down</h3>
+  <img class="image" src="https://picsum.photos/id/1084/200/150">
+</div>
+
+</body>
+</html>
