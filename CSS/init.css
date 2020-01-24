@@ -52,6 +52,11 @@ a { color: var(--colorPrimary700); }
 .ff-monoton { font-family: 'Monoton', cursive; }
 .ff-gravitas { font-family: 'Gravitas One', cursive; }
 
+.color--primary { color: var(--colorPrimary700); }
+.color--secondary { color: var(--colorSecondary700); }
+.color--success { color: var(--colorSuccess700); }
+.color--danger { color: var(--colorDanger700); }
+
 /********************
   BOX
 ********************/

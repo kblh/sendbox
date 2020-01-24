@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Product App</title>
+  <link rel="stylesheet" href="../../../CSS/init.css">
+  <link rel="stylesheet" href="../../../CSS/MicroTachyons/micro-tachyons.css">
+<style>
+
+.product-image img { max-height: 200px; max-width: 100%; }
+
+.variant-color-box {
+  height: 50px; width: 50px;
+  background-color: grey;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+button {
+  border: 1px solid #ccc;
+  padding: .5rem 2rem;
+}
+  button:disabled { background-color: #ccc; }
+
+.not-in-stock {
+  opacity: .3;
+}
+
+</style>
+</head>
+<body>
+  <div id="app">
+
+    <div class="cart box-orange p1r posa r0">
+      Cart: ({{ cart }})
+    </div>
+
+    <div class="product-image">
+      <img :src="image" :alt="product" :class="{ 'not-in-stock': !inStock }">
+    </div>
+
+    <div class="product-info">
+      <h1>
+        {{ title }}
+        <sup v-show="specialOffer" class="color--secondary fz90p">special offer</sup>
+      </h1>
+
+      <p v-if="inStock > 10" class="color--success">In Stock</p>
+      <p v-else-if="inStock <= 10 && inStock > 0" class="color--secondary">Almost sold out: <strong>{{ inStock }} left</strong>!</p>
+      <p v-else class="color--danger">Out of Stock</p>
+
+      <ul>
+        <li v-for="string in details">{{ string }}</li>
+      </ul>
+
+      <div v-for="(variant, index) in variants" 
+        :key="variant.variantId"
+        class="variant-color-box"
+        :style="{ backgroundColor: variant.variantColor }"
+        @click="updateProduct(index)"
+      >
+        <!-- <div>{{ variant.variantColor }}</div> -->
+      </div>
+
+      <div>
+        <button @click="addToCart" :disabled="!inStock">Add to cart</button>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
