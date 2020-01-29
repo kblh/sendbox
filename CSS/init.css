@@ -49,6 +49,18 @@ h1, h2, h3 {
 
 a { color: var(--colorPrimary700); }
 
+button {
+  border: 1px solid #ccc;
+  padding: .5rem 2rem;
+}
+  button:disabled { background-color: #ccc; }
+
+input, textarea {
+  border: 1px solid #ccc;
+  padding: .5rem;
+  width: 90%;
+}
+
 .ff-monoton { font-family: 'Monoton', cursive; }
 .ff-gravitas { font-family: 'Gravitas One', cursive; }
 

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue &amp; Axios &amp; NY Times</title>
+  <link rel="stylesheet" href="../../../CSS/init.css">
+  <link rel="stylesheet" href="../../../CSS/MicroTachyons/micro-tachyons.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css"> -->
+</head>
+<body class="p2r">
+  <h1>Vue &amp; Axios &amp; NY Times</h1>
+  <p><a href="https://www.sitepoint.com/fetching-data-third-party-api-vue-axios/">Fetching Data from a Third-party API with Vue.js and Axios</a></p>
+
+<div id="app">
+  <div class="posf r0 t0 p1r">
+    <div>results.length: {{ results.length }}</div>
+    <div>articlesToShow: {{ articlesToShow }}</div>
+  </div>
+
+  <div v-if="index <= results.length" v-for="index in articlesToShow">
+    <div class="box box-orange mb1r">
+      <div>Article no {{index}}</div>
+      <h3> {{ results[index-1].title }}</h3>
+      <div>{{ results[index-1].abstract }}</div>
+    </div>
+  </div>
+  <div v-if="articlesToShow < results.length">
+    <button @click="articlesToShow += 15">show more reviews</button>
+  </div>
+  <div v-else>
+    No more articles :-(
+  </div>
+
+  <!-- {{  }} -->
+
+  <h3>All articles</h3>
+  <div v-for="result in results">
+    <div class="mb1r">
+      <div><strong>{{ result.title }}</strong></div>
+      <div>{{ result.abstract }}.</div>
+    </div>
+  </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+<script src="https://unpkg.com/axios@0.19.2/dist/axios.min.js"></script>
+
+<script>
+
+
+// const vm = new Vue({
+//   el: '#app',
+//   data: {
+//     results: [
+//       {title: "the very first post", abstract: "lorem ipsum some test dimpsum"},
+//       {title: "and then there was the second", abstract: "lorem ipsum some test dimsum"},
+//       {title: "third time's a charm", abstract: "lorem ipsum some test dimsum"},
+//       {title: "four the last time", abstract: "lorem ipsum some test dimsum"}
+//     ]
+//   }
+// });
+
+// ae11a34e-6643-4b27-90a9-d287c9a74463
+
+const vm = new Vue({
+  el: '#app',
+  data: {
+    results: [],
+    articlesToShow: 10
+  },
+  mounted() {
+    axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=ZQov1mASBtTJ3c0gGuGOPY1nNQs2nErb")
+    .then(response => {this.results = response.data.results})
+  }
+});
+
+
+</script>
+
+</body>
+</html>

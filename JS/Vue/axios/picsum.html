@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue &amp; Axios &amp; Picsum</title>
+  <link rel="stylesheet" href="../../../CSS/init.css">
+  <link rel="stylesheet" href="../../../CSS/MicroTachyons/micro-tachyons.css">
+
+<style>
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  grid-auto-rows: 200px;
+  grid-auto-flow: row dense;
+}
+
+.gallery__item { 
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.gallery__item__info {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  background-color: rgba(255,255,255,.8);
+  padding: 1rem;
+}
+
+</style>
+</head>
+<body class="p2r">
+
+<h1>Vue &amp; Axios &amp; Picsum</h1>
+
+<div id="app">
+  <div class="posf r0 t0 p1r">
+    <div>results.length: {{ results.length }}</div>
+    <div>itemsToShow: {{ itemsToShow }}</div>
+  </div>
+
+  <div class="gallery">
+    <div class="gallery__item" v-if="index <= results.length" v-for="index in itemsToShow" :style="{backgroundImage:'url(https://picsum.photos/id/'+ results[index-1].id  +'/300/200)'}">
+      <div class="gallery__item__info">
+        <div>
+          <a target="_blank" :href="results[index-1].download_url">{{index}} / {{ results[index-1].id }}</a>
+          ({{ results[index-1].width }} / {{ results[index-1].height }})
+        </div>
+        <div></div>
+        <div>{{ results[index-1].author }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div v-if="itemsToShow < results.length" class="mt2r">
+    <button @click="itemsToShow += 15">show more items</button>
+  </div>
+  <div v-else class="mt2r">
+    No more items :-(
+  </div>
+
+</div>
+  
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios@0.19.2/dist/axios.min.js"></script>
+<script>
+// https://picsum.photos/v2/list?page=2&limit=100
+// [
+//     {
+//         "id": "0",
+//         "author": "Alejandro Escamilla",
+//         "width": 5616,
+//         "height": 3744,
+//         "url": "https://unsplash.com/...",
+//         "download_url": "https://picsum.photos/..."
+//     }
+// ]
+
+// https://picsum.photos/id/237/200/300
+
+
+const vm = new Vue({
+  el: '#app',
+  data: {
+    results: [],
+    itemsToShow: 10
+  },
+  mounted() {
+    axios.get("https://picsum.photos/v2/list?page=2&limit=100")
+    .then(response => {this.results = response.data})
+  }
+});
+
+
+</script>
+</body>
+</html>

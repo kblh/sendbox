@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue: ToDo with localStorage</title>
+  <link rel="stylesheet" href="../../../CSS/init.css">
+  <link rel="stylesheet" href="../../../CSS/MicroTachyons/micro-tachyons.css">
+</head>
+<body class="p2r">
+  <h1>Vue: ToDo with localStorage</h1>
+
+<div id="app">
+  <h2>Cats</h2>
+  <div v-for="(cat, n) in cats">
+    <p>
+      <span class="cat">{{ cat }}</span>
+      <button @click="removeCat(n)">Remove</button>
+    </p>
+  </div>
+
+  <p>
+    <input v-model="newCat">
+    <button @click="addCat">Add Cat</button>
+  </p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+const app = new Vue({
+  el: '#app',
+  data: {
+    cats: [],
+    newCat: null
+  },
+  mounted() {
+    if (localStorage.getItem('cats')) {
+      try {
+        this.cats = JSON.parse(localStorage.getItem('cats'));
+      } catch(e) {
+        localStorage.removeItem('cats');
+      }
+    }
+  },
+  methods: {
+    addCat() {
+      // ensure they actually typed something
+      if (!this.newCat) {
+        return;
+      }
+
+      this.cats.push(this.newCat);
+      this.newCat = '';
+      this.saveCats();
+    },
+    removeCat(x) {
+      this.cats.splice(x, 1);
+      this.saveCats();
+    },
+    saveCats() {
+      const parsed = JSON.stringify(this.cats);
+      localStorage.setItem('cats', parsed);
+    }
+  }
+})
+
+</script>
+
+</body>
+</html>

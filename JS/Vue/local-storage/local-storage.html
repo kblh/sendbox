@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue: localStorage</title>
+  <link rel="stylesheet" href="../../../CSS/init.css">
+  <link rel="stylesheet" href="../../../CSS/MicroTachyons/micro-tachyons.css">
+</head>
+<body>
+  <h1>Vue: localStorage</h1>
+
+<div id="app">
+  <p>My name is <input v-model="name"></p>
+  <p>and I am <input v-model="age"> years old.</p>
+  <p><button @click="persist">Save</button></p>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+const app = new Vue({
+  el:'#app',
+  data: {
+    name:'',
+    age:0
+  },
+  mounted() {
+    if(localStorage.name) this.name = localStorage.name;
+    if(localStorage.age) this.age = localStorage.age;
+  },
+  methods: {
+    persist() {
+      localStorage.name = this.name;
+      localStorage.age = this.age;
+      console.log('now pretend I did more stuff...');
+    }
+  }
+})
+
+</script>
+
+</body>
+</html>
