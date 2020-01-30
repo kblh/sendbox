@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vuex</title>
+  <link rel="stylesheet" href="../../../CSS/init.css">
+  <link rel="stylesheet" href="../../../CSS/MicroTachyons/micro-tachyons.css">
+</head>
+<body class="p2r">
+  <h1>Vuex App</h1>
+
+  <div id="app">
+    <ul>
+      <li><strong>welcome</strong>: {{ welcome }}</li>
+      <li><strong>storeMsg</strong>: {{ storeMsg }}</li>
+      <li><strong>storeGetterMsg</strong>: {{ storeGetterMsg }}</li>
+      <li><strong>count</strong>: {{ count }}</li>
+    </ul>
+    <div>
+      <button @click="pressed">Increment</button>
+    </div>
+  </div>
+
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vuex"></script>
+
+<script>
+
+const store = new Vuex.Store({
+  state: {
+    message: 'Ciao from Vuex',
+    counter: 0
+  },
+  mutations: { // syncronous
+    increment(state, payload) {
+      state.counter += payload;
+    }
+  },
+  actions: { // asyncronous
+    increment(state, payload) {
+      state.commit('increment', payload);
+    }
+  },
+  getters: {
+    getterMsg(state) {
+      return state.message.toUpperCase()
+    },
+    counter(state) {
+      return state.counter;
+    }
+  }
+});
+
+new Vue({
+  el: '#app',
+  data() {
+    return {
+      welcome: 'Hi Vuex App'
+    }
+  },
+  computed: {
+    storeMsg() {
+      return store.state.message;
+    },
+    storeGetterMsg() {
+      return store.getters.getterMsg;
+    },
+    count() {
+      return store.getters.counter;
+    }
+  },
+  methods: {
+    pressed() {
+      // store.commit('increment', 10); // --> mutation
+      store.dispatch('increment', 20); // --> action
+    }
+  }
+});
+
+</script>  
+</body>
+</html>
