@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>restcountries</title>
+  <link rel="stylesheet" href="../../../CSS/init.css">
+  <link rel="stylesheet" href="../../../CSS/MicroTachyons/micro-tachyons.css">
+<style>
+.sortable {
+  color: #789;
+  cursor: pointer;
+}
+</style>
+</head>
+<body class="m2r">
+
+<h1>restcountries</h1>
+<p>
+  <a target="_blank" href="https://restcountries.eu/">restcountries.eu</a> |
+  <a target="_blank" href="https://codepen.io/vreaxe/pen/zdZWLj">Vue.js 2 #7 Axios and Filters</a> |
+  <a target="_blank" href="https://www.raymondcamden.com/2018/02/08/building-table-sorting-and-pagination-in-vuejs">Building Table Sorting and Pagination in Vue.js</a>
+</p>
+
+<div id="app">
+  <div class="posf r0 t0 p1r">
+    <div>countries.length: {{ countries.length }}</div>
+    <div>countriesFilter.length: {{ countriesFilter.length }}</div>
+    <div>textSearch: {{ textSearch }}</div>
+  </div>
+
+  <div class="mb2r">
+    <label><input @change="fetchData()" v-model="regionFilter" type="radio" name="region" value="/all"> ALL</label>
+    <label><input @change="fetchData()" v-model="regionFilter" type="radio" name="region" value="/region/europe"> Europe</label>
+    <label><input @change="fetchData()" v-model="regionFilter" type="radio" name="region" value="/region/africa"> Africa</label>
+    <label><input @change="fetchData()" v-model="regionFilter" type="radio" name="region" value="/region/asia"> Asia</label>
+    <label><input @change="fetchData()" v-model="regionFilter" type="radio" name="region" value="/region/americas"> Americas</label>
+    <label><input @change="fetchData()" v-model="regionFilter" type="radio" name="region" value="/region/oceania"> Oceania</label>
+    <label><input @change="fetchData()" v-model="regionFilter" type="radio" name="region" value="/region/polar"> Polar</label>
+  </div>
+  <div>
+    <input class="w50p" id="input-search" type="text" class="form-control" v-model="textSearch" placeholder='Search...'>
+  </div>
+
+  <table class="table w100p">
+    <thead>
+      <tr>
+        <!-- <th></th> -->
+        <th @click="sort('name')" class="sortable">Name</th @click="sort('name')">
+        <th @click="sort('capital')" class="sortable">Capital</th @click="sort('name')">
+        <th>Region</th>
+        <th>Currency</th>
+        <th @click="sort('area')" class="sortable tar">Area</th>
+        <th @click="sort('population')" class="sortable tar">Population</th>
+      </tr>
+    </thead>
+    <tbody v-if="sortedTable && sortedTable.length">
+      <tr v-for="(item, index) in sortedTable">  
+      <!-- <tr v-for="(item, index) in countries"> -->
+        <!-- <td>
+          <img :src="item.flag" alt="" width="30px">
+        </td> -->
+        <td>{{ item.name }} ({{ index }})</td>
+        <td>{{ item.capital }}</td>
+        <td>{{ item.region }}</td>
+        <td>{{ item.currencies[0].name }} ({{ item.currencies[0].symbol }})</td>
+        <td class="tar">{{ item.area | format-thousands }}</td>
+        <td class="tar">{{ item.population | format-thousands }}</td>
+      </tr>
+    </tbody>
+    <tfoot v-else>
+      <tr>
+        <td colspan="6">No data :-(</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="mt2r">
+    <button @click="prevPage">Previous</button> 
+    <button @click="nextPage">Next</button>
+  </div>
+
+</div>
+
+
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+Vue.filter('format-thousands', function (value) {
+  // https://stackoverflow.com/a/2901298
+  // return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  if (value !== null) {
+    return value.toLocaleString();
+  }
+});
+
+new Vue({
+  el: '#app',
+  data: {
+    textSearch: '',
+    regionFilter: '/all',
+    countries: [],
+    currentSort:'name',
+    currentSortDir:'asc',
+    pageSize: 335,
+    currentPage: 1
+  },
+  methods: {
+    fetchData: function() {
+      const paramRegion = this.regionFilter;
+      const fetchUrl = "https://restcountries.eu/rest/v2"+paramRegion;
+      axios.get(fetchUrl)
+      .then(response => {this.countries = response.data})
+    },
+    sort: function(s) {
+      // if s == current sort, reverse
+      if(s === this.currentSort) {
+        this.currentSortDir = this.currentSortDir==='asc'?'desc':'asc';
+      }
+      this.currentSort = s;
+    },
+    nextPage: function() {
+      if((this.currentPage*this.pageSize) < this.countries.length) this.currentPage++;
+    },
+    prevPage: function() {
+      if(this.currentPage > 1) this.currentPage--;
+    }
+  },
+  computed: {
+    countriesFilter: function() {
+      var textSearch = this.textSearch;
+      return this.countries.filter(function(el) {
+        return el.name.toLowerCase().indexOf(textSearch.toLowerCase()) !== -1;
+      });
+    },
+    sortedTable:function() {
+      return this.countries.sort((a,b) => {
+        let modifier = 1;
+        if(this.currentSortDir === 'desc') modifier = -1;
+        if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+        if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
+        return 0;
+      }).filter((row, index) => {
+        let start = (this.currentPage-1)*this.pageSize;
+        let end = this.currentPage*this.pageSize;
+        if(index >= start && index < end) return true;
+      });
+    }
+  },
+  mounted() {
+    this.fetchData();
+  }
+});
+
+
+</script>
+</body>
+</html>
+

@@ -58,7 +58,7 @@ button {
 input, textarea {
   border: 1px solid #ccc;
   padding: .5rem;
-  width: 90%;
+  /* width: 90%; */
 }
 
 .ff-monoton { font-family: 'Monoton', cursive; }
@@ -70,7 +70,7 @@ input, textarea {
 .color--danger { color: var(--colorDanger700); }
 
 /********************
-  BOX
+  box
 ********************/
 
 .box { border-radius: .5rem; padding: 1rem; }
@@ -80,6 +80,32 @@ input, textarea {
 .box-orange-light { background-color: rgba(224,100,54,.2); }
 
 .box-shadow { box-shadow: 0 0 10px rgba(0,0,0,.4); }
+
+/********************
+  table
+********************/
+
+.table { 
+  border-collapse: collapse;
+}
+  .table th { 
+    text-align: left; 
+    font-weight: bold; 
+  }
+  .table th.tar { text-align: right; }
+
+  .table th,
+  .table td { 
+    vertical-align: top;
+    padding: 10px; 
+    border-bottom: 1px solid #ccc;
+  }
+
+  .table th:first-child,
+  .table td:first-child { padding-left: 0; }
+  .table th:last-child,
+  .table td:last-child { padding-right: 0; }
+
 
 /********************
   caniuse
