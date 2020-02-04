@@ -8,9 +8,21 @@
   <link rel="stylesheet" href="../../../CSS/init.css">
   <link rel="stylesheet" href="../../../CSS/MicroTachyons/micro-tachyons.css">
 <style>
+
+label,
+select {
+  margin-right: 2rem;
+}
+
 .sortable {
   color: #789;
   cursor: pointer;
+}
+
+.is-loading:after {
+  content: ""; position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #fff; opacity: .8;
 }
 </style>
 </head>
@@ -28,6 +40,7 @@
     <div>countries.length: {{ countries.length }}</div>
     <div>countriesFilter.length: {{ countriesFilter.length }}</div>
     <div>textSearch: {{ textSearch }}</div>
+    <div>loading: {{ loading }}</div>
   </div>
 
   <div class="mb2r">
@@ -38,15 +51,27 @@
     <label><input @change="fetchData()" v-model="regionFilter" type="radio" name="region" value="/region/americas"> Americas</label>
     <label><input @change="fetchData()" v-model="regionFilter" type="radio" name="region" value="/region/oceania"> Oceania</label>
     <label><input @change="fetchData()" v-model="regionFilter" type="radio" name="region" value="/region/polar"> Polar</label>
+
+    <select v-model="pageSize">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+      <option value="100">100</option>
+      <option value="300">300</option>
+    </select>
+
+    <input type="text" v-model="currentPage">
   </div>
+
   <div>
     <input class="w50p" id="input-search" type="text" class="form-control" v-model="textSearch" placeholder='Search...'>
   </div>
 
-  <table class="table w100p">
+  <table class="table w100p posr" :class="{'is-loading': loading}">
     <thead>
       <tr>
-        <!-- <th></th> -->
+        <th></th>
         <th @click="sort('name')" class="sortable">Name</th @click="sort('name')">
         <th @click="sort('capital')" class="sortable">Capital</th @click="sort('name')">
         <th>Region</th>
@@ -58,9 +83,9 @@
     <tbody v-if="sortedTable && sortedTable.length">
       <tr v-for="(item, index) in sortedTable">  
       <!-- <tr v-for="(item, index) in countries"> -->
-        <!-- <td>
+        <td>
           <img :src="item.flag" alt="" width="30px">
-        </td> -->
+        </td>
         <td>{{ item.name }} ({{ index }})</td>
         <td>{{ item.capital }}</td>
         <td>{{ item.region }}</td>
@@ -71,7 +96,7 @@
     </tbody>
     <tfoot v-else>
       <tr>
-        <td colspan="6">No data :-(</td>
+        <td colspan="7">No data :-(</td>
       </tr>
     </tfoot>
   </table>
@@ -99,25 +124,30 @@ Vue.filter('format-thousands', function (value) {
 new Vue({
   el: '#app',
   data: {
+    loading: false,
     textSearch: '',
     regionFilter: '/all',
     countries: [],
     currentSort:'name',
     currentSortDir:'asc',
-    pageSize: 335,
+    pageSize: 20,
     currentPage: 1
   },
   methods: {
     fetchData: function() {
+      this.loading = true;
       const paramRegion = this.regionFilter;
       const fetchUrl = "https://restcountries.eu/rest/v2"+paramRegion;
       axios.get(fetchUrl)
-      .then(response => {this.countries = response.data})
+      .then(response => {
+        this.countries = response.data;
+        this.loading = false;
+      })
     },
     sort: function(s) {
-      // if s == current sort, reverse
+      console.log("sss: " + s);
       if(s === this.currentSort) {
-        this.currentSortDir = this.currentSortDir==='asc'?'desc':'asc';
+        this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
       }
       this.currentSort = s;
     },
@@ -131,12 +161,12 @@ new Vue({
   computed: {
     countriesFilter: function() {
       var textSearch = this.textSearch;
-      return this.countries.filter(function(el) {
+      return this.countries.filter((el) => {
         return el.name.toLowerCase().indexOf(textSearch.toLowerCase()) !== -1;
       });
     },
-    sortedTable:function() {
-      return this.countries.sort((a,b) => {
+    sortedTable: function() {
+      return this.countriesFilter.sort((a,b) => {
         let modifier = 1;
         if(this.currentSortDir === 'desc') modifier = -1;
         if(a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
