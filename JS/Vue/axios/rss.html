@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSS feed</title>
+  <link rel="stylesheet" href="../../../CSS/init.css">
+  <link rel="stylesheet" href="../../../CSS/MicroTachyons/micro-tachyons.css">
+</head>
+<body>
+
+<div id="app">
+
+
+  <div v-if="index <= results.length" v-for="index in articlesToShow">
+    <div class="mb1r">
+      <h4><a :href="results[index-1].link">{{ results[index-1].title }}</a></h4>
+      <p>{{ results[index-1].content }}</p>
+    </div>
+  </div>
+  <div v-if="articlesToShow < results.length">
+    <button @click="articlesToShow += 15">show more articles</button>
+  </div>
+  <div v-else>
+    No more articles :-(
+  </div>
+
+  <p><a href="https://rss2json.com/">https://rss2json.com/</a></p>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios@0.19.2/dist/axios.min.js"></script>
+
+<script>
+
+const vm = new Vue({
+  el: '#app',
+  data: {
+    results: [],
+    articlesToShow: 10
+  },
+  mounted() {
+    axios.get("https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.doruzka.com%2Ffeed%2F")
+    .then(response => {this.results = response.data.items})
+    axios.get("https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.fullmoonzine.cz%2Frss")
+    .then(response => {this.results = response.data.items})
+
+  }
+});
+
+
+
+/*
+  // <h2>{{ results.feed.title }}</h2>
+
+
+
+*/
+
+
+</script>
+
+</body>
+</html>

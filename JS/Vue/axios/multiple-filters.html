@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiple filters</title>
+</head>
+<body>
+
+<div id="app">
+  <h1>Multiple filters</h1>
+  <fieldset>
+    <legend>price</legend>
+    {{start}}
+    <input type="range" v-model="start" :min="min" :max="max" >
+    {{end}}
+    <input type="range"  v-model="end" :min="min" :max="max">
+  </fieldset>
+  <fieldset>
+    <legend>color</legend>
+    <input type="radio" id="red" value="red" v-model="color">
+    <label for="red">red</label>
+    <br>
+    <input type="radio" id="yellow" value="yellow" v-model="color">
+    <label for="yellow">yellow</label>
+    <br>
+    <input type="radio" id="all" value="" v-model="color">
+    <label for="all">all</label>
+    <br>
+  </fieldset>
+  <fieldset>
+    <legend>size</legend>
+    <input type="radio" id="all" value="" v-model="size">
+    <label for="all">all</label>
+    <br>
+    <input type="radio" id="small" value="small" v-model="size">
+    <label for="small">small</label>
+    <br>
+    <input type="radio" id="medium" value="medium" v-model="size">
+    <label for="medium">medium</label>
+    <br>
+    <input type="radio" id="large" value="large" v-model="size">
+    <label for="large">large</label>
+    <br>
+  </fieldset>
+  
+  <ul>
+    <li v-for="list in filterList">{{list.name}}</li>
+  </ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+import _ from 'lodash';
+
+new Vue({
+  data(){
+    return{
+      min: 0,
+      max:0,
+      start: 0,
+      end: 0,
+      color: '',
+      size: '',
+      lists:[
+        {
+          name: 'test1',
+          color: 'red',
+          size: 'small',
+          price: 100
+        },
+        {
+          name: 'test2',
+          color: 'yellow',
+          size: 'small',
+          price: 200
+        },{
+          name: 'test3',
+          color: 'red',
+          size: 'large',
+          price: 250
+        },{
+          name: 'test4',
+          color: 'red',
+          size: 'medium',
+          price: 300
+        },
+        ]
+    }
+  }, 
+  computed:{
+    filterList(){
+      var vm = this, lists = vm.lists 
+      return _.filter(lists, function(query){
+        var price = query.price >= vm.start && query.price <= vm.end,
+            color = vm.color ? (query.color == vm.color) : true,
+            size = vm.size ? (query.size == vm.size) : true;
+        
+        return price && color && size
+      })
+    }
+  },
+  mounted(){
+    var vm = this,
+        lists= vm.lists,
+        max = _.maxBy(lists, 'price').price,
+        min = _.minBy(lists, 'price').price
+    vm.start = min
+    vm.end = max
+    vm.min = min
+    vm.max = max
+  }
+}).$mount('#app')
+
+</script>
+
+</body>
+</html>
