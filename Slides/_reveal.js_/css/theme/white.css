@@ -84,8 +84,16 @@ body {
 .c-inverse h2,
 .c-inverse h3,
 .c-inverse h4,
-.c-inverse P {
+.c-inverse p,
+.c-inverse ul {
   color: #fff;
+}
+
+.container {
+  display: flex;
+}
+.col {
+  flex: 1;
 }
 
 /*********************************************
