@@ -1,9 +1,9 @@
 {
   "name": "Vue - Axios - Picsum DEMO",
   "short_name": "Picsum DEMO",
-  "theme_color": "#2196f3",
-  "background_color": "#2196f3",
-  "display": "browser",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone",
   "Scope": "/",
   "start_url": "/",
   "icons": [
