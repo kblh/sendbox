@@ -87,12 +87,20 @@
 const vm = new Vue({
   el: '#app',
   data: {
+    loading: false,
     results: [],
     itemsToShow: 10
   },
   mounted() {
-    axios.get("https://picsum.photos/v2/list?page=2&limit=100")
-    .then(response => {this.results = response.data})
+    this.fetchData();
+  },
+  methods: {
+    fetchData: function() {
+      this.loading = true;
+
+      axios.get("https://picsum.photos/v2/list?page=2&limit=100")
+      .then(response => {this.results = response.data})
+    }
   }
 });
 
