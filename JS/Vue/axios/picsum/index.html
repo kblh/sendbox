@@ -93,6 +93,7 @@ const vm = new Vue({
   },
   mounted() {
     this.fetchData();
+    this.registerSW();
   },
   methods: {
     fetchData: function() {
@@ -100,6 +101,15 @@ const vm = new Vue({
 
       axios.get("https://picsum.photos/v2/list?page=2&limit=100")
       .then(response => {this.results = response.data})
+    },
+    registerSW: async function() {
+      if('serviceWorker' in navigator) {
+        try {
+          await navigator.serviceWorker.register('./sw.js');
+        } catch (e) {
+          console.log('SW registration failed');
+        }
+      }
     }
   }
 });
