@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global variables</title>
+  <link rel="stylesheet" href="../init.css">
+  <link rel="stylesheet" href="../MicroTachyons/micro-tachyons.css">
+
+<style>
+  :root {
+    --font-size-bigger: 1.5rem;
+    --font-size-medium: 2rem;
+    --font-size-large: 2.5rem;
+  }
+  * { font-size: var(--text-size); }
+
+  .perex { font-weight: bold; }
+
+  @media screen and (min-width: 600px) {
+    .perex { --text-size: var(--font-size-bigger) }
+  }
+
+  @media screen and (min-width: 800px) {
+    .perex { --text-size: var(--font-size-medium) }
+  }
+
+  @media screen and (min-width: 1000px) {
+    .perex { --text-size: var(--font-size-large) }
+  }
+
+
+</style>  
+</head>
+<body class="p2r">
+
+<p class="perex">Perex: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum non minus nostrum in, qui id accusantium dolore quisquam aspernatur.</p>
+<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum non minus nostrum in, qui id accusantium dolore quisquam aspernatur dignissimos animi dolor neque magni delectus molestias iste architecto assumenda? Et.</p>
+<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum non minus nostrum in, qui id accusantium dolore quisquam aspernatur dignissimos animi dolor neque magni delectus molestias iste architecto assumenda? Et.</p>
+<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum non minus nostrum in, qui id accusantium dolore quisquam aspernatur dignissimos animi dolor neque magni delectus molestias iste architecto assumenda? Et.</p>
+<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum non minus nostrum in, qui id accusantium dolore quisquam aspernatur dignissimos animi dolor neque magni delectus molestias iste architecto assumenda? Et.</p>
+
+</body>
+</html>

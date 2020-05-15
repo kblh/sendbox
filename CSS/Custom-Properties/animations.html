@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>animation</title>
+  <link rel="stylesheet" href="../init.css">
+  <link rel="stylesheet" href="../MicroTachyons/micro-tachyons.css">
+<style>
+
+  /* @keyframes bg {
+    from { background-color: var(--c1); }
+    to { background-color: var(--c2); }
+  }
+
+  body {
+    animation: 1s bg infinite alternate;
+    --c1: red;
+    --c2: orange;
+  } */
+
+  @keyframes bg {
+    from { --color: red; }
+    to { --color: orange; }
+  }
+
+  body {
+    animation: 1s bg infinite alternate;
+    background-color: var(--color);
+  }
+
+</style>
+</head>
+<body class="p3r">
+  <h1>animation</h1>
+</body>
+</html>

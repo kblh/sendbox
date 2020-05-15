@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>prefix</title>
+  <link rel="stylesheet" href="../init.css">
+  <link rel="stylesheet" href="../MicroTachyons/micro-tachyons.css">
+<style>
+
+  * {
+    --prefix: "";
+    --suffix: "";
+  }
+
+  ::before { content: var(--prefix); }
+  ::after { content: var(--suffix); }
+
+  .my-div {
+    border: 1px solid red;
+    --prefix: "ahoj .... ";
+  }
+
+</style>
+</head>
+<body class="p3r">
+  <h1>prefix</h1>
+
+  <div class="my-div">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia assumenda fugiat voluptatem nostrum nam magni quod odit eos asperiores repellat autem praesentium distinctio fugit, veritatis consequatur sunt totam dolorem iure.
+  </div>
+</body>
+</html>

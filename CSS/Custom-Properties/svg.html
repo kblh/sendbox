@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>svg</title>
+  <link rel="stylesheet" href="../init.css">
+  <link rel="stylesheet" href="../MicroTachyons/micro-tachyons.css">
+
+<style>
+:root {
+  --circle-x: 300;
+  --circle-y: 150;
+  --circle-r: 40;
+  --circle-stroke: calc(var(--circle-r)*0.4px);
+  --mouse-x: 0.5;
+}
+
+.slider { width: 600px; }
+.oko {
+  width: 600px;
+  margin: auto;
+}
+.zornicka {
+  /* cx: var(--circle-x); */
+  cx: calc(100% * var(--mouse-x));
+  cy: var(--circle-y);
+  r: var(--circle-r);
+  stroke-width: var(--circle-stroke);
+}  
+</style>
+</head>
+<body class="p3r">
+
+<h1>CSS variables width SVG and JS</h1>
+
+<!-- <input id="circle-x" class="slider" type="range" min="100" max="500" value="300"> -->
+<!-- <input id="circle-r" class="slider" type="range" min="40" max="120" value="40"> -->
+
+<div class="oko">
+  <svg height="300" width="600">
+    <ellipse cx="300" cy="150" ry="100" rx="260" stroke="#333" stroke-width="10" fill="#fff" />  
+    <circle class="zornicka" cx="300" cy="150" r="40" stroke="#465298"fill="#606dbc" />
+  </svg> 
+</div>
+
+<script>
+  // const inputs = [].slice.call(document.querySelectorAll('.slider'));
+
+  // inputs.forEach(input => input.addEventListener('change', handleUpdate));
+  // inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+
+  // function handleUpdate(e) {
+  //   document.documentElement.style.setProperty(`--${this.id}`, this.value);
+  // }
+
+  const root = document.documentElement;
+
+  document.addEventListener("mousemove", e => {
+    let x = e.clientX / innerWidth;
+    // let y = e.clientY / innerHeight;
+
+    root.style.setProperty("--mouse-x", x);
+    // root.style.setProperty("--mouse-y", y);
+  })
+
+
+</script>
+
+</body>
+</html>

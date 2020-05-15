@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>Úvod do Custom Properties</title>
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../_reveal.js_/css/reveal.css">
+		<link rel="stylesheet" href="../_reveal.js_/css/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../_reveal.js_/lib/css/zenburn.css">
+		<link rel="stylesheet" href="../../CSS/init.css">
+		<link rel="stylesheet" href="../../CSS/MicroTachyons/micro-tachyons.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../_reveal.js_/css/print/pdf.css' : '../_reveal.js_/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+<body>
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+
+<!-- ############################################### -->
+	<section data-background="images/etn-bg.png">
+		<div style="height: 150px;">&nbsp;</div>
+		<h2>Úvod do</h2>
+		<h1>Custom Properties</h1>
+		<p>
+			<small>Petr Koláček</small>
+		</p>
+		<div><img src="images/etn-logo.png" class="plain" width="200"></div>
+	</section>
+
+<!-- ############################################### -->
+	<section>
+		<h2>Není proměnná jako proměnná</h2>
+		<div data-markdown>
+			```
+/* less variables */
+@link-color:        #428bca;
+
+/* sass variables */
+$link-color:        #428bca;
+			```
+		</div>
+		<h2 class="fragment">&ne;</h2>
+		<div data-markdown class="fragment">
+			```
+/* custom properties */
+--link-color:        #428bca;
+			```
+		</div>
+		<h2 class="fragment">To je totiž mnohem víc!</h2>
+	</section>
+
+<!-- ############################################### -->
+	<section>
+		<h2>currentColor</h2>
+		<div data-markdown>
+			```
+h2 {
+  color: limegreen; /* base color */
+  border-bottom: 5px solid currentColor;
+  position: relative;
+}
+
+h2:after {
+  background-color: currentColor;
+  position: absolute; content: "";
+  right: 0; top: 0;
+  width: 30px; height: 30px;
+}
+
+h2 svg { fill: currentColor; }
+			```
+		</div>
+		<p>Firefox 2 (2006), od 2009 všechny prohlížeče</p>
+		<p>
+			<a target="_blank" href="../../CSS/Custom-Properties/current-color.html">Example</a>
+		</p>
+	</section>
+
+<!-- ############################################### -->
+	<section>
+		<h2>var(--color)</h2>
+		<div data-markdown>
+			```
+h2 {
+  color: var(--color, #000);
+  border-bottom: 5px solid var(--color, #000);
+  position: relative;
+}
+
+h2:after {
+  background-color: var(--color, #000);
+  position: absolute; content: "";
+  right: 0; top: 0;
+  width: 30px; height: 30px;
+}
+
+h2 svg { fill: var(--color, #000); }
+			```
+		</div>
+		<p>
+			<a target="_blank" href="../../CSS/Custom-Properties/current-color-properties.html">Example</a>
+		</p>
+	</section>
+
+<!-- ############################################### -->
+	<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+		<h1>CSS properties jsou živé organizmy</h1>
+		<ul>
+			<li class="fragment">lze s nimi pracovat i po vyrendrování stránky</li>
+			<li class="fragment">lze k nim přistupovat i přímo z HTML (inline style)</li>
+			<li class="fragment">inline style neovlivňuje specificitu selektorů</li>
+			<li class="fragment">lze k nim přistupovat i z JS</li>
+		</ul>
+	</section>
+
+
+
+<!-- ############################################### -->
+	<section>
+		<h2>Fallback</h2>
+		<div data-markdown>
+			```
+h2 {
+  color: var(--text-color, lime); /* default value */
+}
+			```
+		</div>
+		<p class="fragment">Co se stane v browseru, který nepodporuje CSS custom properties?</p>
+		<div data-markdown class="fragment">
+			```
+h2 {
+  color: lime /* opravdový fallback */
+  color: var(--text-color, lime); /* default value */
+}
+			```
+		</div>
+		<div data-markdown class="fragment">
+```
+@supports (--css: variables) { ... }
+```
+		</div>
+	</section>
+
+<!-- ############################################### -->
+	<section>
+		<h2>Vždy uvnitř selektoru</h2>
+		<div data-markdown>
+```
+root: {
+  --color-primary: blue;
+  --color-secondary: green;
+}
+
+h2 {
+  color: var(--color-primary);
+}
+```
+		</div>
+	</section>
+
+<!-- ############################################### -->
+	<section>
+		<h2>Funguje dědičnost a kaskáda</h2>
+		<div data-markdown>
+```
+  :root {
+    --font-size-bigger: 1.5rem;
+    --font-size-medium: 2rem;
+    --font-size-large: 2.5rem;
+  }
+  * { font-size: var(--text-size); }
+
+  .perex { font-weight: bold; }
+
+  @media screen and (min-width: 600px) {
+    .perex { --text-size: var(--font-size-bigger) }
+  }
+
+  @media screen and (min-width: 800px) {
+    .perex { --text-size: var(--font-size-medium) }
+  }
+
+  @media screen and (min-width: 1000px) {
+    .perex { --text-size: var(--font-size-large) }
+  }
+```
+		</div>
+		<p>
+			<a target="_blank" href="../../CSS/Custom-Properties/global-variables.html">Example</a>
+		</p>
+	</section>
+
+<!-- ############################################### -->
+	<section>
+		<h2>bacha na case!</h2>
+		<p>custom properties jsou na rozdíl od ostatních css properties case-SENSITIVE!</p>
+		<div data-markdown>
+```
+root: {
+  --text-color: red;
+  --TEXT-COLOR: blue;
+}
+
+h2 {
+  color: var(--text-color);
+}
+```			
+		</div>
+	</section>
+
+<!-- ############################################### -->
+	<section>
+		<h2>Zpropadené jednotky</h2>
+		<div data-markdown>
+```
+.box {
+	--size: 30;
+	width: var(--size)px;
+	height: var(--size)px;
+}
+```
+		</div>
+		<p class="fragment">nee ... takhle to nepůjde</p>
+		<div data-markdown class="fragment">
+```
+.box {
+	--size: 30;
+	width: calc(var(--size) * 1px);
+	height: calc(var(--size) * 1px);
+}
+```
+		</div>
+		<p class="fragment">ošklivé, ale nedá se nic dělat</p>
+	</section>
+
+<!-- ############################################### -->
+	<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+		<h1>Příklady použití</h1>
+	</section>
+
+<!-- ############################################### -->
+	<section>
+		<h2>Theaming</h2>
+		<div data-markdown>
+```
+/* Blue */
+.theme-blue {
+  --bg: repeating-linear-gradient(
+    45deg, 
+    #606dbc, 
+    #606dbc 20px, 
+    #465298 20px,
+    #465298 40px);
+
+  --color: #fff;
+  
+  --titleFont: 'Black Han Sans', sans-serif;
+  --titleSize: 3rem;
+  
+  --paragraphFont: sans-serif;
+  
+  --imageBorder: 10px dashed #fff;
+}
+```			
+		</div>
+		<p>
+			<a target="_blank" href="../../CSS/Custom-Properties/theaming.html">Example</a>
+		</p>
+	</section>
+
+<!-- ############################################### -->
+	<section>
+		<h2>Vertical rhythm</h2>
+		<div data-markdown>
+```
+:root {
+  --baseline: 2.5;
+  line-height: 2.5; /* fallback */ 
+  line-height: var(--baseline) 
+}
+
+@media (max-width: 50rem) { 
+  :root { 
+    --baseline: 2; 
+  } 
+}
+
+@media (max-width: 30rem) { 
+  :root { 
+    --baseline: 1.5; 
+  } 
+}
+```			
+		</div>
+		<p>
+			<a target="_blank" href="../../CSS/Custom-Properties/vertical-rhythm.html">Example</a>
+		</p>
+	</section>
+
+<!-- ############################################### -->
+	<section>
+		<h2>Javascript</h2>
+		<div data-markdown>
+```
+var root = document.documentElement;
+
+document.addEventListener("mousemove", e => {
+	let x = e.clientX / innerWidth;
+	let y = e.clientY / innerHeight;
+
+	root.style.setProperty("--mouse-x", x);
+	root.style.setProperty("--mouse-y", y);
+})
+```			
+		</div>
+		<div data-markdown>
+```
+.slide {
+  width: 100%; height: 100vh;
+  background-image: radial-gradient(
+    at calc(100% * var(--mouse-x)) calc(100% * var(--mouse-y)),
+    transparent 1%, black 30%
+  );
+}
+```
+		</div>
+		<p>
+			<a target="_blank" href="../../CSS/Custom-Properties/mousemove.html">Example</a>
+		</p>
+	</section>
+
+<!-- ############################################### -->
+	<section>
+		<h2>SVG</h2>
+		<div data-markdown>
+```
+const root = document.documentElement;
+
+document.addEventListener("mousemove", e => {
+	let x = e.clientX / innerWidth;
+
+	root.style.setProperty("--mouse-x", x);
+})
+```
+		</div>
+		<div data-markdown>
+```
+.zornicka {
+  cx: calc(100% * var(--mouse-x));
+} 
+```			
+		</div>
+		<p>
+			<a target="_blank" href="../../CSS/Custom-Properties/svg.html">Example</a>
+		</p>
+	</section>
+
+<!-- ############################################### -->
+	<section>
+		<h2>Progress bar</h2>
+		<div data-markdown>
+```
+var root = document.documentElement;
+
+document.onscroll = () => {
+	let positionOnPage = root.scrollTop || document.body.scrollTop;
+	let pageHeight = root.scrollHeight;
+	root.style.setProperty(`--positionOnPage`, positionOnPage);
+	root.style.setProperty(`--positionOnPagePercentage`, verticalScrollPercentage());
+}
+
+```
+		</div>
+		<div data-markdown="">
+```
+.progress-bar {
+	position: fixed;
+	top: 0; left: 0; height: 10px;
+	background: darkorange;
+	width: calc(var(--positionOnPagePercentage) * 1%);
+}
+```
+		</div>
+		<p>
+			<a target="_blank" href="../../CSS/Custom-Properties/progress-bar.html">Example</a>
+		</p>
+	</section>
+
+<!-- ############################################### -->
+	<section>
+		<h2>Colors</h2>
+		<div data-markdown>
+```
+.box--primary {
+  background-color: hsla(
+    var(--bgcolor-box-h, 186),
+    var(--bgcolor-box-s, 100%),
+    var(--bgcolor-box-l, 33%),
+    var(--bgcolor-box-a, 1)
+  );
+}
+
+.box--secondary {
+  background-color: hsla(
+    var(--bgcolor-box-h, 0),
+    var(--bgcolor-box-s, 100%),
+    var(--bgcolor-box-l, 33%),
+    var(--bgcolor-box-a, 1)
+  );
+  animation: 1s bg infinite alternate;
+}
+
+.lighten-50 { --bgcolor-box-a: .5; }
+.lighten-20 { --bgcolor-box-a: .2; }
+.darken-50 { --bgcolor-box-s: 50%; }
+.darken-20 { --bgcolor-box-s: 20%; }
+
+@keyframes bg {
+	0% { --bgcolor-box-h: -100; }
+	25% { --bgcolor-box-h: -50; }
+	50% { --bgcolor-box-h: 0; }
+	75% { --bgcolor-box-h: 50; }
+	100% { --bgcolor-box-h: 100; }
+}
+
+```
+		</div>
+		<p>
+			<a target="_blank" href="../../CSS/Custom-Properties/colors.html">Example</a>
+		</p>
+	</section>
+
+<!-- ############################################### -->
+	<section>
+		<h2>Omezení</h2>
+		<ul>
+			<li>nelze použít pro breakpointy (nedává smysl)</li>
+			<li>animace</li>
+			<li>calc(var(--myWidth) * 1px)</li>
+			<li>case sensitive</li>
+			<li>IE 11 (postcss-css-variables nefunguje 100%)</li>
+		</ul>
+		<div style="height: 50px"></div>
+		<p>
+			<div class="caniuse caniuse__chrome caniuse--yes"></div>
+			<div class="caniuse caniuse__firefox caniuse--yes"></div>
+			<div class="caniuse caniuse__edge caniuse--yes"></div>
+			<div class="caniuse caniuse__safari caniuse--yes"></div>
+			<div class="caniuse caniuse__ie11 caniuse--no"></div>
+			<div class="caniuse caniuse__opera caniuse--yes"></div>
+		</p>
+	</section>
+
+
+<!-- ############################################### -->
+	<section style="text-align: left;" data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+		<h1>A to je konec.</h1>
+		<h2>Dotazy?</h2>
+	</section>
+
+
+</div>
+</div>
+
+<script src="../_reveal.js_/lib/js/head.min.js"></script>
+<script src="../_reveal.js_/js/reveal.js"></script>
+<script src="../_reveal.js_/js/jQuery.js"></script>
+<script src="../_reveal.js_/js/jquery.vide.min.js"></script>
+
+<script>
+
+// More info https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+	controls: true,
+	progress: true,
+	history: true,
+	center: false,
+
+	transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+	// More info https://github.com/hakimel/reveal.js#dependencies
+	dependencies: [
+		{ src: '../_reveal.js_/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+		{ src: '../_reveal.js_/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: '../_reveal.js_/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: '../_reveal.js_/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+		{ src: '../_reveal.js_/plugin/search/search.js', async: true },
+		{ src: '../_reveal.js_/plugin/zoom-js/zoom.js', async: true },
+		{ src: '../_reveal.js_/plugin/notes/notes.js', async: true }
+	]
+});
+
+</script>
+
+</body>
+</html>

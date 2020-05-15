@@ -100,7 +100,7 @@
 /* flexbox */
 .dfl { display: flex }
 .fxg1 { flex-grow: 1 }
-
+.jcsb { justify-content: space-between }
 
 /* typography */
 .tal { text-align: left }

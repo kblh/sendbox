@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>custom property</title>
+  <link rel="stylesheet" href="../init.css">
+  <link rel="stylesheet" href="../MicroTachyons/micro-tachyons.css">
+
+<style>
+  * {
+    box-shadow: var(--box-shadow, 1em .5em 0) var(--box-shadow-color, transparent);
+  }
+
+  .box-color--blue {
+    --box-shadow: 0 0 0 1em;
+    --box-shadow-color: #657687;
+  }
+
+</style>  
+</head>
+<body class="p3r">
+  <h1>custom property</h1>
+
+  <div class="box mb3r box-orange box-color--blue">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt facilis accusantium ut pariatur doloremque eos, laboriosam illo, eum impedit rem iure repellat excepturi suscipit quidem, aliquid quis velit! Nobis, asperiores?
+  </div>
+
+  <div class="box mb3r box-orange" style="--box-shadow-color: darkred">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt facilis accusantium ut pariatur doloremque eos, laboriosam illo, eum impedit rem iure repellat excepturi suscipit quidem, aliquid quis velit! Nobis, asperiores?
+  </div>
+
+  <div class="box mb3r box-orange">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt facilis accusantium ut pariatur doloremque eos, laboriosam illo, eum impedit rem iure repellat excepturi suscipit quidem, aliquid quis velit! Nobis, asperiores?
+  </div>
+
+</body>
+</html>

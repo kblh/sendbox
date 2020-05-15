@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>currentColor</title>
+  <title>custom properties</title>
   <link rel="stylesheet" href="../init.css">
   <link rel="stylesheet" href="../MicroTachyons/micro-tachyons.css">
 <style>
+
   .btn {
     position: relative;
-    color: #666;
-    border: 1px solid currentColor;
-    /* background: radial-gradient(transparent calc(100% - 10px), currentColor 0); */
+    color: var(--color, #000);
+    border: 1px solid var(--color, #000);
     font-size: 140%;
     border-radius: 5px;
     height: 60px;
@@ -22,24 +22,28 @@
   }
   .btn:hover {
     background-color: black;
-    color: #fff;
+    color: #fff;    
+    border-color: transparent;
   }
 
+  .btn:hover svg { fill: #fff; }
+
   .btn svg {
-    fill: currentColor;
+    fill: var(--color, #000);
     position: absolute;
     right: 10px; top: 10px;
     width: 40px;
     height: 40px;
+    transition: all .5s ease-in-out;
   }
 
-  .btn--red { color: darkred; }
-  .btn--green { color: darkgreen; }
-  .btn--violet { color: darkmagenta; }
+  .btn--red { --color: darkred; }
+  .btn--green { --color: darkgreen; }
+  .btn--violet { --color: darkmagenta; }
 </style>  
 </head>
 <body class="p3r">
-  <h1>currentColor</h1>
+  <h1>custom properties</h1>
 
   <button class="btn btn--red">
     <span>Bat</span>
