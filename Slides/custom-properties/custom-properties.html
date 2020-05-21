@@ -72,6 +72,27 @@ $link-color:        #428bca;
 
 <!-- ############################################### -->
 	<section>
+		<h2>Definice custom properties</h2>
+		<p>Vždy uvnitř selektoru</p>
+		<div data-markdown>
+```
+:root {
+  --color-primary: blue;
+  --color-secondary: green;
+  --border-default: 3px dashed #567;
+}
+
+h2 {
+  color: var(--color-primary);
+  border-bottom: var(--border-default);
+}
+```
+		</div>
+	</section>
+
+
+<!-- ############################################### -->
+	<section>
 		<h2>currentColor</h2>
 		<div data-markdown>
 			```
@@ -163,24 +184,7 @@ h2 {
 	</section>
 
 <!-- ############################################### -->
-	<section>
-		<h2>Vždy uvnitř selektoru</h2>
-		<div data-markdown>
-```
-root: {
-  --color-primary: blue;
-  --color-secondary: green;
-}
-
-h2 {
-  color: var(--color-primary);
-}
-```
-		</div>
-	</section>
-
-<!-- ############################################### -->
-	<section>
+	<!-- <section>
 		<h2>Funguje dědičnost a kaskáda</h2>
 		<div data-markdown>
 ```
@@ -209,7 +213,7 @@ h2 {
 		<p>
 			<a target="_blank" href="../../CSS/Custom-Properties/global-variables.html">Example</a>
 		</p>
-	</section>
+	</section> -->
 
 <!-- ############################################### -->
 	<section>
