@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>Budoucnost CSS preprocesorů</title>
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../_reveal.js_/css/reveal.css">
+		<link rel="stylesheet" href="../_reveal.js_/css/theme/white.css" id="theme">
+    <link rel="stylesheet" href="../../CSS/MicroTachyons/micro-tachyons.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../_reveal.js_/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../_reveal.js_/css/print/pdf.css' : '../_reveal.js_/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+  <style>
+    .img {
+      position: absolute;
+      box-shadow: 0 0 5px #000;
+    }
+    .img-casino {
+      width: 200px;
+      top: 20%; left: -20%;
+      transform: rotate(-15deg);
+    }
+
+    .img-friedman {
+      height: 200px;
+      /* top: -10%; right: -20%; */
+      top: 120%; left: -20%;
+      transform: rotate(15deg);
+    }
+		.thumbs {
+			position: absolute;
+			top: 0; right: -40%;
+		}
+		.thumbs img { max-width: 20%; background: transparent!important; }
+  </style>
+
+	</head>
+<body>
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+	<section data-background="images/etn-bg.png">
+		<div style="width: 200px;">&nbsp;</div>
+		<h1>Budoucnost<br>CSS preprocesorů</h1>
+		<p>
+			<small>Petr Koláček</small>
+		</p>
+		<div><img src="images/etn-logo.png" class="plain" width="200"></div>
+	</section>
+
+	<section>
+		<h2>Listopad 2006</h2>
+		<ul>
+			<li class="fragment">
+        premiéra 21. bondovky Casino Royale
+        <img src="images/casino-royale.jpg" class="posa plain img-casino" alt="">
+      </li>
+			<li class="fragment">
+        v 94 letech zemřel slavný americký<br>ekonom Milton Friedman
+        <img src="images/milton-friedman.jpg" class="posa plain img-friedman" alt="">
+      </li>
+			<li class="fragment">
+        vyšla 1. verze preprocesoru
+        <img src="images/sass-logo.jpg" class="posa plain img-sass" alt="">
+      </li>
+		</ul>
+	</section>
+
+	<section data-transition="slide" data-background="#000" data-background-transition="zoom" class="c-inverse">
+		<h2>Kdo ví, ...</h2>
+		<iframe src="https://giphy.com/embed/JOXWsgDlyEURl6rgIh" width="600" height="300" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+		<p>... co znamená zkratka SASS?</p>
+	</section>
+
+  <section>
+    <p><img src="images/sass-logo.jpg"  height="100px" class="plain" alt=""></p>
+    <h3 style="color: #cc679b;">syntactically awesome style sheets</h3>
+		<div class="container tac">
+			<div class="col">
+        <img src="images/natalie-weizenbaum.jpeg" height="200px" alt="">
+        <p>Natalie Weizenbaum</p>
+			</div>
+			<div class="col">
+        <img src="images/hampton-catlin.jpeg" height="200px" alt="">
+        <p>Hampton Catlin</p>
+			</div>
+		</div>
+  </section>
+
+  <section>
+    <h2>Webové prohlížeče v roce 2006</h2>
+    <p class="fragment">Mozilla Firefox <strong>2.0</strong></p>
+    <p class="fragment">Internet Explorer <strong>7</strong></p>
+    <p class="fragment"><del>Google Chrome</del> (2008)</p>
+  </section>
+
+	<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+		<h1>Opravdu potřebujeme CSS&nbsp;preprocesory i&nbsp;v&nbsp;roce&nbsp;2020?</h1>
+	</section>
+
+  <section>
+    <h2>Proměnné ($variables)</h2>
+		<div data-markdown>
+```css
+$base-color: #c6538c;
+$border-dark: rgba($base-color, 0.88);
+
+.alert {
+  border: 1px solid $border-dark;
+}```
+		</div>
+		<div>
+			<p class="fragment">
+				<i class="icon icon-32 icon-plus mr1r">&plus;</i>
+				v CSS byly proměnné dlouhodobě potřeba
+			</p>
+			<p class="fragment">
+				<i class="icon icon-32 icon-alt mr1r">~</i>
+				částečně je mohou nahradit CSS custom properties
+			</p>
+		</div>
+		<div class="fragment thumbs"><img class="plain" src="images/thumbs-up.png" alt=""></div>
+  </section>
+
+	<section>
+		<h2>Spojování CSS do jednoho souboru (@import)</h2>
+			<p class="fragment">
+				<i class="icon icon-32 icon-alt mr1r">~</i>
+				máme HTTP/2 - už to není potřeba
+			</p>
+		<div class="fragment thumbs"><img class="plain" src="images/thumbs-down.png" alt=""></div>
+	</section>
+
+	<section>
+		<h2>Mixiny (@mixin)</h2>
+		<!-- <p>velcí pracanti a pomocníci?</p> -->
+		<div data-markdown>
+```css
+@mixin rtl($property, $ltr-value, $rtl-value) {
+  #{$property}: $ltr-value;
+
+  [dir=rtl] & {
+    #{$property}: $rtl-value;
+  }
+}
+
+.sidebar {
+  @include rtl(float, left, right);
+}
+
+
+
+
+/* vygenerovaný kód */
+
+.sidebar {
+  float: left;
+}
+[dir=rtl] .sidebar {
+  float: right;
+}
+
+```
+		</div>
+		<p class="fragment">
+			<i class="icon icon-32 icon-alt mr1r">~</i>
+			-moz -webkit - dnes už téměř není potřeba
+		</p>
+		<p class="fragment">
+			<i class="icon icon-32 icon-minus mr1r">&minus;</i>
+			nepřináší tolik užitku - zesložiťuje kód
+		</p>
+
+		<div class="fragment thumbs"><img class="plain" src="images/thumbs-down.png" alt=""></div>
+	</section>
+
+	<section>
+		<h2>Dědičnost (@extend)</h2>
+		<div data-markdown="">
+```css
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+
+  &--serious {
+    @extend .error;
+    border-width: 3px;
+  }
+}
+```
+		</div>
+		<p class="fragment">
+			<i class="icon icon-32 icon-minus mr1r">&minus;</i>
+			v rozporu s OOCSS
+		</p>
+		<div class="fragment thumbs"><img class="plain" src="images/thumbs-down.png" alt=""></div>
+	</section>
+
+	<section>
+		<h2>The Indented Syntax</h2>
+		<div data-markdown>
+```css
+@mixin button-base()
+  @include typography(button)
+  @include ripple-surface
+  @include ripple-radius-bounded
+
+  display: inline-flex
+  position: relative
+  height: $button-height
+  border: none
+  vertical-align: middle
+
+  &:hover
+    cursor: pointer
+
+  &:disabled
+    color: $mdc-button-disabled-ink-color
+    cursor: default
+    pointer-events: none
+```
+		</div>
+		<p class="fragment">
+			<i class="icon icon-32 icon-minus mr1r">&minus;</i>
+			jak to bude vypadat po X letech a X kodérech?
+		</p>
+		<div class="fragment thumbs"><img class="plain" src="images/thumbs-down.png" alt=""></div>
+	</section>
+
+	<section data-transition="slide" data-background="#000" data-background-transition="zoom" class="c-inverse">
+		<h2>Kdo z vás ...</h2>
+		<iframe src="https://giphy.com/embed/JOXWsgDlyEURl6rgIh" width="600" height="300" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+		<p>... používá CSS preprocesory?</p>
+		<p class="fragment">... pak kontroluje vygenerovaný CSS kód?</p>
+	</section>
+
+	<section>
+		<h2>Cykly (@each, @for)</h2>
+		<div data-markdown>
+```
+$icons: ("eye": "\f112", "start": "\f12e", "stop": "\f12f", "go": "\f12g", "up": "\f12h", "down": "\f12g" );
+
+@each $name, $glyph in $icons {
+  .icon-#{$name}:before {
+    display: inline-block;
+    font-family: "Icon Font";
+    content: $glyph;
+  }
+}
+
+
+
+
+
+
+/* vygenerovaný kód */
+
+.icon-eye:before {
+  display: inline-block;
+  font-family: "Icon Font";
+  content: "";
+}
+
+.icon-start:before {
+  display: inline-block;
+  font-family: "Icon Font";
+  content: "";
+}
+
+.icon-stop:before {
+  display: inline-block;
+  font-family: "Icon Font";
+  content: "";
+}
+
+.icon-go:before {
+  display: inline-block;
+  font-family: "Icon Font";
+  content: "";
+}
+
+.icon-up:before {
+  display: inline-block;
+  font-family: "Icon Font";
+  content: "";
+}
+
+.icon-down:before {
+  display: inline-block;
+  font-family: "Icon Font";
+  content: "";
+}
+```
+		</div>
+		<p class="fragment">
+			<i class="icon icon-32 icon-alert mr1r">!</i>
+			potenciálně nebezpečné - může generovat velké množství kódu
+		</p>
+		<div class="fragment thumbs"><img class="plain" src="images/thumbs-up.png" alt=""></div>
+	</section>
+
+	<section>
+		<h2>Aritmetické fuknkce</h2>
+		<div data-markdown>
+```
+$transition-speed: 1s/50px;
+
+@mixin move($left-start, $left-stop) {
+  position: absolute;
+  left: $left-start;
+  transition: left ($left-stop - $left-start) * $transition-speed;
+
+  &:hover {
+    left: $left-stop;
+  }
+}
+
+.slider {
+  @include move(10px, 120px);
+}
+```
+		</div>
+		<p class="fragment">
+			<i class="icon icon-32 icon-minus mr1r">&minus;</i>
+			ve většině případů stačí CSS funkce calc()
+		</p>
+		<div class="fragment thumbs"><img class="plain" src="images/thumbs-down.png" alt=""></div>
+	</section>
+
+	<section>
+		<h2>Barvy</h2>
+		<div data-markdown>
+```
+$btn-bkg: purple;
+
+.btn {
+  display: inline-block;
+  padding: 18px;
+  background: $btn-bkg;
+  color: white;
+
+  &:hover {
+    background: darken($btn-bkg, 10%)
+  }
+}
+```
+		</div>
+		<p class="fragment">
+			<i class="icon icon-32 icon-alt mr1r">~</i>
+			dnes lze vyřešit pomocí CSS Custom properties (<a target="_blank" href="../../CSS/Custom-Properties/colors.html">příklad</a>)
+		</p>
+		<div class="fragment thumbs"><img class="plain" src="images/thumbs-up.png" alt=""></div>
+	</section>
+
+
+	<section data-transition="slide" data-background="#000" data-background-transition="zoom" class="c-inverse">
+		<h2>Kdo z vás ...</h2>
+		<iframe src="https://giphy.com/embed/JOXWsgDlyEURl6rgIh" width="600" height="300" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+		<p>... používá zanořování (nestling)?</p>
+		<p class="fragment">... pak kontroluje specificitu vygenerovaných selektorů?</p>
+	</section>
+
+	<section>
+		<h2>Zanořování (nesting)</h2>
+		<div data-markdown="code/nesting.md"></div>
+	</section>
+
+	<section>
+		<h2>Zanořování (nesting)</h2>
+		<p class="fragment">
+			<i class="icon icon-32 icon-plus mr1r">&plus;</i>
+			zapouzdřuje kód
+		</p>
+		<p class="fragment">
+			<i class="icon icon-32 icon-minus mr1r">&minus;</i>
+			z přehledného se stane velice snadno absolutně nepřehledné (u větších modulů)
+		</p>
+		<p class="fragment">
+			<i class="icon icon-32 icon-minus mr1r">&minus;</i>
+			v kódu nelze vyhledávat
+		</p>
+		<p class="fragment">
+			<i class="icon icon-32 icon-minus mr1r">&minus;</i>
+			nelze to tolik hlídat specificitu selektorů
+		</p>
+		<div class="fragment thumbs"><img class="plain" src="images/thumbs-down.png" alt=""></div>
+	</section>
+
+	<section>
+		<h2>Knihovny mixinů</h2>
+		<p>
+			<a target="_blank" href="http://compass-style.org/">Compass</a>,
+			<a target="_blank" href="https://www.bourbon.io/">Bourbon</a>,
+			<a target="_blank" href="https://davidtheclark.github.io/scut/">Scut</a>,
+			<a target="_blank" href="http://lesselements.com/">LESS Elements</a>
+		</p>
+		<p class="fragment">
+			<i class="icon icon-32 icon-minus mr1r">&minus;</i>
+			příliš velká kladiva - využiji jen zlomek
+		</p>
+		<p class="fragment">
+			<i class="icon icon-32 icon-minus mr1r">&minus;</i>
+			plné dnes mnohdy zbytečných -moz- -webkit- prefixů
+		</p>
+		<div class="fragment thumbs"><img class="plain" src="images/thumbs-down.png" alt=""></div>
+	</section>
+
+	<section>
+		<h2>CSS preprocesory v roce 2020</h2>
+		<!-- <p class="fragment tal">
+			<i class="icon icon-32 icon-plus mr1r">&plus;</i>
+			Proměnné ($variables)
+		</p>
+		<p class="fragment tal">
+			<i class="icon icon-32 icon-minus mr1r">&minus;</i>
+			Spojování CSS do jednoho souboru (@import)
+		</p> -->
+
+		<div class="container">
+			<div class="col">
+					<p class="fragment tal">
+						<i class="icon icon-32 icon-plus mr1r">&plus;</i>
+						Proměnné ($variables)
+					</p>
+					<p class="fragment tal">
+						<i class="icon icon-32 icon-minus mr1r">&minus;</i>
+						Spojování (@import)
+					</p>
+					<p class="fragment tal">
+						<i class="icon icon-32 icon-minus mr1r">&minus;</i>
+						Dědičnost (@extend)
+					</p>
+					<p class="fragment tal">
+						<i class="icon icon-32 icon-minus mr1r">&minus;</i>
+						The Indented Syntax
+					</p>
+					<p class="fragment tal">
+						<i class="icon icon-32 icon-plus mr1r">&plus;</i>
+						Cykly (@each, @for)
+					</p>
+			</div>
+			<div class="col">
+					<p class="fragment tal">
+						<i class="icon icon-32 icon-minus mr1r">&minus;</i>
+						Aritmetické fuknkce
+					</p>
+					<p class="fragment tal">
+						<i class="icon icon-32 icon-plus mr1r">&plus;</i>
+						Barvy
+					</p>
+					<p class="fragment tal">
+						<i class="icon icon-32 icon-minus mr1r">&minus;</i>
+						Zanořování (nesting)
+					</p>
+					<p class="fragment tal">
+						<i class="icon icon-32 icon-minus mr1r">&minus;</i>
+						Knihovny mixinů
+					</p>				
+			</div>
+		</div>
+
+		<!-- <table>
+			<tr class="fragment">
+				<td><i class="icon icon-32 icon-plus mr1r">&plus;</i></td>
+				<td>Proměnné ($variables)</td>
+			</tr>
+			<tr class="fragment">
+				<td><i class="icon icon-32 icon-minus mr1r">&minus;</i></td>
+				<td>Spojování CSS do jednoho souboru (@import)</td>
+			</tr>
+			<tr class="fragment">
+				<td><i class="icon icon-32 icon-minus mr1r">&minus;</i></td>
+				<td>Dědičnost (@extend)</td>
+			</tr>
+			<tr class="fragment">
+				<td><i class="icon icon-32 icon-minus mr1r">&minus;</i></td>
+				<td>The Indented Syntax</td>
+			</tr>
+			<tr class="fragment">
+				<td><i class="icon icon-32 icon-plus mr1r">&plus;</i></td>
+				<td>Cykly (@each, @for)</td>
+			</tr>
+			<tr class="fragment">
+				<td><i class="icon icon-32 icon-minus mr1r">&minus;</i></td>
+				<td>Aritmetické fuknkce</td>
+			</tr>
+			<tr class="fragment">
+				<td><i class="icon icon-32 icon-plus mr1r">&plus;</i></td>
+				<td>Barvy</td>
+			</tr>
+			<tr class="fragment">
+				<td><i class="icon icon-32 icon-minus mr1r">&minus;</i></td>
+				<td>Zanořování (nesting)</td>
+			</tr>
+			<tr class="fragment">
+				<td><i class="icon icon-32 icon-minus mr1r">&minus;</i></td>
+				<td>Frameworky a knihovny)</td>
+			</tr>
+		</table> -->
+	</section>
+
+
+	<section style="text-align: left;" data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+		<h1>A to je konec.</h1>
+		<h2>Dotazy?</h2>
+	</section>
+
+
+</div>
+</div>
+
+<script src="../_reveal.js_/lib/js/head.min.js"></script>
+<script src="../_reveal.js_/js/reveal.js"></script>
+<script src="../_reveal.js_/js/jQuery.js"></script>
+<script src="../_reveal.js_/js/jquery.vide.min.js"></script>
+
+<script>
+
+// More info https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+	controls: true,
+	progress: true,
+	history: true,
+	center: false,
+
+	transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+	// More info https://github.com/hakimel/reveal.js#dependencies
+	dependencies: [
+		{ src: '../_reveal.js_/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+		{ src: '../_reveal.js_/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: '../_reveal.js_/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: '../_reveal.js_/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+		{ src: '../_reveal.js_/plugin/search/search.js', async: true },
+		{ src: '../_reveal.js_/plugin/zoom-js/zoom.js', async: true },
+		{ src: '../_reveal.js_/plugin/notes/notes.js', async: true }
+	]
+});
+
+</script>
+
+</body>
+</html>
