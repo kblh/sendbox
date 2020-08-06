@@ -17,11 +17,17 @@
 <div class="slide">
   <h2>Keyboard Shortcuts</h2>
   <ul>
-    <li><code>⌘ + opt + C</code> (Mac) or <code>ctrl + shift + C</code> (Windows, Linux, Chrome OS).</li>
-    <li><code>⌘ + opt + J</code>: console</li>
+    <li><code>⌘ + opt + I</code> (Mac)
+      <br> <code>F12</code> or <code>ctrl + shift + I</code> (Windows, Linux, Chrome OS)
+    </li>
+    <!-- <li><code>⌘ + opt + J</code>: console</li> -->
     <li><code>⌘ + shift + D</code>: toggle the dock state between the last two recently used states</li>
     <li><code>⌘ + shift + P</code>: show panel</li>
   </ul>
+</div>
+
+<div class="slide">
+  <h2>Disable / Enable</h2>
 </div>
 
 <div class="slide">
@@ -29,6 +35,14 @@
   <ul>
     <li><code>⌘ + click</code>: go to exact line of code</li>
     <li><a href="https://developers.google.com/web/tools/chrome-devtools/workspaces/?utm_source=devtools">Edit Files With Workspaces</a></li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>Editor multiple selections</h2>
+  <ul>
+    <li><code>⌘ + click</code></li>
+    <li><code>⌘ + D</code></li>
   </ul>
 </div>
 
@@ -42,8 +56,11 @@
 <div class="slide">
   <h2>Console Utilities</h2>
   <ul>
-    <li><code>$0, $1, $2 ... $4</code>: historical reference to the last five inspected DOM elements</li>
-    <li><code>$(selector)</code>: alias for the document.querySelector() function</li>
+    <li>
+      <code>$0, $1, $2 ... $4</code>: historical reference to the last five inspected DOM elements<br>
+      Example: <code>monitorEvents($0,"click")</code>
+    </li>
+    <li><code>$(selector)</code>: alias for the document.querySelector() function<br></li>
     <li><code>$$(selector)</code>: alias for the document.querySelectorAll() function</li>
     <li><code>$_</code>: returns the value of the most recently evaluated expression</li>
     <li><a href="https://developers.google.com/web/tools/chrome-devtools/console/utilities">Console Utilities API Reference</a></li>
@@ -53,7 +70,7 @@
 <div class="slide">
   <h2>Console Live Expressions</h2>
   <ul>
-    <li>Examples: <code>window.pageYOffset, document.location, document.cookie</code></li>
+    <li>Examples: <code>window.pageYOffset, document.location, document.activeElement</code></li>
   </ul>
 </div>
 
@@ -66,6 +83,15 @@
   </ul>
 </div>
 
+<div class="slide">
+  <h2>Increment / decrement values</h2>
+  <ul>
+    <li><code>&uarr;/&darr;</code>: 1</li>
+    <li><code>&uarr;/&darr; + shift</code>: 10</li>
+    <li><code>&uarr;/&darr; + option</code>: .1</li>
+  </ul>
+</div>
+
 <div class="slide colors">
   <h2>Colors</h2>
   <ul>
@@ -75,7 +101,7 @@
 </div>
 
 <div class="slide shadow">
-  <h2>box-shaddow editor</h2>
+  <h2>Shaddows</h2>
 </div>
 
 <div class="slide">
