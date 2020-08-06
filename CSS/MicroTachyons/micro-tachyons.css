@@ -245,6 +245,8 @@
 .maw40r { max-width: 40rem }
 .maw50r { max-width: 50rem }
 
+.maw100p { max-width: 100% }
+
 .mih0 { min-height: 0; }
 .mih10r { min-height: 10rem }
 .mih15r { min-height: 15rem }
