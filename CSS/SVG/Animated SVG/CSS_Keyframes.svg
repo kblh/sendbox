@@ -1,0 +1,15 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+	<style>
+		circle {
+			animation: bounce 2s infinite ease-in-out alternate;
+			transform-origin: 50px 50px;
+			fill: red;
+		}
+		@keyframes bounce {
+			to {
+				transform: scale(0);
+			}
+		}
+	</style>
+	<circle cx="50" cy="50" r="25" />
+</svg>
