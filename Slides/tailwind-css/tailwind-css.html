@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>Tailwind CSS</title>
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../_reveal.js_/css/reveal.css">
+		<link rel="stylesheet" href="../_reveal.js_/css/theme/white.css" id="theme">
+    <link rel="stylesheet" href="../../CSS/MicroTachyons/micro-tachyons.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../_reveal.js_/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../_reveal.js_/css/print/pdf.css' : '../_reveal.js_/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+  <style>
+    .logo {
+      position: absolute;
+			top: 50px;
+			right: 50px;
+    }
+  </style>
+
+	</head>
+<body>
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+	<section data-background="images/etn-bg.png">
+		<div style="width: 200px;">&nbsp;</div>
+		<h1>Tailwind CSS</h1>
+		<h3>v čem je kouzlo utility-first CSS frameworku</h3>
+		<p>
+			<small>Petr Koláček</small>
+		</p>
+		<div><img src="images/etn-logo.png" class="plain" width="200"></div>
+	</section>
+
+	<section>
+		<h2>Bootsrap vs Tailwind</h2>
+		<p><img src="images/bootstrap-logo.png" class="plain" alt=""></p>
+		<ul>
+			<li class="fragment">
+        design system
+      </li>
+			<li class="fragment">
+        modulární třídy (btn, alert)
+      </li>
+			<li class="fragment">
+        dokonalejší větší komponenty - často s nimi nevystačíme - musíme si vyrobit vlastní
+      </li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Bootsrap vs Tailwind</h2>
+		<p><img src="images/tailwind-logo.png" class="plain" alt=""></p>
+		<ul>
+			<li class="fragment">
+        design system
+      </li>
+			<li class="fragment">
+        atomické třídy (w-16, text-center)
+      </li>
+			<li class="fragment">
+        miniaturní lego kostičky - lze z nich složit (téměř) všechno
+      </li>
+		</ul>		
+	</section>
+
+	<section>
+		<h2>Bootsrap vs Tailwind</h2>
+		<img src="images/tailwind-vs-bootstrap.jpg" class="plain" alt="">
+	</section>
+
+	<section>
+		<h2>Micro Tachyons vs Tailwind</h2>
+		<p><img src="images/tachyons.jpg" class="plain" alt=""></p>
+		<ul>
+			<li class="fragment">
+        minimální počet tříd
+      </li>
+			<li class="fragment">
+        snadná rozšiřitelnost díky Emmet
+      </li>
+			<li class="fragment">
+        spoléhá na konvence
+      </li>
+		</ul>		
+	</section>
+
+	<section>
+		<h2>Micro Tachyons vs Tailwind</h2>
+		<p><img src="images/tailwind-logo.png" class="plain" alt=""></p>
+		<ul>
+			<li class="fragment">
+        obrovské množství tříd (až 20 MB)
+      </li>
+			<li class="fragment">
+        treeshaking
+      </li>
+			<li class="fragment">
+        spoléhá na build process
+      </li>
+		</ul>		
+	</section>
+
+	<section data-transition="slide" data-background="#000" data-background-transition="zoom" class="c-inverse">
+		<video controls="controls" width="1300" height="630" name="Video Name">
+			<source src="images/tailwind-video.mov">
+		</video>
+	</section>
+
+	<section>
+		<h2>Responzivita</h2>
+		<p>všechny třídy jsou responzivní</p>
+		<div data-markdown="code/responsiv.md"></div>
+	</section>
+
+	<section>
+		<h2>Stavy</h2>
+		<p>třídy pro všechny stavy</p>
+		<div data-markdown="code/states.md"></div>
+	</section>
+
+	<section>
+		<h2>Podpora dark mode</h2>
+		<div data-markdown="code/darkmode.md"></div>
+	</section>
+
+	<section>
+		<h2>Kombinace přepínačů</h2>
+		<div data-markdown="code/combine.md"></div>
+	</section>
+
+	<section>
+		<h2>Spacing</h2>
+		<p><img src="images/spacing.png" alt="" class="plain"></p>
+	</section>
+
+	<section>
+		<h2>Barvy</h2>
+		<p><img src="images/colors.png" alt="" class="plain"></p>
+	</section>
+
+	<section>
+		<h2>Customizace, Theaming</h2>
+		<div data-markdown="code/config.md"></div>
+	</section>
+
+	<section>
+		<h2>@apply</h2>
+		<div data-markdown="code/apply.md"></div>
+	</section>
+
+	<section>
+		<h2>@theme</h2>
+		<div data-markdown="code/theme.md"></div>
+	</section>
+
+	<section>
+		<h2>Just-in-Time Mode</h2>
+		<p>compiler for Tailwind CSS that generates your styles on-demand as you author your templates instead of generating everything in advance</p>
+	</section>
+
+	<section>
+		<h2>Výhody?</h2>
+		<ul>
+			<li class="fragment">rychlost vývoje: nemusím opustit html markup</li>
+			<li class="fragment">bezpečí design systému</li>
+			<li class="fragment">možnost definovat vlastní parametry DS</li>
+			<li class="fragment">responzivita, stavy, dark mode out of the box</li>
+			<li class="fragment">variabilita - @apply, @theme</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Nevýhody?</h2>
+		<p class="fragment"><img src="images/ie-logo.png" class="plain" alt=""></p>
+	</section>
+
+	<section>
+		<h2>Konkurence</h2>
+		<ul>
+			<li><a href="http://tachyons.io/">Tachyons</a></li>
+			<li><a href="http://tedconf.github.io/shed-css/index.html">Shed CSS</a></li>
+			<li><a href="https://basscss.com/">Base CSS</a></li>
+			<li><a href="http://buildwithbeard.com/">Beard</a></li>
+			<li><a href="https://turretcss.com/">Turret CSS</a></li>
+			<li><a href="http://johnpolacek.github.io/expressive-css/">Expressive CSS</a></li>
+		</ul>
+	</section>
+
+	<section style="text-align: left;" data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+		<h1>A to je konec.</h1>
+		<h2>Dotazy?</h2>
+	</section>
+
+
+</div>
+</div>
+
+<script src="../_reveal.js_/lib/js/head.min.js"></script>
+<script src="../_reveal.js_/js/reveal.js"></script>
+<script src="../_reveal.js_/js/jQuery.js"></script>
+<script src="../_reveal.js_/js/jquery.vide.min.js"></script>
+
+<script>
+
+// More info https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+	controls: true,
+	progress: true,
+	history: true,
+	center: false,
+
+	transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+	// More info https://github.com/hakimel/reveal.js#dependencies
+	dependencies: [
+		{ src: '../_reveal.js_/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+		{ src: '../_reveal.js_/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: '../_reveal.js_/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: '../_reveal.js_/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+		{ src: '../_reveal.js_/plugin/search/search.js', async: true },
+		{ src: '../_reveal.js_/plugin/zoom-js/zoom.js', async: true },
+		{ src: '../_reveal.js_/plugin/notes/notes.js', async: true }
+	]
+});
+
+</script>
+
+</body>
+</html>
