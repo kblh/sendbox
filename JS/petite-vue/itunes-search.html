@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iTunes search</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="iTunesSearch">
+
+  <h1>iTunes search</h1>
+  <p><a href="https://www.youtube.com/watch?v=v5gA3Nx41Aw">https://www.youtube.com/watch?v=v5gA3Nx41Aw</a></p>
+  <form @submit.prevent="store.search">
+    <input v-model="store.searchText" class="border-2 p-2" type="text">
+    <button class="bg-red-300 p-3" @click="store.search">Submit</button>
+  </form>
+
+  <div class="grid grid-cols-3 gap-6 mt-5">
+    <div 
+      class="border-2 p-2" 
+      v-for="album in store.results" 
+      :key="album.collectionId"
+    >
+      <a :href="album.artistViewUrl ?? #">
+        <h3>{{ album.collectionName }}</h3>
+      </a>      
+      <img :src="album.artworkUrl100" alt="">
+    </div>
+  </div>
+
+  <script type="module">
+    import { createApp, reactive } from "https://unpkg.com/petite-vue?module";
+
+    const store = reactive({
+      searchText: "",
+      results: "",
+      async search() {
+        const itunesSearch = await fetch(`https://itunes.apple.com/search?term=${this.searchText}&entity=album`);
+        const res = await itunesSearch.json();
+        console.log(res);
+        this.results = res.results;
+      }
+    })
+
+    createApp({ store }).mount("#iTunesSearch");
+
+  </script>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>petite-vue</title>
+  <!-- <script src="https://unpkg.com/petite-vue" defer init></script> -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+  <h1>petite-vue</h1>
+  <!-- <div v-scope="{ count: 0 }">
+    {{ count }}
+    <button class="bg-blue-300 p-1 rounded" @click="count++">inc</button>
+  </div> -->
+
+  <template id="example">
+    {{ store.count }}
+    <button class="bg-blue-300 p-1 rounded" @click="store.increment"> inc </button>
+  </template>
+
+  <div v-scope="exampleFunc()"></div>
+  <div v-scope="exampleFunc()"></div>
+  <div v-scope="exampleFunc()"></div>
+
+  <script type="module">
+    import { createApp, reactive } from "https://unpkg.com/petite-vue?module";
+
+    const store = reactive({
+      count: 0,
+      increment() {
+        this.count = this.count + 3;
+      }
+    })
+
+    function exampleFunc() {
+      return {
+        $template: "#example",
+      }
+    }
+
+    createApp({ exampleFunc, store }).mount()
+
+  </script>
+</body>
+</html>

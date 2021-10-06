@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Search</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+</style>  
+</head>
+<body>
+  <h1 class="text-lg">YouTube Search</h1>
+  <p><a href="https://www.youtube.com/watch?v=Y_g5-7NKp0A">https://www.youtube.com/watch?v=Y_g5-7NKp0A</a></p>
+
+  <script type="module">
+    import { createApp } from "https://unpkg.com/petite-vue?module";
+
+    function Container() {
+      return {
+        channelId: 'UCr8BLoBSZtmVr31UEfCiQfA',
+        key: 'AIzaSyC8wPgSLnvVpTmrcYc0YUCTd5iZSSov1pY',
+        videos: [],
+        async getVideos() {
+          var channelInfo = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${this.key}&channelId=${this.channelId}&part=snippet,id&order=date&maxResults=20`)
+          var response = await channelInfo.json();
+          console.log(response.items);
+          this.videos = response.items;
+        },
+      }
+    }
+
+    function Video(props) {
+      return {
+        $template: '#video-component',
+        videoId: props.videoId,
+        thumbnail: props.thumbnail,
+        title: props.title
+      }
+    }
+
+    createApp({
+      Container,
+      Video
+    }).mount()
+
+  </script>
+
+  <template id="video-component">
+    <div>
+      <a :href="`https://www.youtube.com/watch?v=${videoId}`">
+        <img :src="`${thumbnail}`" alt="thumbnail" class="h-20 w-20">
+        <p>{{ title }}</p>
+      </a>
+    </div>
+  </template>
+
+
+  <div v-scope="Container()">
+    <!-- <p>{{ channelId }}</p> -->
+    <input v-model="channelId" type="text" class="border p-2">
+    <button @click="getVideos" class="p-2 rounded bg-red-400 text-white">Submit</button>
+
+    <div>
+      <div v-for="(video, index) in videos" :key="index" class="p-4 m-4 bg-pink-500">
+        <div v-scope="Video({ videoId: video.id.videoId, thumbnail: video.snippet.thumbnails.high.url, title: video.snippet.title })"></div>
+      </div>
+    </div>
+  
+  </div>
+
+
+
+</body>
+</html>
