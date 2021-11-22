@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Novinky a tipy ze světa CSS</title>
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../_reveal.js_/css/reveal.css">
+		<link rel="stylesheet" href="../_reveal.js_/css/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../_reveal.js_/lib/css/zenburn.css">
+		<link rel="stylesheet" href="../../CSS/init.css">
+		<link rel="stylesheet" href="../../CSS/MicroTachyons/micro-tachyons.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../_reveal.js_/css/print/pdf.css' : '../_reveal.js_/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section data-background="images/etn-bg.png">
+					<div style="width: 200px;">&nbsp;</div>
+					<h1>Novinky a tipy<br>ze světa CSS</h1>
+					<p>
+						<small>Petr Koláček</small>
+					</p>
+					<div><img src="images/etn-logo.png" class="plain" width="200"></div>
+				</section>
+
+
+<!-- ############################################### -->
+				<section>
+					<h2>conic-gradient</h2>
+					<p>
+						<a target="_blank" href="https://codepen.io/kblh/pen/MWoKMXd">Example</a>,
+						<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/conic-gradient()">Doc</a><br>
+					</p>
+					<div data-markdown>
+```
+.cz-flag {
+	background: conic-gradient(white 0 25%, red 0 66%, darkblue 0 84%, white 0);
+}
+
+.pie-chart {
+	background: conic-gradient(lightblue 0 30%, green 0 40%, yellow 0 70%, red 0 85%, darkblue 0);
+}
+
+.sunburst {
+	background: repeating-conic-gradient(red 0 15deg,darkred 0 30deg);
+}
+```						
+					</div>
+					<p>
+						<div class="caniuse caniuse__chrome caniuse--yes"></div>
+						<div class="caniuse caniuse__firefox caniuse--yes"></div>
+						<div class="caniuse caniuse__edge caniuse--yes"></div>
+						<div class="caniuse caniuse__safari caniuse--yes"></div>
+						<div class="caniuse caniuse__ie11 caniuse--no"></div>
+						<div class="caniuse caniuse__opera caniuse--yes"></div>
+					</p>
+
+				</section>
+
+<!-- ############################################### -->
+				<section>
+					<h2>accent-color</h2>
+					<p>
+						<a target="_blank" href="https://codepen.io/web-dot-dev/pen/PomBZdy">Example</a>,
+						<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/accent-color">Doc</a><br>
+					</p>
+					<div data-markdown>
+```
+:root {
+  accent-color: deeppink;
+}
+```						
+					</div>
+					<p>
+						<div class="caniuse caniuse__chrome caniuse--yes"></div>
+						<div class="caniuse caniuse__firefox caniuse--yes"></div>
+						<div class="caniuse caniuse__edge caniuse--yes"></div>
+						<div class="caniuse caniuse__safari caniuse--no"></div>
+						<div class="caniuse caniuse__ie11 caniuse--no"></div>
+						<div class="caniuse caniuse__opera caniuse--yes"></div>
+					</p>
+				</section>
+
+<!-- ############################################### -->
+				<section>
+					<h2>iOS zooming problem</h2>
+
+					<video controls width="650">
+						<source src="images/ios-zoom-problem.mp4"
+										type="video/mp4">				
+							Sorry, your browser doesn't support embedded videos.
+					</video>
+				
+				</section>
+
+<!-- ############################################### -->
+				<section>
+					<h2>inset</h2>
+					<p><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/inset">Doc</a><br></p>
+					<div data-markdown>
+						```
+						.box-1 {
+							position: absolute;
+							top: 2.4em;
+							right: 3em;
+							bottom: 3em;
+							left: 4em;
+						}
+						
+						.box-2 {
+							inset: 2.4em 3em 3em 4em;						}
+						```						
+					</div>
+					<p>
+						<div class="caniuse caniuse__chrome caniuse--yes"></div>
+						<div class="caniuse caniuse__firefox caniuse--yes"></div>
+						<div class="caniuse caniuse__edge caniuse--yes"></div>
+						<div class="caniuse caniuse__safari caniuse--yes"></div>
+						<div class="caniuse caniuse__ie11 caniuse--no"></div>
+						<div class="caniuse caniuse__opera caniuse--yes"></div>
+					</p>
+				</section>
+
+<!-- ############################################### -->
+<section>
+	<h2>aspect-ratio</h2>
+	<div data-markdown>
+```
+img {
+	aspect-ratio: 16 / 9;
+}
+```						
+	</div>
+	<p>
+		<div class="caniuse caniuse__chrome caniuse--yes"></div>
+		<div class="caniuse caniuse__firefox caniuse--yes"></div>
+		<div class="caniuse caniuse__edge caniuse--yes"></div>
+		<div class="caniuse caniuse__safari caniuse--yes"></div>
+		<div class="caniuse caniuse__ie11 caniuse--no"></div>
+		<div class="caniuse caniuse__opera caniuse--yes"></div>
+	</p>
+</section>
+
+
+
+<!-- ############################################### -->
+				<section>
+					<h2>:focus-within</h2>
+					<p><a target="_blank" href="https://codepen.io/web-dot-dev/pen/mdRMOoV">Example</a><br></p>
+					<div data-markdown>
+```
+:focus-within .helper {
+  display: block;
+}
+
+.button:focus {
+  outline: 2px dashed blue;
+  outline-offset: 2px;
+  background-color: black;
+}
+```						
+					</div>
+					<p>
+						<div class="caniuse caniuse__chrome caniuse--yes"></div>
+						<div class="caniuse caniuse__firefox caniuse--yes"></div>
+						<div class="caniuse caniuse__edge caniuse--yes"></div>
+						<div class="caniuse caniuse__safari caniuse--yes"></div>
+						<div class="caniuse caniuse__ie11 caniuse--no"></div>
+						<div class="caniuse caniuse__opera caniuse--yes"></div>
+					</p>
+				</section>
+
+
+<!-- ############################################### -->
+<section>
+	<h2>:focus-visible</h2>
+	<p><a target="_blank" href="https://codepen.io/web-dot-dev/pen/qBRXRdW">Example</a><br></p>
+	<div data-markdown>
+```
+button:focus {
+	outline: none;
+}
+
+button:focus-visible {
+	outline: 1px solid black;
+}
+```						
+	</div>
+	<p>
+		<div class="caniuse caniuse__chrome caniuse--yes"></div>
+		<div class="caniuse caniuse__firefox caniuse--yes"></div>
+		<div class="caniuse caniuse__edge caniuse--yes"></div>
+		<div class="caniuse caniuse__safari caniuse--no"></div>
+		<div class="caniuse caniuse__ie11 caniuse--no"></div>
+		<div class="caniuse caniuse__opera caniuse--yes"></div>
+	</p>
+</section>
+
+
+<!-- ############################################### -->
+<section>
+	<h2>Media Queries Level 4</h2>
+	<p><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media">Doc</a><br></p>
+	<div data-markdown>
+```
+@media (height > 600px) {
+	body { line-height: 1.4; }
+}
+
+@media (400px <= width <= 700px) {
+	body { line-height: 1.4; }
+}
+```						
+	</div>
+	<p>
+		<div class="caniuse caniuse__chrome caniuse--no"></div>
+		<div class="caniuse caniuse__firefox caniuse--yes"></div>
+		<div class="caniuse caniuse__edge caniuse--no"></div>
+		<div class="caniuse caniuse__safari caniuse--no"></div>
+		<div class="caniuse caniuse__ie11 caniuse--no"></div>
+		<div class="caniuse caniuse__opera caniuse--no"></div>
+	</p>
+</section>
+
+
+
+
+
+
+<!-- ############################################### -->
+<section style="text-align: left;" data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+	<h1>A to je konec.</h1>
+	<h2>Dotazy?</h2>
+</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="../_reveal.js_/lib/js/head.min.js"></script>
+		<script src="../_reveal.js_/js/reveal.js"></script>
+		<script src="../_reveal.js_/js/jQuery.js"></script>
+		<script src="../_reveal.js_/js/jquery.vide.min.js"></script>
+		
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '../_reveal.js_/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../_reveal.js_/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../_reveal.js_/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../_reveal.js_/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../_reveal.js_/plugin/search/search.js', async: true },
+					{ src: '../_reveal.js_/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../_reveal.js_/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
