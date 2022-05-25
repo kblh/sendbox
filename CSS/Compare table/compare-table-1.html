@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>compare 1</title>
+
+<style>
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.c-compare__container {
+  background: lightblue;
+	max-height: calc(100vh - 20px);
+  overflow-x: auto;
+}
+
+.c-compare {
+	--compareWidth: 200px;
+	border-collapse: collapse;
+	position: relative;
+}
+
+.c-compare th {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  background: #fff;
+	overflow-x: auto;
+	max-width: 100vw;
+}
+
+.c-compare tbody {
+	overflow-x: auto;
+	max-width: 100vw;
+}
+
+.c-compare th,
+.c-compare td {
+  padding: 10px;
+  min-width: var(--compareWidth);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+.c-compare__label {
+  font-weight: bold;
+  min-width: 150px; /* Labels should have a strict width, based on the design (150px is just for this demo) */
+  width: 150px; /* In order to enforce the width we need to apply both a min-width and a width with the same value */
+  background: #eee;
+}
+.c-compare__all-parameters {
+	vertical-align: bottom;
+}
+
+.c-compare__heading {
+  background: #ccc;
+  width: 100%;
+  position: relative;
+  position: sticky;
+  top: 0;
+  left: 10px;
+}
+
+@media all and (max-width: 600px) { /* The breakpoint is indicative. You might want to break it on a different limit */
+
+	.c-compare__label,
+	.c-compare__all-parameters {
+    display: none; /* We want to hide the labels on small screens... */
+  }
+
+  .c-compare th,
+  .c-compare td {
+    text-align: center;
+		/* border-right: 1px solid; */
+  }
+
+  .c-compare [spec-title] {
+		min-width: calc(50vw - 20px);
+	}
+
+	[spec-title]::before { 
+		/* ...and show them above each spec instead. */
+    content: attr(spec-title);
+    color: #999;
+		color: red;
+    display: block;
+  }
+}
+
+</style>
+
+</head>
+<body>
+	
+	<p>A responsive product comparison table, with only HTML and CSS <br/><a href="https://www.gsarigiannidis.gr/responsive-product-comparison-table-html-css-no-js/" target="_blank">Read the details</a></p>
+	<p><a href="https://codepen.io/gsarig/pen/LYVLexK">https://codepen.io/gsarig/pen/LYVLexK</a></p>
+
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum mollitia et placeat, excepturi consectetur dolore amet, omnis reprehenderit veniam officia dolores dolorum, inventore culpa nesciunt sit repudiandae. Facilis, blanditiis asperiores?</p>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum mollitia et placeat, excepturi consectetur dolore amet, omnis reprehenderit veniam officia dolores dolorum, inventore culpa nesciunt sit repudiandae. Facilis, blanditiis asperiores?</p>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum mollitia et placeat, excepturi consectetur dolore amet, omnis reprehenderit veniam officia dolores dolorum, inventore culpa nesciunt sit repudiandae. Facilis, blanditiis asperiores?</p>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum mollitia et placeat, excepturi consectetur dolore amet, omnis reprehenderit veniam officia dolores dolorum, inventore culpa nesciunt sit repudiandae. Facilis, blanditiis asperiores?</p>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum mollitia et placeat, excepturi consectetur dolore amet, omnis reprehenderit veniam officia dolores dolorum, inventore culpa nesciunt sit repudiandae. Facilis, blanditiis asperiores?</p>
+
+	<div class="c-compare__container">
+
+		<table class="c-compare">
+		<thead>
+			<tr>
+				<th class="c-compare__all-parameters">
+					<button>Všechny paramatry</button>
+				</th>
+				<th>
+					<img src="https://picsum.photos/100/80?random=1" alt="">
+					<h3>Product 1</h3>
+				</th>
+				<th>
+					<img src="https://picsum.photos/100/80?random=2" alt="">
+					<h3>Product 2</h3>
+				</th>
+				<th>
+					<img src="https://picsum.photos/100/80?random=3" alt="">
+					<h3>Product 3</h3>
+				</th>
+				<th>
+					<img src="https://picsum.photos/100/80?random=4" alt="">
+					<h3>Product 4</h3>
+				</th>
+				<th>
+					<img src="https://picsum.photos/100/80?random=5" alt="">
+					<h3>Product 5</h3>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			<tr>
+				<td class="c-compare__heading" colspan="6"><span>Heading</span></td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			<tr>
+				<td class="c-compare__heading" colspan="6"><span>Heading</span></td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			<tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			<tr>
+				<td class="c-compare__heading" colspan="6"><span>Heading</span></td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			<tr>
+				<td class="c-compare__heading" colspan="6"><span>Heading</span></td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			<tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			<tr>
+				<td class="c-compare__heading" colspan="6"><span>Heading</span></td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			<tr>
+				<td class="heading" colspan="6"><span>Heading</span></td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+			 <tr>
+				<td class="c-compare__label">Label</td>
+				<td spec-title="Label">Spec 1</td>
+				<td spec-title="Label">Spec 2</td>
+				<td spec-title="Label">Spec 3</td>
+				<td spec-title="Label">Spec 4</td>
+				<td spec-title="Label">Spec 5</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>	
+
+</body>
+</html>
