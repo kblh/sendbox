@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>z-index</title>
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="../_reveal.js_/css/reveal.css">
+	<link rel="stylesheet" href="../_reveal.js_/css/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../../CSS/MicroTachyons/micro-tachyons.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../_reveal.js_/lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? '../_reveal.js_/css/print/pdf.css' : '../_reveal.js_/css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	<style>
+		.logo {
+			position: absolute;
+			top: 50px;
+			right: 50px;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="reveal">
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section data-background="images/etn-bg.png">
+				<div style="width: 200px;">&nbsp;</div>
+				<h1>z-index</h1>
+				<h3>konec bojů se správou z-indexu v CSS</h3>
+				<p>
+					<small>Petr Koláček</small>
+				</p>
+				<div><img src="images/etn-logo.png" class="plain" width="200"></div>
+			</section>
+
+			<section data-transition="slide" data-background="#000" data-background-transition="zoom">
+				<p><img src="images/pro-css-tip.png" class="plain" alt=""></p>
+			</section>
+
+			<section>
+				<h2>Problémy spojené se z-indexem</h2>
+				<ul>
+					<li class="fragment">neustálé přetěžování z-indexu (z-index hell)</li>
+					<li class="fragment">porušování nastavených pravidel škálování</li>
+					<li class="fragment">přetečení elementu přes vyšší vrstvu</li>
+					<li class="fragment">problémy s cizími knihovnami</li>
+					<li class="fragment">mnoho kodérů přesně nerozumí <strong>jak to funguje</strong></li>
+				</ul>
+			</section>
+
+			<section data-transition="slide" data-background="#000" data-background-transition="zoom">
+				<img src="images/family-guy.gif" class="plain" alt="">
+			</section>
+
+			<section>
+				<h2>DOM Order Matters</h2>
+				<p>
+					<a target="_blank" href="https://codepen.io/kblh/pen/MWQOwoe?editors=1100">Example 1</a><br>
+				</p>
+				<ul>
+					<li class="fragment">
+						elementy ve stejném stacking context se budou zobrazovat podle jejich <strong>pořadí v DOM</strong>
+					</li>
+					<li class="fragment">
+						<strong>pozicované</strong> elementy ze zobrazují <strong>nad nepozicovanými</strong> elementy
+					</li>
+					<li class="fragment">
+						z-index funguje pouze pro elementy, které mají position <strong>jiný než static</strong>
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Stacking Context</h2>
+				<p>
+					<a target="_blank" href="https://codepen.io/kblh/pen/MWQOwoe?editors=1100">Example 2</a><br>
+				</p>
+				<ul>
+					<li class="fragment">
+						z-index elementu je vždy limitován z-indexem jeho <strong>rodiče</strong>
+					</li>
+					<li class="fragment">
+						isolation: isolate - vloží element do nového <strong>stacking context</strong>
+					</li>
+					<li class="fragment">
+						některé CSS vlastnosti (opacity, transform) vloží element do nového stacking context automaticky
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Position</h2>
+				<p>
+					<a target="_blank" href="https://codepen.io/kblh/pen/MWQOwoe?editors=1100">Example 3</a><br>
+				</p>
+				<ul>
+					<li class="fragment">
+						všechny pozicované elementy (vše kromě static) jsou si z hlediska stacking rovny
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Isolation</h2>
+				<p>
+					<a target="_blank" href="https://codepen.io/kblh/pen/MWQOwoe?editors=1100">Example 4</a><br>
+				</p>
+				<ul>
+					<li class="fragment">
+						<code>isolation: isolate</code> (nefunguje v IE11)
+					</li>
+					<li class="fragment">
+						lze nahradit<br><code>position: relative</code><br><code>z-index: 0</code>
+					</li>
+					<li class="fragment">
+						vhodné například pro izolování cizích knihoven, kde se z-index utrhl ze řetězu
+					</li>
+				</ul>
+			</section>
+
+			<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+				<h1>z-index system strategies</h1>
+			</section>
+
+
+			<section>
+				<h2>Material UI</h2>
+				<div data-markdown>
+					```css
+					* mobile stepper: 1000
+					* fab: 1050
+					* speed dial: 1050
+					* app bar: 1100
+					* drawer: 1200
+					* modal: 1300
+					* snackbar: 1400
+					* tooltip: 1500
+					```
+				</div>
+				<p><a target="_blank" href="https://mui.com/material-ui/customization/z-index/">link</a></p>
+			</section>
+
+			<section>
+				<h2>Bootstrap</h2>
+				<div data-markdown>
+					```css
+					$zindex-dropdown: 1000;
+					$zindex-sticky: 1020;
+					$zindex-fixed: 1030;
+					$zindex-modal-backdrop: 1040;
+					$zindex-offcanvas: 1050;
+					$zindex-modal: 1060;
+					$zindex-popover: 1070;
+					$zindex-tooltip: 1080;
+					```
+				</div>
+				<p><a target="_blank" href="https://getbootstrap.com/docs/5.0/layout/z-index/">link</a></p>
+			</section>
+
+			<section>
+				<h2>CSS Tricks</h2>
+				<div data-markdown>
+					```css
+					$zindex: (
+					modal : 9000,
+					overlay : 8000,
+					dropdown : 7000,
+					header : 6000,
+					footer : 5000
+					);
+					```
+				</div>
+				<p><a target="_blank" href="https://css-tricks.com/handling-z-index/">Handling z-index</a></p>
+			</section>
+
+			<section>
+				<h2>My way</h2>
+				<div data-markdown>
+					```css
+					$z-index-underground: -1;
+					$z-index-ground: 0;
+					$z-index-overlay: 1;
+					$z-index-sticky: 10;
+					$z-index-menu: 100;
+					$z-index-modal: 1000;
+					$z-index-outer-space: 10000;
+
+					```
+				</div>
+			</section>
+
+			<section style="text-align: left;" data-transition="slide" data-background="#e06436"
+				data-background-transition="zoom" class="c-inverse">
+				<h1>A to je konec.</h1>
+				<h2>Dotazy?</h2>
+			</section>
+
+
+		</div>
+	</div>
+
+	<script src="../_reveal.js_/lib/js/head.min.js"></script>
+	<script src="../_reveal.js_/js/reveal.js"></script>
+	<script src="../_reveal.js_/js/jQuery.js"></script>
+	<script src="../_reveal.js_/js/jquery.vide.min.js"></script>
+
+	<script>
+
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: false,
+
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: '../_reveal.js_/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+				{ src: '../_reveal.js_/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: '../_reveal.js_/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: '../_reveal.js_/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+				{ src: '../_reveal.js_/plugin/search/search.js', async: true },
+				{ src: '../_reveal.js_/plugin/zoom-js/zoom.js', async: true },
+				{ src: '../_reveal.js_/plugin/notes/notes.js', async: true }
+			]
+		});
+
+	</script>
+
+</body>
+
+</html>
