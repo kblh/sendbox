@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Až se CSS zima zeptá</title>
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="../_reveal.js_/css/reveal.css">
+	<link rel="stylesheet" href="../_reveal.js_/css/theme/white.css" id="theme">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../_reveal.js_/lib/css/zenburn.css">
+	<link rel="stylesheet" href="../../CSS/init.css">
+	<link rel="stylesheet" href="../../CSS/MicroTachyons/micro-tachyons.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? '../_reveal.js_/css/print/pdf.css' : '../_reveal.js_/css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+
+			<section data-background="images/etn-bg.png">
+				<div style="width: 200px; height: 100px;">&nbsp;</div>
+				<h1>Až se CSS zima zeptá</h1>
+				<p>Na co, bychom se měli v blízké budoucnosti připravit, a jaké nové CSS technologie se rychle doučit?</p>
+				<p>
+					<small>Petr Koláček</small>
+				</p>
+				<div><img src="images/etn-logo.png" class="plain" width="200"></div>
+			</section>
+
+			<!-- ############################################### -->
+			<section data-background="images/internet-explorer-grave.jpeg">
+
+			</section>
+
+
+			<!-- ############################################### -->
+			<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+				<h1>Container Queries</h1>
+			</section>
+			<section>
+				<h2>Container Queries</h2>
+				<ul>
+					<li class="fragment">odklon od @media queries</li>
+					<li class="fragment">flexibilní layout (grid, minmax())</li>
+					<li class="fragment">veškerá logika přechází na samotné komponenty</li>
+					<li class="fragment">komponenta ví, jak se má chovat v různých situacích</li>
+					<li class="fragment">macro -> micro layouts</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Container Queries - použití</h2>
+				<ul>
+					<li class="fragment">používá se velice podobně, jako @media queries</li>
+					<li class="fragment">chrome://flags/ / Container Queries Polyfill</li>
+					<li class="fragment">co lze měnit
+						<ul>
+							<li>layout</li>
+							<li>design</li>
+							<li>content</li>
+						</ul>
+					</li>
+					<li class="fragment">container-name: my-container</li>
+				</ul>
+				<div data-markdown>
+					```css
+					@container (min-width: 400px) { ... }
+
+					@container my-container (min-width: 400px) { ... }
+					```
+				</div>
+			</section>
+			<section>
+				<h2>Container Queries - příklady</h2>
+				<ul>
+					<li><a target="_blank" href="https://codepen.io/kblh/pen/JjLbGpW">My Demo</a></li>
+					<li><a target="_blank" href="https://codepen.io/una/pen/zYdJvvw">Demo Card with Responsive Button</a></li>
+					<li><a target="_blank" href="https://codepen.io/una/pen/LYbvKpK">Podcast Card Demo</a></li>
+					<li><a target="_blank" href="https://codepen.io/una/pen/mdOgyVL">Plant Store Demo</a></li>
+				</ul>
+			</section>
+
+
+			<!-- ############################################### -->
+			<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+				<h1>Cascade layers</h1>
+			</section>
+			<section>
+				<h2>Cascade layers</h2>
+				<ul>
+					<li class="fragment">větší kontrola specificity selectorů</li>
+					<li class="fragment">pro @layer platí běžné CSS zákony (poslední vyhrává)</li>
+					<li class="fragment">ale! to platí v okamžiku prvního výskytu</li>
+					<li class="fragment">styly mimo @layer mají vyšší speciificitu</li>
+					<li class="fragment">funguje zanořování @layers</li>
+					<li class="fragment">vhodné pro zapouzdřování knihoven</li>
+					<li class="fragment">Chrome developer tools - pěkně zobrazuje</li>
+					<li class="fragment">už funguje všude</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Cascade layers - použití</h2>
+				<div data-markdown>
+					```css
+					@import url(headings.css) layer(default)
+
+					@layer default {
+						h1 {...}
+					}
+
+					/* na začátku stylesheetu */
+					@layer basic default theme
+					```
+				</div>
+				<ul>
+					<li><a target="_blank" href="https://codepen.io/kblh/pen/QWmKYvE">Example</a></li>
+				</ul>
+			</section>
+
+			<!-- ############################################### -->
+			<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+				<h1>CSS subgrid</h1>
+			</section>
+			<section>
+				<h2>CSS subgrid</h2>
+				<ul>
+					<li class="fragment">Grid container ovlivňuje pouze své přímé potomky</li>
+					<li class="fragment">a je mnohdy nemožné správně zarovnat více zanořené elementy</li>
+					<li class="fragment">Zatím pouze v FF</li>
+					<li class="fragment"><a href="https://codepen.io/kblh/pen/BarQvLx">Example (FF only)</a></li>
+				</ul>
+			</section>
+
+			<!-- ############################################### -->
+			<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+				<h1>Drobnosti</h1>
+			</section>
+
+			<section>
+				<h2>gap</h2>
+				<div data-markdown>
+					```
+					.container-grid {
+						display: grid;
+						gap: 2rem;
+					}
+
+					.container-flex {
+						display: flex;
+						gap: 2rem;
+					}
+					```
+				</div>
+			</section>
+
+			<section>
+				<h2>inset</h2>
+				<div data-markdown>
+					```
+					.old {
+						top: 0;
+						right: 0;
+						bottom: 0;
+						left: 0;
+					}
+
+					.new {
+						inset: 0;
+					}
+					```
+				</div>
+			</section>
+
+			<section>
+				<h2>accent-color</h2>
+				<div data-markdown="">
+					```
+					.root {
+						accent-color: hotpink;
+					}
+
+					@media(prefers-color-scheme: dark) {
+						.root {
+							accent-color: lightpink;
+						}
+					}
+					```
+				</div>
+				<ul>
+					<li><a target="_blank" href="https://codepen.io/jh3y/pen/qBmeBjw">Example</a></li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>hwb()</h2>
+				<ul>
+					<li>hue, whiteness, blackness</li>
+					<li>kromě Opery všude</li>
+				</ul>
+				<img src="./images/hwb.png" alt="">
+			</section>
+
+			<section>
+				<h2>has()</h2>
+				<ul>
+					<li>Safari, Chrome</li>
+				</ul>
+				<div data-markdown>
+					```
+					.parent:has(.child) { ... }
+
+					// všechny a, které mají uvnitř img
+					a:has(> img){ ... }
+					
+					// všechny img, které jsou uvnitř figure s figcaption
+					figure:has(figcaption) img { ... }
+					
+					```
+				</div>
+			</section>
+
+			<section>
+				<h2>color-mix()<br>color-contrast()</h2>
+				<ul>
+					<li>zatím 0% podpora</li>
+				</ul>
+				<div data-markdown>
+					```
+					// smíchá červenou a bílou
+					--bg: color-mix(red, white); 
+
+					// vybere černou nebo bílou podle kontrastu
+					color: color-contrast(var(--bg)); 
+					```
+				</div>
+			</section>
+
+
+
+			<!-- ############################################### -->
+			<section style="text-align: left;" data-transition="slide" data-background="#e06436"
+				data-background-transition="zoom" class="c-inverse">
+				<h1>A to je konec.</h1>
+				<h2>Dotazy?</h2>
+			</section>
+
+
+		</div>
+
+	</div>
+
+	<script src="../_reveal.js_/lib/js/head.min.js"></script>
+	<script src="../_reveal.js_/js/reveal.js"></script>
+	<script src="../_reveal.js_/js/jQuery.js"></script>
+	<script src="../_reveal.js_/js/jquery.vide.min.js"></script>
+
+
+	<script>
+
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: false,
+
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: '../_reveal.js_/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+				{ src: '../_reveal.js_/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: '../_reveal.js_/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: '../_reveal.js_/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+				{ src: '../_reveal.js_/plugin/search/search.js', async: true },
+				{ src: '../_reveal.js_/plugin/zoom-js/zoom.js', async: true },
+				{ src: '../_reveal.js_/plugin/notes/notes.js', async: true }
+			]
+		});
+
+	</script>
+
+</body>
+
+</html>
