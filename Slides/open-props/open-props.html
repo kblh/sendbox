@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>Open Props</title>
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../_reveal.js_/css/reveal.css">
+		<link rel="stylesheet" href="../_reveal.js_/css/theme/white.css" id="theme">
+    <link rel="stylesheet" href="../../CSS/MicroTachyons/micro-tachyons.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../_reveal.js_/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../_reveal.js_/css/print/pdf.css' : '../_reveal.js_/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+  <style>
+    .logo {
+      position: absolute;
+			top: 50px;
+			right: 50px;
+    }
+  </style>
+
+	</head>
+<body>
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+	<section data-background="images/etn-bg.png">
+		<div style="width: 200px;">&nbsp;</div>
+		<h1>Open Props</h1>
+		<h3>aneb ... Sháním design system do 3,5&nbsp;kB, zn. spěchá!</h3>
+		<p>
+			<small>Petr Koláček</small>
+		</p>
+		<div><img src="images/etn-logo.png" class="plain" width="200"></div>
+	</section>
+
+	<section>
+		<h2>Bootsrap</h2>
+		<p><img src="images/bootstrap-logo.png" class="plain" alt=""></p>
+		<ul>
+			<li class="fragment">
+        modulární třídy (btn, alert)
+      </li>
+			<li class="fragment">
+        dokonalejší větší komponenty - často s nimi nevystačíme - musíme si vyrobit vlastní
+      </li>
+			<li class="fragment">
+        195 kB
+      </li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Tailwind</h2>
+		<p><img src="images/tailwind-logo.png" class="plain" alt=""></p>
+		<ul>
+			<li class="fragment">
+        atomické třídy (w-16, text-center)
+      </li>
+			<li class="fragment">
+        miniaturní lego kostičky - lze z nich složit (téměř) všechno
+      </li>
+			<li class="fragment">
+        vyžaduje postcss processing
+      </li>
+		</ul>		
+	</section>
+
+	<section>
+		<h2>Open Props</h2>
+		<p><img src="images/op.png" class="plain" alt=""></p>
+		<ul>
+			<li class="fragment">
+        sub atomický design system
+      </li>
+			<li class="fragment">
+        vyladěná sada design tokens postavených na CSS custom properties
+      </li>
+			<li class="fragment">
+        modulární - lze použít je to, co opravdu potřebuji
+      </li>
+			<li class="fragment">
+         3,5 kB
+      </li>
+		</ul>		
+	</section>	
+
+	<section data-transition="slide" data-background="#000" data-background-transition="zoom" class="c-inverse">
+		<p><img src="./images/adam-argyle.png" alt="" class="plain"></p>
+	</section>
+
+	<section>
+		<h2>Adam Argyle</h2>
+		<p><img src="images/adam.jpeg" class="plain" alt=""></p>
+		<ul>
+			<li>Chrome CSS Developer Advocate at Google</li>
+			<li><a href="https://twitter.com/argyleink">@argyleink</a></li>
+		</ul>		
+	</section>	
+
+	<section data-transition="slide" data-background="#333" data-background-transition="zoom" class="c-inverse">
+		<h2>Live coding</h2>
+		<p><a target="_blank" href="https://open-props.style/">https://open-props.style/</a></p>
+	</section>
+
+	
+	<section>
+		<h2>Výhody Open Props</h2>
+		<ul>
+			<li class="fragment">modularita - vezmu jen to, co potřebuji</li>
+			<li class="fragment">pro jakýkoliv framework (css, js)</li>			
+			<li class="fragment">light / dark theme out of the box</li>
+			<li class="fragment">0 specificita - pomocí selektoru :where()</li>
+			<li class="fragment">performance - pokud se vyhneme nějakému hromadnému selectoru typu *, i vyšší počet custom properties by neměl mít na performance vliv</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Inspirace pro vlastní design tokens</h2>
+		<ul>
+			<li class="fragment">jde to postavit na CSS custom properties</li>
+			<li class="fragment">geniální systém škál <code>--red-{0-9}</code></li>
+			<li class="fragment">
+				neustálý boj s pojmenováním škál
+				<ul style="font-size: smaller;">
+					<li>z-index: underground / ground / overlay / sticky / menu / modal (originální názvy)</li>
+					<li>font-weight: light / regular / medium / bold / black (ustálené názvy)</li>
+					<li>font-size: xs / sm / base / lg / xl / 2xl / 3xl (Tailwind) </li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+
+	<section style="text-align: left;" data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+		<h1>A to je konec.</h1>
+		<h2>Dotazy?</h2>
+	</section>
+
+
+</div>
+</div>
+
+<script src="../_reveal.js_/lib/js/head.min.js"></script>
+<script src="../_reveal.js_/js/reveal.js"></script>
+<script src="../_reveal.js_/js/jQuery.js"></script>
+<script src="../_reveal.js_/js/jquery.vide.min.js"></script>
+
+<script>
+
+// More info https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+	controls: true,
+	progress: true,
+	history: true,
+	center: false,
+
+	transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+	// More info https://github.com/hakimel/reveal.js#dependencies
+	dependencies: [
+		{ src: '../_reveal.js_/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+		{ src: '../_reveal.js_/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: '../_reveal.js_/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: '../_reveal.js_/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+		{ src: '../_reveal.js_/plugin/search/search.js', async: true },
+		{ src: '../_reveal.js_/plugin/zoom-js/zoom.js', async: true },
+		{ src: '../_reveal.js_/plugin/notes/notes.js', async: true }
+	]
+});
+
+</script>
+
+</body>
+</html>

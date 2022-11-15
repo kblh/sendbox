@@ -1,0 +1,79 @@
+/*******************************************
+  Open Props Example
+********************************************/
+
+/* the props */
+@import "https://unpkg.com/open-props";
+
+/* optional imports that use the props */
+@import "https://unpkg.com/open-props/normalize.min.css";
+@import "https://unpkg.com/open-props/buttons.min.css";
+
+
+:where(html) {
+  --font-weight-light: var(--font-weight-2);
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-light);
+}
+
+.container {
+  max-width: var(--size-lg);
+  margin: auto;
+  padding: var(--size-4) 0;
+}
+
+.container :where(:not(:last-child)) {
+  margin-bottom: var(--size-2);
+}
+
+.section {
+  font-size: var(--font-size-fluid-3);
+  font-weight: var(--font-weight-light);
+  text-align: center;
+  padding: var(--size-8);
+  color: var(--pink-7);
+  background-color: var(--surface-2);
+}
+
+/*********************
+  HERO
+*********************/
+
+.hero {
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--size-8);
+  background-image: var(--gradient-3);
+}
+
+.hero__title {
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-fluid-3)
+}
+
+@media (min-width: 800px) {
+  .hero {
+    display: flex;
+  }
+}
+
+
+
+
+
+
+
+
+
+/*********************
+  FORM CONTROLS
+*********************/
+
+label {
+  display: block;
+}
+
+

@@ -1,0 +1,95 @@
+/*******************************************
+  Open Props Example
+********************************************/
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-2);
+}
+
+.container {
+  max-width: var(--size-lg);
+  margin: auto;
+  padding: var(--size-4) 0;
+}
+
+.container :where(:not(:last-child)) {
+  margin-bottom: var(--size-2);
+}
+
+.section {
+  font-size: var(--font-size-fluid-3);
+  font-weight: var(--font-weight-1);
+  text-align: center;
+  padding: var(--size-8);
+  color: var(--pink-7);
+  background-color: var(--surface-2);
+}
+
+/*********************
+  HERO
+*********************/
+
+.hero {
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--size-8);
+  background-image: var(--gradient-3);
+}
+
+.hero__title {
+  font-weight: var(--font-weight-1);
+  font-size: var(--font-size-fluid-3);
+}
+
+@media (min-width: 800px) {
+  .hero {
+    display: flex;
+  }
+}
+
+/*********************
+  BUTTONS
+*********************/
+
+button {
+  padding: var(--size-1) var(--size-4);
+  border-radius: var(--radius-2);
+  background-color: var(--pink-7);
+  color: var(--white);
+  transition: all .5s;
+}
+
+button:hover {
+  background-color: var(--pink-9);
+  box-shadow: var(--shadow-3);
+}
+
+.button-list {
+  padding: var(--size-2) 0;
+  display: flex;
+  gap: var(--size-4);
+}
+
+@media (prefers-color-scheme: light) {
+  button {
+    background-color: var(--pink-4);
+  }
+  button:hover {
+    background-color: var(--pink-3);
+  }
+}
+
+
+/*********************
+  FORM CONTROLS
+*********************/
+
+label {
+  display: block;
+}
+
+
+/*********************
+  MISC
+*********************/
+
