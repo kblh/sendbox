@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CUBE CSS Example</title>
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./open-props.css">
+  <link rel="stylesheet" href="./cube-css-example.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="[ card ] [ grid-flow ] [ box-shadow-2 ]">
+
+      <picture>
+        <source
+          media="(min-width: 600px)"
+          srcset="https://via.placeholder.com/600x400/abc 2x, https://via.placeholder.com/300x200/abc 1x"
+          type="image/webp"
+        >
+        <source
+          media="(min-width: 500px)"
+          srcset="https://via.placeholder.com/1200x800/cab 2x, https://via.placeholder.com/600x400/cab 1x"
+          type="image/webp"
+        >
+        <img 
+          srcset="https://via.placeholder.com/600x400/abc 2x, https://via.placeholder.com/300x200/abc 1x"
+          src="https://via.placeholder.com/600x400/abc" 
+          alt="">
+      </picture>
+  
+      <div class="[ card__content ] [ grid-flow ]">
+        <h2>Card example</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero eligendi quas enim error corrupti quis impedit quam? Ipsa labore corrupti nihil excepturi animi quia, doloribus repellendus eligendi nesciunt necessitatibus harum?</p>
+        <div class="flex-flow">
+          <button class="button" data-type="primary">CTA Button</button>
+          <button class="button" data-type="link">link button</button>  
+        </div>
+      </div>
+  
+    </div>
+  
+  </div>
+  
+</body>
+</html>

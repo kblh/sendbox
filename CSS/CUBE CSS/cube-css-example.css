@@ -1,0 +1,72 @@
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-image: var(--gradient-3);
+  padding: var(--size-4);
+}
+
+/*********************
+  Composition
+*********************/
+
+:root {
+  --gap: var(--size-4);
+}
+
+.container {
+  max-width: var(--size-lg);
+  margin: auto;
+}
+
+.grid-flow {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+
+.flex-flow {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+/*********************
+  Utility
+*********************/
+
+.box-shadow-2 { box-shadow: var(--shadow-2); }
+
+
+/*********************
+  Block + Exception
+*********************/
+
+.card {
+  /* --gap: var(--size-8); */
+  background-color: var(--gray-0);
+  border-radius: var(--radius-3);
+  padding: var(--size-3);
+}
+
+@media (min-width: 600px) {
+  .card {
+    grid-template-columns: 300px auto;
+  }
+}
+
+.button {
+  background-color: transparent;
+  padding: var(--size-2) var(--size-4);
+  border: 0;
+  border-radius: var(--radius-2);
+}
+
+.button[data-type='primary'] {
+  background-color: var(--blue-11);
+  color: var(--gray-0);
+}
+
+.button[data-type='link'] {
+  color: var(--blue-11);
+  text-decoration: underline;
+  cursor: pointer;
+  width: max-content;
+}

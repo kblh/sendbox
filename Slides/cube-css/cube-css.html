@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>CUBE CSS</title>
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="../_reveal.js_/css/reveal.css">
+	<link rel="stylesheet" href="../_reveal.js_/css/theme/white.css" id="theme">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../_reveal.js_/lib/css/zenburn.css">
+	<link rel="stylesheet" href="../../CSS/init.css">
+	<link rel="stylesheet" href="../../CSS/MicroTachyons/micro-tachyons.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? '../_reveal.js_/css/print/pdf.css' : '../_reveal.js_/css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+
+			<section data-background="images/etn-bg.png">
+				<div style="width: 200px; height: 100px;">&nbsp;</div>
+				<h1>CUBE CSS</h1>
+				<p>Jen další metodologie pro CSS?</p>
+				<p>
+					<small>Petr Koláček</small>
+				</p>
+				<div><img src="images/etn-logo.png" class="plain" width="200"></div>
+			</section>
+
+
+			<!-- ############################################### -->
+			<section>
+				<h2>BEM</h2>
+				<ul>
+					<li class="fragment">+ zapoudřeno v komponentách</li>
+					<li class="fragment">- stále se opakující patterny</li>
+					<li class="fragment">- vymýšlení názvů komponent</li>
+				</ul>
+			</section>
+
+      <!-- ############################################### -->
+			<section>
+				<h2>Utility class frameworky</h2>
+				<ul>
+					<li>Tailwind, atp.</li>
+					<li class="fragment">+ nezná problém oakujících se patternů</li>
+					<li class="fragment">+ imho rychlejší práce (pouze s html)</li>
+					<li class="fragment">+ většinou lehce odhadnutelné názvy tříd</li>
+					<li class="fragment">- minimální podpora tvorby komponent (první případ -> komponenta složená z TW tříd)</li>
+					<li class="fragment">- závislost na PostCSS</li>
+				</ul>
+			</section>
+
+			<!-- ############################################### -->
+			<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+				<h1>CUBE CSS oba tyto světy spojuje</h1>
+			</section>
+
+			<!-- ############################################### -->
+			<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+				<h1>Není to o jmenné konvenci tříd, ale o  KOMPOZICI našeho CSS</h1>
+			</section>
+
+			<!-- ############################################### -->
+			<section>
+				<h2>ITCSS metodologie</h2>
+        <p><a target="_blank" href="https://frontend.garden/clanky/proc-je-itcss-nejpokrocilejsi-metodika-organizace-css/">Proč je ITCSS nejpokročilejší metodika organizace CSS</a></p>
+        <p><img src="./images/itcss-vrstvy-a-trojuhelnik.png" alt=""></p>
+			</section>
+
+
+			<!-- ############################################### -->
+			<section>
+				<h2>CUBE CSS</h2>
+        <p><a target="_blank" href="https://cube.fyi/">https://cube.fyi/</a></p>
+        <p><img src="./images/cube-css.svg" class="plain" alt=""></p>
+			</section>
+
+			<!-- ############################################### -->
+			<section>
+				<h2>Andy Bell</h2>
+        <p><a target="_blank" href="https://css-tricks.com/author/andybell/">https://css-tricks.com/author/andybell/</a></p>
+        <p><img src="./images//andy-bell.jpeg" alt=""></p>
+			</section>
+
+      <!-- ############################################### -->
+			<section>
+				<h2>Co znamená CUBE CSS</h2>
+				<ul>
+					<li class="fragment"><strong>[ C ]</strong> omposition</li>
+					<li class="fragment"><strong>[ U ]</strong> tility</li>
+					<li class="fragment"><strong>[ B ]</strong> lock</li>
+					<li class="fragment"><strong>[ E ]</strong> xception</li>
+				</ul>
+			</section>
+
+      <!-- ############################################### -->
+			<section>
+				<h2>CUBE CSS vs BEM vs ITCSS</h2>
+				<ul>
+					<li class="fragment">opačný přístup</li>
+					<li class="fragment">CUBE CSS jde od abstraktních tříd ke konkrétním</li>
+					<li class="fragment">snaž se nejprve použít obecné třídy, o kterých víme, že se budou v projektu opakovat (Composition, Utility)</li>
+					<li class="fragment">teprve když to nedává smysl, použij konkrétní (Block, Exception)</li>
+				</ul>
+			</section>
+
+      <!-- ############################################### -->
+			<section>
+				<h2>COMPOSITION</h2>
+				<ul>
+					<li>high-level, flexible layouts</li>
+					<li class="fragment">flow and rhythm</li>
+					<li class="fragment">layoutové třídy (skeletons, grids)</li>
+				</ul>
+			</section>
+
+      <!-- ############################################### -->
+			<section>
+				<h2>UTILITY</h2>
+				<ul>
+					<li>utility třídy ala Tailwind</li>
+          <li class="fragment">Andy Bell používá pro utility třídey Tailwind</li>
+				</ul>
+			</section>
+
+      <!-- ############################################### -->
+			<section>
+				<h2>BLOCK</h2>
+				<ul>
+					<li>komponenty podobně jako v BEM</li>
+					<li class="fragment">CUBE CSS nenařizuje žádnou jmennou konvenci</li>
+					<li class="fragment">je to na vás</li>
+					<li class="fragment">klidně je možné použít BEM</li>
+				</ul>
+        <div data-markdown class="fragment">
+          ```html
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;div class=&quot;card__title&quot;&gt;...&lt;/div&gt;
+            &lt;div class=&quot;card__content&quot;&gt;...&lt;/div&gt;
+          &lt;/div&gt;
+          ```
+        </div>
+      </section>
+
+      <!-- ############################################### -->
+			<section>
+				<h2>EXCEPTION</h2>
+				<ul>
+					<li>modifiers</li>
+					<li class="fragment">řeší se pomocí data-atributes (kontroverzní)</li>
+					<li class="fragment">BLBuvzdornost</li>
+					<li class="fragment">v BEM lze teoreticky napsat několik modifikátorů stejného typu, CSS rozhodne, který se použije</li>
+				</ul>
+        <div data-markdown class="fragment">
+          ```html
+          &lt;button class=&quot;button&quot; data-type=&quot;primary&quot;&gt;...&lt;/button&gt;
+          ```
+        </div>
+      </section>
+
+      <!-- ############################################### -->
+			<section>
+				<h2>Grouping</h2>
+        <div data-markdown>
+          ```html
+          &lt;article class=&quot;[ card ] [ section box ] [ bg-base color-primary ]&quot;&gt;&lt;/article&gt;
+          ```
+        </div>
+				<ul>
+					<li class="fragment">nemusíte nutně používat jen []</li>
+				</ul>
+      </section>
+
+			<!-- ############################################### -->
+			<section data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+				<h1>Ukázka kódu ...</h1>
+			</section>
+
+			<!-- ############################################### -->
+			<section style="text-align: left;" data-transition="slide" data-background="#e06436"
+				data-background-transition="zoom" class="c-inverse">
+				<h1>A to je konec.</h1>
+				<h2>Dotazy?</h2>
+			</section>
+
+
+		</div>
+
+	</div>
+
+	<script src="../_reveal.js_/lib/js/head.min.js"></script>
+	<script src="../_reveal.js_/js/reveal.js"></script>
+	<script src="../_reveal.js_/js/jQuery.js"></script>
+	<script src="../_reveal.js_/js/jquery.vide.min.js"></script>
+
+
+	<script>
+
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: false,
+
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: '../_reveal.js_/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+				{ src: '../_reveal.js_/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: '../_reveal.js_/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: '../_reveal.js_/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+				{ src: '../_reveal.js_/plugin/search/search.js', async: true },
+				{ src: '../_reveal.js_/plugin/zoom-js/zoom.js', async: true },
+				{ src: '../_reveal.js_/plugin/notes/notes.js', async: true }
+			]
+		});
+
+	</script>
+
+</body>
+
+</html>
