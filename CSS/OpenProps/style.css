@@ -10,14 +10,11 @@
 @import "https://unpkg.com/open-props/buttons.min.css";
 
 
-:where(html) {
-  --font-weight-light: var(--font-weight-2);
-}
-
-
 h1, h2, h3, h4, h5, h6 {
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-2);
 }
+
+
 
 .container {
   max-width: var(--size-lg);
@@ -29,14 +26,19 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: var(--size-2);
 }
 
+
+
+
 .section {
   font-size: var(--font-size-fluid-3);
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-2);
   text-align: center;
   padding: var(--size-8);
   color: var(--pink-7);
   background-color: var(--surface-2);
 }
+
+
 
 /*********************
   HERO
@@ -50,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero__title {
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-2);
   font-size: var(--font-size-fluid-3)
 }
 
