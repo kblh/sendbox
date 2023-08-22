@@ -1,0 +1,29 @@
+:root {
+  --c-primary: #376db8;
+  --c-primary-light: #bcc4cf;
+  --c-primary-dark: #062f69;
+  --c-secondary: #b837a4;
+  --c-secondary-light: #decadb;
+  --c-secondary-dark: #3b0533;
+
+  --c-text: #333;
+  --c-text-inverse: #fff;
+
+
+  --size-1: 1rem;
+  --size-2: 2rem;
+  --size-3: 4rem;
+  --size-4: 8rem;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: var(--c-primary-light);
+  padding: var(--size-3);
+}
+
+::part(wc-title) {
+  text-transform: uppercase;
+  font-size: var(--size-3);
+  margin-bottom: var(--size-1);
+}

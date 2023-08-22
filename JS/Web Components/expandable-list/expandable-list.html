@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expandable List Web Component</title>
+  <link rel="stylesheet" href="https://unpkg.com/open-props">
+  <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css">
+
+<style>
+  body {
+    width: clamp(800px, 80vw, 100%);
+    margin: var(--size-4) auto;
+  }
+
+  h1 {
+    margin-bottom: var(--size-8);
+  }
+</style>
+</head>
+<body>
+  <h1>Expandable List Web Component</h1>
+
+  <ul>
+    <li>jedna</li>
+    <li>dva
+      <ul is="expandable-list" data-expanded="true">
+        <li>apple</li>
+        <li>micfrosoft</li>
+        <li>google</li>
+      </ul>
+    </li>
+    <li>tři</li>
+    <li>čtyři
+      <ul is="expandable-list">
+        <li>bosch</li>
+        <li>makita</li>
+        <li>parkside
+          <ul is="expandable-list">
+            <li>aaaaa</li>
+            <li>b bbb</li>
+            <li>ccc cc</li>
+            <li>dd d  d  dddd</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <script src="expandable-list.js" type="module"></script>
+
+
+</body>
+</html>

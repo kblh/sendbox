@@ -1,0 +1,35 @@
+.expandable-list {
+  position: relative;
+  padding: 0;
+}
+
+.expandable-list > li { 
+  display: none;
+}
+
+.expandable-list__button {
+  position: absolute;
+  border: 0;
+  display: block;
+  background-color: transparent;
+  top: -28px;
+  left: -50px;
+  width: var(--size-5);
+  height: var(--size-5);
+}
+
+.expandable-list__button::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* content: "\2192"; */
+  content: "\25B6";
+}
+
+.expandable-list[data-expanded="true"] > li {
+  display: list-item;
+}
+
+.expandable-list[data-expanded="true"] > .expandable-list__button::before {
+  transform: rotate(90deg);
+}

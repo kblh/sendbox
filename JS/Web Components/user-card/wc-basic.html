@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Components</title>
+  <link rel="stylesheet" href="wc-basic.css">
+</head>
+<body>
+
+  <h1>User card</h1>
+
+  <user-card 
+    name="Franz Kafka"
+    avatar="https://pbs.twimg.com/profile_images/706065905390899204/S4PFMmDR_400x400.jpg"
+  >
+    <div slot="dates">1883 - 1934</div>
+    <div slot="about">Franz Kafka was a German-speaking Bohemian novelist and short-story writer based in Prague, who is widely regarded as one of the major figures of 20th-century literature. His work fuses elements of realism and the fantastic. </div>  
+  </user-card>
+
+  <user-card 
+    name="Mark Twain"
+    avatar="https://m.media-amazon.com/images/I/41fmRjmSjiL._UC256,256_CACC,256,256_.jpg"
+  >
+    <div slot="dates">1835 - 1910</div>
+    <div slot="about">Samuel Langhorne Clemens, best known by his pen name Mark Twain, was an American writer, humorist, entrepreneur, publisher, and lecturer. He was praised as the "greatest humorist the United States has produced", and William Faulkner called him "the father of American literature".</div>  
+  </user-card>
+
+  <div class="last-card-container">
+
+  <user-card 
+    name="Victor Hugo"
+    avatar="https://image.enjoymovie.net/JB4iUqNkoa3RtmEb-2AcRxmnx5M=/256x256/smart/core/p/v3WPB90KA7.jpg"
+  >
+    <span slot="dates">1802 - 1885</span>
+    <div slot="about">Victor-Marie Hugo was a French Romantic writer and politician. During a literary career that spanned more than sixty years, he wrote in a variety of genres and forms. He is considered to be one of the greatest French writers of all time.</div>  
+  </user-card>
+
+  </div>
+
+  <script src="./user-card.js"></script>
+</body>
+</html>

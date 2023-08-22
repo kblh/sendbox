@@ -1,0 +1,38 @@
+.user-card {
+  padding: 2rem;
+  border: 3px dotted var(--c-primary-dark);
+  margin-bottom: var(--size-1);
+  color: var(--c-text-inverse);
+}
+
+.user-card__title {
+  color: var(--c-primary-dark);
+  margin-top: 0;
+}
+
+.user-card__image {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.user-card__desciption {
+  font-size: var(--size-2);
+}
+
+:host {
+  display: block;
+  background-color: lightblue;
+}
+
+:host(user-card) {
+  background-color: var(--c-primary);
+}
+
+:host-context(.last-card-container) {
+  background-color: var(--c-secondary);
+}
+
+::slotted(span) {
+  color: var(--c-secondary-dark);
+  font-size: var(--size-3);
+}
