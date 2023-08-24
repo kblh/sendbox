@@ -1,0 +1,40 @@
+/*********************
+  ICON SVG
+*********************/
+
+.ea-icon-svg {
+  --ea-icon-color: currentColor;
+  --ea-icon-size: #{$su*6};
+
+  display: inline-flex;
+  position: relative;
+  width: var(--ea-icon-size);
+  height: var(--ea-icon-size);
+}
+
+.ea-icon-svg svg {
+  width: var(--ea-icon-size);
+  height: var(--ea-icon-size);
+}
+
+.ea-icon-svg--12 { --ea-icon-size: #{$su*3}; }
+.ea-icon-svg--16 { --ea-icon-size: #{$su*4}; }
+.ea-icon-svg--20 { --ea-icon-size: #{$su*5}; }
+.ea-icon-svg--24 { --ea-icon-size: #{$su*6}; }
+.ea-icon-svg--32 { --ea-icon-size: #{$su*8}; }
+.ea-icon-svg--40 { --ea-icon-size: #{$su*10}; }
+.ea-icon-svg--48 { --ea-icon-size: #{$su*12}; }
+.ea-icon-svg--64 { --ea-icon-size: #{$su*16}; }
+
+.ea-icon-svg--primary { --ea-icon-color: var(--ea-color-primary) } 
+.ea-icon-svg--primary-dark { --ea-icon-color: var(--ea-color-primary-dark) } 
+.ea-icon-svg--primary-light { --ea-icon-color: var(--ea-color-primary-light) } 
+
+.ea-icon-svg--grey-mid { --ea-icon-color: var(--ea-color-grey-mid) } 
+.ea-icon-svg--grey-light { --ea-icon-color: var(--ea-color-grey-light) }
+.ea-icon-svg--white { --ea-icon-color: var(--ea-color-white) }
+
+.ea-icon-svg--yellow { --ea-icon-color: var(--ea-color-yellow) } 
+.ea-icon-svg--yellow-dark { --ea-icon-color: var(--ea-color-yellow-dark) } 
+.ea-icon-svg--error { --ea-icon-color: var(--ea-color-error) } 
+.ea-icon-svg--success { --ea-icon-color: var(--ea-color-success) } 

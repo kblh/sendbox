@@ -1,0 +1,31 @@
+{/*
+	Vstupni parametry:
+	icon - jméno ikony
+	size - velikost ikony (12, 14, 16, 20, 24, 26, 32, 40, 48, 64)
+	color - barva (primary, primary-dark, primary-light, grey-mid, grey-light, white, yellow, yellow-dark, error, success)
+	cssClass - extra css třídy
+*/}
+
+{
+	let iconColor := value(color,"primary")
+	let iconSize := value(size,"24")
+}
+
+
+<span aria-hidden="true" class="ea-icon-svg ea-icon-svg--{iconSize} ea-icon-svg--{iconColor} {cssClass}">
+	{while  _template.icons_folder}
+		{if eq(icon,_.name)}
+			{if ("sprite" in _.controlWords)}
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+					{if _wysiwyg /* ve wysiwygu nelze odkazovat na sprite */}
+						{_.data.text raw}
+					{else}
+						<use xlink:href="#icon-{_.name}"></use>
+					{/if}
+				</svg>
+			{else}
+				{_.data.text raw}
+			{/if}
+		{/if}
+	{/while}
+</span>
