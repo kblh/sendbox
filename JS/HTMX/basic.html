@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✌ HTMX ☠ basic example</title>
+
+<style>
+
+.waiting {
+  display: none;
+  height: 100%;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.8);
+}
+.htmx-request.waiting {
+  display: block;
+  opacity: 1;
+}
+
+.target-place {
+  padding: 2rem;
+  border: 3px dashed #888;
+}
+
+.htmx-request {
+  // background-color: red!important;
+}
+
+</style>  
+</head>
+<body>
+  <h1>✌ HTMX ☠ basic example</h1>
+
+<div class="waiting"></div>
+
+
+
+
+<!-- 
+<div>
+  <div id="info-details"></div>
+   <div id="alert"
+   class="target-place"></div>
+    <button hx-get="./api/inj1.html" 
+            hx-select="#info-details" 
+            hx-swap="outerHTML"
+            hx-select-oob="#alert">
+        Get Info!
+    </button>
+</div>
+-->
+
+
+
+<p>
+  <button 
+    hx-target="#target-place-1" 
+    hx-swap="beforeend"
+    hx-trigger="click"
+    hx-get="./api/inj1.html"
+  >
+    CLICK
+  </button>
+</p>
+
+
+<h2>target place #1</h2>
+<p 
+  id="target-place-1" 
+  class="target-place"
+>
+  <!-- <img id="indicator" class="htmx-indicator" src="./images/loading-loading-forever.png" alt=""> -->
+</p>
+
+
+<p 
+  hx-trigger="load" 
+  hx-get="./api/contact-view.html"
+  hx-indicator=".waiting"
+  class="target-place">
+    ... contact form ...
+</p>
+
+
+<p 
+  hx-trigger="load delay:3s" 
+  hx-get="./api/messages.html"
+  hx-indicator=".waiting"
+  class="target-place">
+    Put To Messages in 3 ... 2 ... 1
+</p>
+
+
+<h2>target place #2</h2>
+<p class="target-place" id="target-place-2"></p>
+
+  <script src="./js/unpkg.com_htmx.org@1.9.4_dist_htmx.min.js"></script>
+
+<p><code>npx http-server . --cors</code></p>
+
+<p><a href="https://www.youtube.com/watch?v=CWSmP3LSILo">Dynamic Web Pages Without JavaScript? - Intro to HTMX</a></p>
+<p><a href="https://eef-aks-test-admin.etn.cz/admin">EEF demo</a></p>
+
+
+
+<h2>target place #3</h2>
+<p id="target-place-3" class="target-place">
+
+</p>
+
+
+
+<div 
+  hx-trigger="revealed"
+  hx-get="./api/inj2.html"
+  class="target-place">
+</div>
+
+
+
+
+<h2>hx-boost</h2>
+
+<div hx-boost="true">
+  <a href="./api/inj1.html">Go To Page 1</a>
+  <a href="./api/inj2.html">Go To Page 2</a>
+</div>
+
+<form hx-boost="true" action="/example" method="post">
+    <input name="email" type="email" placeholder="Enter email...">
+    <button>Submit</button>
+</form>
+
+
+<h2>select</h2>
+
+<div>
+
+    <button hx-get="/api/inj1.html" hx-select="#info-details" hx-swap="beforeend">
+        Get Info!
+    </button>
+
+
+    <div id="info-details">iii ddd</div>
+    <div ic="info-target" class="target-place"></div>
+</div>
+
+
+
+<h2>TABLE</h2>
+
+<table hx-indicator=".waiting">
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr>
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+  <tr 
+    hx-get="./api/contact-page-1.html"
+    hx-trigger="revealed"
+    hx-swap="afterend"
+    >
+    <td>Bohdan</td>
+    <td>6788-555-33</td>
+  </tr>
+</table>
+
+
+
+
+</body>
+</html>
