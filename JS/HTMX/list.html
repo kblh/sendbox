@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✌ HTMX - List</title>
+
+<style>
+  li { line-height: 3rem; }
+</style>
+
+</head>
+<body>
+  <h1>✌ HTMX - List</h1>
+
+  <ul 
+    id="my-list"
+  >
+    <li>a</li>
+    <li>bb</li>
+    <li>ccc</li>
+    <li>dddd</li>
+    <li>eeeee</li>
+    <li>ffffff</li>
+    <li>ggggggg</li>
+    <li>hhhhhhhh</li>
+    <li>iiiiiiiii</li>
+    <li>jjjjjjjjjj</li>
+    <li>kkkkkkkkkkk</li>
+    <li>llllllllllll</li>
+    <li>mmmmmmmmmmmmm</li>
+    <li>nnnnnnnnnnnnnn</li>
+  </ul>
+
+  <p
+    hx-get="./api/list.html"
+    hx-trigger="revealed"
+    hx-swap="beforeend"
+    hx-target="#my-list"
+  >... show me more ....</p>
+
+
+  <script src="./js/unpkg.com_htmx.org@1.9.4_dist_htmx.min.js"></script>
+
+</body>
+</html>

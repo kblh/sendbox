@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✌ Tabs | HTMX</title>
+
+<style>
+  button[aria-selected="true"] { font-weight: bold; }
+
+</style>
+</head>
+<body>
+  <h1>✌ Tabs | HTMX</h1>
+
+  <div id="myTabs" class="tab-list" role="tablist" hx-target="#tab-content"  hx-on::after-request="tabHandler()">
+    <button hx-get="./api/tab-1.html" role="tab" aria-selected="false" aria-controls="tab-content" class="tab-list__button selected">Tab 1</button>
+    <button hx-get="./api/tab-2.html" role="tab" aria-selected="false" aria-controls="tab-content" class="tab-list__button">Tab 2</button>
+    <button hx-get="./api/tab-3.html" role="tab" aria-selected="false" aria-controls="tab-content" class="tab-list__button">Tab 3</button>
+  </div>
+  <div id="tab-content" role="tabpanel" class="tab-content" hx-get="./api/tab-1.html" hx-trigger="load"></div>
+
+
+<script>
+
+
+
+  tabHandler = () => {
+    //  
+
+    // htmx.addClass(htmx.find('#demo'), 'myClass');
+
+    console.log("click on tab")
+  }
+</script>
+
+
+<hr>
+
+<h2>With <a href="https://hyperscript.org/">Hyperscript</a></h2>
+
+<div id="tabs" hx-target="#tab-content2" role="tablist" _="on htmx:afterOnLoad set @aria-selected of <[aria-selected=true]/> to false tell the target take .selected set @aria-selected to true">
+	<button role="tab" aria-controls="tab-content" aria-selected="true" hx-get="./api/tab-1.html" class="selected">Tab 1</button>
+	<button role="tab" aria-controls="tab-content" aria-selected="false" hx-get="./api/tab-2.html">Tab 2</button>
+	<button role="tab" aria-controls="tab-content" aria-selected="false" hx-get="./api/tab-3.html">Tab 3</button>
+</div>
+
+<div id="tab-content2" role="tabpanel" hx-get="./api/tab-1.html" hx-trigger="load"></div>
+
+
+<hr>
+
+
+
+  <script src="./js/unpkg.com_htmx.org@1.9.4_dist_htmx.min.js"></script>
+  <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
+
+
+<script>
+  htmx.onLoad(function(elt){
+    // console.log("yyyyy");
+  })  
+
+  // add a click listener to the body
+  // var myEventListener = htmx.on("click", function(evt){ console.log(evt); });
+
+  // add a click listener to the given div
+  var myEventListener = htmx.on("#myTabs", "click", function(evt){ 
+    console.log(evt); 
+    console.log(this); 
+  });
+
+
+</script>
+
+</body>
+</html>

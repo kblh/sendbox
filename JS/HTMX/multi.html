@@ -3,29 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Multiswap</title>
+  <title>✌ Multi | HTMX</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body hx-boost="true" hx-ext="multi-swap">
-  <h1>Multiswap</h1>
+  <h1>✌ Multi | HTMX</h1>
 
-   <!-- simple example how to swap #id1 and #id2 from /example by innerHTML (default swap method) -->
-   <button 
-    hx-get="./api/inj2.html"
-    hx-swap="multi:#id1,#id2"
-    >Click to swap #id1 and #id2 content</button>
+<button onclick="clickMe()" >fire</button>
 
-   <!-- advanced example how to swap multiple elements from /example by different swap methods -->
-   <a 
-    href="./api/inj1.html" 
-    hx-swap="multi:#id1,#id2:outerHTML,#id3:beforeend,#id4:delete">Click to swap #id1 and #id2, extend #id3 content and delete #id4 element</a>
+<p 
+  id="target-place-1" 
+  class="target-place"
+>
+target-place-1
+</p>
 
-   <div id="id1">Old 1 content</div>
-   <div id="id2">Old 2 content</div>
-   <div id="id3">Old 3 content</div>
-   <div id="id4">Old 4 content</div>
+
+<p 
+  id="target-place-2" 
+  class="target-place"
+>
+target-place-2
+</p>
+
+
+<p 
+  id="target-place-3" 
+  class="target-place"
+>
+target-place-3
+</p>
+
+<script>
+
+clickMe = () => {
+  htmx.toggleClass(htmx.find("#target-place-3"), "selected");
+  htmx.ajax('GET', './api/inj1.html', '#target-place-1')
+  // htmx.ajax('GET', './api/inj2.html', '#target-place-2')
+  htmx.ajax('GET', './api/messages.html', '#target-place-3')
+
+  htmx.ajax('GET', './api/inj2.html', {target:'#target-place-2', swap:'beforeend'})
+
+  // htmx.trigger("#target-place-3", "myEvent", {answer:42});
+  // console.log(htmx)
+}
+
+</script>
 
 <script src="./js/unpkg.com_htmx.org@1.9.4_dist_htmx.min.js"></script>
-<script src="https://unpkg.com/htmx.org/dist/ext/multi-swap.js"></script>
 
 </body>
 </html>

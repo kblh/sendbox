@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hyperscript</title>
+
+
+<style>
+  .clicked { font-weight: bold; }
+
+</style>  
+</head>
+<body>
+  <h1>Hyperscript</h1>
+
+
+
+<button _="on click toggle .clicked">
+  Toggle the "clicked" class on me
+</button>
+
+
+<div id="foo"></div>
+
+<div _="on mouseOver toggle .mouse-over on #foo">
+    mouseOver
+</div>
+
+
+<div _="on click call aJavascriptFunction() then
+              wait 5s then
+              call anotherJavascriptFunction()">
+           Do some stuff
+</div>
+
+
+<script>
+  aJavascriptFunction = () => {
+    console.log("-> aJavascriptFunction()")
+  }
+
+  anotherJavascriptFunction = () => {
+    console.log("..... anotherJavascriptFunction()")
+  }
+</script>
+
+
+  <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
+
+</body>
+</html>

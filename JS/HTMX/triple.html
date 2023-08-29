@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✌ triple | HTMX</title>
+</head>
+<body>
+
+  <h1>✌ triple | HTMX</h1>
+
+<p>
+  <button 
+    hx-target="#target-place-1" 
+    hx-swap="beforeend"
+    hx-trigger="click"
+    hx-get="./api/inj1.html"
+    hx-on:htmx:before-request="console.log('click')"
+  >
+    CLICK
+  </button>
+</p>
+
+<p>
+  <button 
+    hx-target="#target-place-1" 
+    hx-swap="beforeend"
+    hx-trigger="click"
+    hx-get="./api/inj1.html"
+    hx-on:htmx:before-request="console.log('click')"
+  >
+    CLICK
+  </button>
+</p>
+
+<p>
+  <button 
+    hx-target="#target-place-1" 
+    hx-swap="beforeend"
+    hx-trigger="click"
+    hx-get="./api/inj1.html"
+    hx-on:htmx:before-request="console.log('click')"
+  >
+    CLICK
+  </button>
+</p>
+
+<h2>target place #1</h2>
+<p 
+  id="target-place-1" 
+  class="target-place"
+>
+  <img width="40" id="indicator" class="htmx-indicator" src="./images/loading-loading-forever.png" alt="">
+</p>
+
+
+  <script src="./js/unpkg.com_htmx.org@1.9.4_dist_htmx.min.js"></script>
+
+
+</body>
+</html>

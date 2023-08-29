@@ -1,0 +1,25 @@
+.waiting {
+  display: none;
+  height: 100%;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.8);
+}
+
+.htmx-request.waiting {
+  display: block;
+  opacity: 1;
+}
+
+.target-place {
+  padding: 2rem;
+  border: 3px dashed #888;
+}
+
+.htmx-request {
+  /* background-color: red!important; */
+}
+
+.selected {
+  background-color: lightgoldenrodyellow;
+}

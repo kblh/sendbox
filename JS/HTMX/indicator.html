@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✌ Indicator | HTMX</title>
+
+<style>
+
+    .htmx-indicator{
+        opacity:0;
+        transition: opacity 500ms ease-in;
+    }
+    .htmx-request .htmx-indicator{
+        opacity:1
+    }
+    .htmx-request.htmx-indicator{
+        opacity:1
+    }
+
+    .htmx-request { background: rgba(23,117,10,.5) }
+
+</style>
+
+</head>
+<body id="body">
+  <h1 id="h1">✌ Indicator | HTMX</h1>
+
+
+    <button 
+      hx-get="./api/inj1.html" ¨
+      hx-target="#myTarget"
+      hx-indicator="#myTarget"
+    >
+        Post It!
+    </button>
+
+    <div id="myTarget">
+      <img id="spinner" class="htmx-indicator" src="./images/loading-loading-forever.gif" />
+    </div>
+
+  <script src="./js/unpkg.com_htmx.org@1.9.4_dist_htmx.min.js"></script>
+
+
+</body>
+</html>
