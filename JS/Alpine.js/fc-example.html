@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlpineJS Demo</title>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <style>
+      .todo {
+        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .completed {
+        text-decoration: line-through;
+      }
+
+      .wrapper {
+        height: 60px;
+        width: 400px;
+        position: relative;
+        margin: 12px 0;
+        background: #ccc;
+        cursor: pointer;
+      }
+
+      .text {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        border-left: 3px solid;
+        font-size: 18px;
+        font-weight: bold;
+        position: absolute;
+        z-index: 1;
+      }
+
+      .strip {
+        position: absolute;
+        transition: all 0.2s;
+        height: 60px;
+      }
+
+      .lightblue {
+        background: lightblue;
+      }
+
+      .orange {
+        background: orange;
+      }
+    </style>
+  </head>
+
+  <body>
+    
+    <div
+      x-data="{ list: [], userInput: '', counter() { return `Create Todo | ${this.list.filter((x) => x.completed).length} / ${this.list.length} Completed` } }"
+      x-effect="console.log(list)"
+    >
+      <form
+        x-on:submit.prevent="
+        if (userInput.trim().length > 0) {
+          list = list.concat({ todo: userInput, completed: false });
+          userInput = '';
+        }
+      "
+      >
+        <input x-model="userInput" placeholder="Enter your Todo" />
+        <button x-text="counter"></button>
+      </form>
+
+      <template x-for="todo in list">
+        <div class="todo">
+          <input type="checkbox" x-model="todo.completed" />
+          <span
+            x-text="todo.todo"
+            x-bind:class="{ 'completed': todo.completed }"
+          ></span>
+          <button x-on:click="list = list.filter((x) => x !== todo)">
+            Delete
+          </button>
+        </div>
+      </template>
+
+      <button
+        x-show="list.length > 0"
+        x-on:click="list = []"
+        x-text="`Delete all ${list.length}`"
+      ></button>
+    </div>
+
+
+    <div
+      x-data="{ count1: 0, count2: 0, max: 10 }"
+      x-effect="console.log({ count1, count2 })"
+    >
+      <div class="wrapper" @click="count1 < max && count1++">
+        <div class="text" x-text="`React (${count1})`"></div>
+        <div class="strip lightblue" :style="{ width: `${count1 * 40}px` }"></div>
+      </div>
+
+      <div class="wrapper" @click="count2 < max && count2++">
+        <div class="text" x-text="`Angular (${count2})`"></div>
+        <div class="strip orange" :style="{ width: `${count2 * 40}px` }"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

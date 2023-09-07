@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic | Alpine</title>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+<div x-data="{ open: false }">
+    <div x-data="{ label: 'Content:' }">
+        <span x-text="label"></span>
+        <span x-show="open"></span>
+    </div>
+</div>
+
+  <button x-data="{ label: 'Click Here' }" x-text="label"></button>
+</body>
+</html>
