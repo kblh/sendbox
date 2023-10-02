@@ -1,0 +1,122 @@
+/*********************
+  COLORS
+*********************/
+
+:where(html) {
+  --c-primary: var(--blue-10);
+
+  --c-background: var(--blue-0);
+  --c-heading: var(--blue-8);
+  --c-text: var(--gray-8);
+  --c-text-inverted: var(--gray-2);
+  --c-link: var(--c-primary);
+  --c-border: var(--blue-4);
+}
+
+.surface--subtle {
+  --c-surface-background: var(--blue-1);
+  --c-surface-link: var(--blue-10);
+}
+
+.surface--inverted {
+  --c-primary: var(--blue-6);
+
+  --c-surface-background: var(--blue-12);
+  --c-surface-heading: var(--orange-6);
+  --c-surface-text: var(--gray-2);
+  --c-surface-link: var(--blue-2);
+  --c-surface-border: var(--gray-0);
+}
+
+
+html[data-theme="orange"] {
+  --c-primary: var(--orange-8);
+
+  --c-background: var(--orange-0);
+  --c-heading: var(--orange-8);
+  --c-link: var(--orange-8);
+  --c-border: var(--orange-4);
+}
+
+html[data-theme="orange"] .surface--subtle {
+  --c-surface-background: var(--orange-1);
+}
+
+
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --c-primary: var(--orange-4);
+
+  --c-background: var(--gray-10);
+  --c-heading: var(--orange-4);
+  --c-text: var(--gray-1);
+  --c-link: var(--orange-2);
+
+  --c-border: var(--orange-4);
+}
+
+html[data-theme="dark"] .surface--subtle {
+  --c-surface-background: var(--gray-9);
+  --c-surface-link: var(--blue-3);
+}
+
+html[data-theme="dark"] .surface--inverted {
+  --c-primary: var(--orange-8);
+  --c-text-inverted: var(--gray-10);
+
+  --c-surface-background: var(--gray-1);
+  --c-surface-heading: var(--orange-8);
+  --c-surface-text: var(--gray-10);
+  --c-surface-link: var(--blue-10);
+  --c-surface-border: var(--gray-4);
+}
+
+
+
+
+:where(html) {
+  --gray-0: #f8f9fa;
+  --gray-1: #f1f3f5;
+  --gray-2: #e9ecef;
+  --gray-3: #dee2e6;
+  --gray-4: #ced4da;
+  --gray-5: #adb5bd;
+  --gray-6: #868e96;
+  --gray-7: #495057;
+  --gray-8: #343a40;
+  --gray-9: #212529;
+  --gray-10: #16191d;
+  --gray-11: #0d0f12;
+  --gray-12: #030507;
+
+  --blue-0: #e7f5ff;
+  --blue-1: #d0ebff;
+  --blue-2: #a5d8ff;
+  --blue-3: #74c0fc;
+  --blue-4: #4dabf7;
+  --blue-5: #339af0;
+  --blue-6: #228be6;
+  --blue-7: #1c7ed6;
+  --blue-8: #1971c2;
+  --blue-9: #1864ab;
+  --blue-10: #145591;
+  --blue-11: #114678;
+  --blue-12: #0d375e;
+
+  --orange-0: #fff4e6;
+  --orange-1: #ffe8cc;
+  --orange-2: #ffd8a8;
+  --orange-3: #ffc078;
+  --orange-4: #ffa94d;
+  --orange-5: #ff922b;
+  --orange-6: #fd7e14;
+  --orange-7: #f76707;
+  --orange-8: #e8590c;
+  --orange-9: #d9480f;
+  --orange-10: #bf400d;
+  --orange-11: #99330b;
+  --orange-12: #802b09;  
+}
+

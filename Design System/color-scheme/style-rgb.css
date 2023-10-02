@@ -1,0 +1,72 @@
+html[data-theme="dark"] {
+  --c-primary: rgb(255, 194, 204);
+  --c-background: rgb(51, 51, 51);
+  --c-text: rgb(230, 230, 230);
+  --c-text-inverse: rgb(51, 51, 51);
+  --c-focus: var(--c-primary);
+
+  accent-color: var(--c-primary);
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --c-primary: rgb(255, 20, 146);
+  --c-background: rgb(237, 237, 237);
+  --c-text: rgb(51, 51, 51);
+  --c-text-inverse: rgb(230, 230, 230);
+  --c-focus: var(--c-primary);
+
+  accent-color: var(--c-primary);
+  color-scheme: light;
+}
+
+html[data-theme="orange"] {
+  --c-primary: rgb(206, 106, 0);
+  --c-focus: var(--c-primary);
+
+  accent-color: var(--c-primary);
+  color-scheme: dark;
+}
+
+
+
+*:focus {
+  box-shadow: 0 0 2px 2px var(--c-focus);
+  outline: none;
+}
+
+::selection {
+  color: var(--c-text-inverse);
+  background: var(--c-focus);
+}
+
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  background-color: var(--c-background);
+  color: var(--c-text);
+}
+
+h1, h2, h3 {
+  color: var(--c-primary);
+}
+
+.theme-toggle:after {
+  content: attr(aria-label);
+}
+
+
+/* @media (prefers-color-scheme: dark) {
+  body {
+    background-color: #333;
+    color: #eee;
+  }
+} */
+
+@media (prefers-contrast: more) {
+  body {
+    font-weight: bold;
+  }
+}
+

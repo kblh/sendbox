@@ -1,0 +1,110 @@
+@property --hue {
+  syntax: '<angle>';
+  initial-value: 5rad;
+  inherits: true;
+}
+
+@property --surface {
+  syntax: '<color>';
+  initial-value: #333;
+  inherits: true;
+}
+
+@property --surface-over {
+  syntax: '<color>';
+  initial-value: #444;
+  inherits: true;
+}
+
+@property --surface-under {
+  syntax: '<color>';
+  initial-value: #222;
+  inherits: true;
+}
+
+@layer demo {
+  html {
+    background: var(--surface);  
+  }
+  
+  .card {
+    background: var(--surface-over);
+    /* box-shadow: 0 5px 0 color-mix(in oklch, var(--surface-under), transparent 75%); */
+  }
+  
+  .well {
+    background: var(--surface-under);
+    /* box-shadow: 
+      inset 0 0 5px color-mix(in oklch, var(--surface-under), oklch(0 .1 var(--hue)) 10%),
+      inset 0 1px 0 color-mix(in oklch, var(--surface-under), oklch(0 .1 var(--hue)) 10%),
+      inset 0 -1px 0 var(--surface-over); */
+  }
+}
+
+
+
+@layer demo.theme {
+  html:has(#light:checked) {
+    color-scheme: light;
+    --surface: oklch(90% .05 var(--hue));
+    --surface-over: oklch(99% .02 var(--hue));
+    --surface-under: oklch(85% .075 var(--hue));
+  }
+  
+  html:has(#dark:checked) {
+    color-scheme: dark;
+    --surface: oklch(20% .1 var(--hue));
+    --surface-over: oklch(30% .1 var(--hue));
+    --surface-under: oklch(15% .1 var(--hue));
+  }
+}
+
+
+
+
+
+@layer demo.support {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  html {
+    block-size: 100%;
+  }
+
+  body {
+    min-block-size: 100%;
+    font-family: system-ui, sans-serif;
+
+    display: grid;
+    place-content: center;
+    place-items: center;
+    gap: 5vh;
+  }
+  
+  fieldset {
+    display: grid;
+    gap: .5rem;
+    border-color: var(--surface-over);
+    max-inline-size: fit-content;
+    
+    & > * {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+  }
+  
+  .card {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+  
+  input {
+    border: 1px solid var(--surface-over);
+    background-color: var(--surface-under);
+    padding: 1ch 2ch;
+    border-radius: 5px;
+  }
+}

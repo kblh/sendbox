@@ -1,0 +1,84 @@
+
+body {
+  font-family: Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
+  color: var(--c-text);
+  background-color: var(--c-surface-1);
+}
+
+div {
+  color: var(--c-text);
+}
+
+h1, h2, h3, h4, h5 {
+  color: var(--c-heading);
+}
+
+a {
+  color: var(--c-link);
+}
+
+hr { 
+  height: 1rem;
+  border: 0;
+  border-top: 3px dashed var(--c-border);
+  margin-top: -3px;
+  margin-bottom: 0;
+
+}
+
+.box { 
+  padding: 2rem; 
+  margin-bottom: 2rem;
+}
+
+
+/*********************
+  SURFACE
+*********************/
+
+.surface-1 {  
+  background-color: var(--c-surface-1);
+}
+
+.surface-2 {
+  background-color: var(--c-surface-2);
+}
+
+
+/*********************
+  BUTTON
+*********************/
+
+.button {
+  --button-background: var(--c-primary);
+  --button-text: var(--ci-text);
+  --button-border: var(--c-primary);
+
+  background-color: var(--button-background, var(--c-primary));
+  border: 2px solid var(--button-border);
+  padding: .5rem 2rem;
+  color: var(--button-text);
+
+  cursor: pointer;
+}
+
+.button--outlined {
+  --button-text: var(--c-link);
+  --button-background: "transparent";
+}
+
+[data-inverted="true"] .button--outlined {
+  --button-border: var(--c-text);
+}
+
+[data-inverted="true"] .button--primary {
+  --button-background: var(--gray-9);
+  --button-border: var(--gray-9);
+}
+
+/* .button--primary-i {
+  background-color: var(--c-primary);
+  color: black;
+} */
+
+

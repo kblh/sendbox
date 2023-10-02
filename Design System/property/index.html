@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  
+  <h1>@property</h1>
+
+  <fieldset>
+    <legend>Hue</legend>
+    
+    <p>Putting values into this input will write <br>a style to :root and set --hue.</p>
+    
+    <div>
+      <label>Theme tint</label>
+      <input type="text" placeholder="20deg, 1turn, 2rad, etc" oninput="document.documentElement.style.setProperty('--hue', this.value)">
+    </div>
+    <small>Notice it doesn't break when values aren't an angle!</small>
+  </fieldset>
+  
+  <div class="card">
+    <h1>Surface Over</h1>
+  </div>
+  
+  <div class="card well">
+    <h1>Surface Under</h1>
+  </div>
+  
+  <fieldset>
+    <legend>Theme</legend>
+    
+    <div>
+      <label><input type="radio" name="theme" id="light"> Light</label>
+      <label><input type="radio" name="theme" id="dark" checked> Dark</label> 
+    </div>
+  </fieldset>  
+
+</body>
+</html>
