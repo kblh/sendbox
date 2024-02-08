@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>:has rating</title>
+  <link rel="stylesheet" href="../init.css">
+</head>
+<body>
+  <h1>:has rating</h1>
+
+  <div class="stars">
+    <label class="star"><input type="radio" name="rating" value="1"></label>
+    <label class="star"><input type="radio" name="rating" value="2"></label>
+    <label class="star"><input type="radio" name="rating" value="3"></label>
+    <label class="star"><input type="radio" name="rating" value="4"></label>
+    <label class="star"><input type="radio" name="rating" value="5"></label>
+  </div>
+
+<style>
+:is(html) {
+  --starOff: #ccc;
+  --starOn: #ffd500;
+}
+
+.star:hover,
+
+/* Previous siblings of hovered star */
+.star:has(~ .star:hover),
+
+/* Star has a checked radio */
+.star:has(:checked),
+
+/* Previous siblings of a checked star */
+.star:has(~ .star :checked) {
+  --starColor: var(--starOn)
+}
+
+.star {
+  --starColor: var(--starOff);
+  display: inline-flex;
+  cursor: pointer;
+}
+.star:after {
+  font-size: 4rem;
+  content: "★";
+  color: var(--starColor);
+  transition: all .5s;
+}
+
+.star input { display: none; }
+
+</style>
+
+</body>
+</html>

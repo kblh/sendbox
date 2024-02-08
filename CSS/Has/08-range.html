@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>:has range</title>
+  <link rel="stylesheet" href="../init.css">
+</head>
+<body>
+  <h1>:has range</h1>
+  <p><a target="_blank" href="https://codepen.io/smashingmag/pen/RwBxpjE">Stateful multi-range selection groups with :has()</a></p>
+
+  <ul>
+    <li>Lorem</li>
+    <li>Veritatis</li>
+    <li>Eos</li>
+    <li>Debitis</li>
+    <li>Autem</li>
+    <li data-range="start">Atque</li>
+    <li>Lorem</li>
+    <li>Ipsum</li>
+    <li>Dolor</li>
+    <li>Adipisicing</li>
+    <li>Amet</li>
+    <li>Consectetur</li>
+    <li>Eius</li>
+    <li data-range="end">Lorem</li>
+    <li>Nostrum</li>
+  </ul>
+
+<style>
+
+/* Starting element of range */
+[data-range="start"] {
+  background-color: limegreen;
+}
+
+/* Ending element of range */
+[data-range="end"] {
+  background-color: darkgreen;  
+}
+
+/* All elements inside of range */
+[data-range="start"] ~ :has(~ [data-range="end"]):not([data-range]) {
+  background-color: yellow;
+}
+
+/* First element inside of range */
+[data-range="start"] + :has(~ [data-range="end"]):not([data-range]) {
+  background-color: lightsalmon;
+}
+
+/* Last element inside of range */
+[data-range="start"] ~ :has(+ [data-range="end"]):not([data-range]) {
+  background-color: salmon;
+}
+
+</style>  
+</body>
+</html>

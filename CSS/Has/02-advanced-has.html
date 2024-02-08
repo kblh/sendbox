@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>:has advanced</title>
+  <link rel="stylesheet" href="../init.css">
+</head>
+<body>
+  <h1>:has advanced</h1>
+  <p><a target="_blank" href="https://codepen.io/smashingmag/pen/rNrpymj?editors=1100">Previous/Next Sibling Animation with :has()</a></p>
+
+  <div class="stack cards">
+    <div class="card">1</div>
+    <div class="card">2</div>
+    <div class="card active">3</div>
+    <div class="card">4</div>
+    <div class="card">5</div>
+    <div class="card">6</div>
+    <!-- <div class="card">7</div> -->
+  </div>
+
+<style>
+  .cards {
+    position: relative;
+  }
+
+  .card {
+    padding: 2rem;
+    background-color: #ccc;
+    transition: all .5s;
+  }
+
+  .cards::after {
+    color: red;
+    position: absolute;
+    font-weight: bold;
+    bottom: -3rem;
+    left: 0;
+    content: var(--text);
+  }
+
+  /* empty child */
+  .cards:has(> *:empty) {
+    --text: "There is an empty card!"
+  }
+
+  /* more then 6 cards */
+  .cards:has(> *:nth-child(7n)) {
+    --text: "There is more then 6 cards!"
+  }
+
+
+  .active {
+    background-color: var(--colorSuccess700);
+  }
+
+  /* element before .active */
+  *:has(+ .active) {
+    background-color: var(--colorSecondary700);
+  }
+
+  /* element after .active */
+  .active + div {
+    background-color: var(--colorPrimary700);
+  }
+
+  
+  /* select all siblings but not me */
+  .cards:has(.card:hover) .card:not(:hover) {
+    opacity: .2;
+  }
+
+</style>
+
+</body>
+</html>

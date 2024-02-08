@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>:has mata</title>
+  <link rel="stylesheet" href="../init.css">
+  <meta property="article:tag" content="DuckTales">
+</head>
+<body>
+  <h1>:has meta tag</h1>
+  <h2>:has linked css file init.css</h2>
+
+  <style>
+    :has(meta[property="article:tag"]) {
+      body {
+        border: 10px dashed red;
+      }
+    }  
+
+    :has(link[href$="init.css"]) {
+      h2 {
+        border-bottom: 1rem dotted #b0d;
+      } 
+    }
+  </style>
+    
+</body>
+</html>

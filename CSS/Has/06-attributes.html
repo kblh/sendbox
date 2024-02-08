@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>:has attribute</title>
+  <link rel="stylesheet" href="../init.css">
+</head>
+<body>
+  <h1>:has attribute</h1>
+
+  <div class="stack stack--vertical">
+    <div class="article">
+      <h2>Article 1</h2>
+      <img src="../../images/avatar.avif" alt="Avatar">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, inventore! Sunt ut nulla non soluta assumenda eius iste accusantium aut magnam odio molestiae optio obcaecati alias, dolorem et? Fugiat, aperiam.</p>
+    </div>
+    <div class="article">
+      <h2>Article 1</h2>
+      <img src="../../images/avatar.png" alt="Avatar">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, inventore! Sunt ut nulla non soluta assumenda eius iste accusantium aut magnam odio molestiae optio obcaecati alias, dolorem et? Fugiat, aperiam.</p>
+    </div>
+    <div class="article">
+      <h2>Article 1</h2>
+      <img src="../../images/avatar.webp" alt="Avatar">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, inventore! Sunt ut nulla non soluta assumenda eius iste accusantium aut magnam odio molestiae optio obcaecati alias, dolorem et? Fugiat, aperiam.</p>
+    </div>
+  </div>
+
+<style>
+
+  .article {
+    border: 5px dashed var(--color);
+    padding: 1rem;
+
+    h2:after {
+      content: var(--text);
+      color: var(--color);
+      margin-left: 3rem;
+    }
+  }
+
+  .article:has(img[src$=".avif"]) {
+    --color: var(--colorSecondary700);
+    --text: "avif";
+  }
+
+  .article:has(img[src$=".png"]) {
+    --color: var(--colorPrimary700);
+    --text: "png";
+  }
+
+  .article:has(img[src$=".webp"]) {
+    --color: var(--colorSuccess700);
+    --text: "webp";
+  }
+
+</style>
+
+</body>
+</html>

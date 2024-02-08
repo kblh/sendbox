@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>state of html</title>
+  <link rel="stylesheet" href="../init.css">
+</head>
+<body>
+
+  <h1>State of HTML 2023</h1>
+  <p>
+    <a target="_blank" href="https://survey.devographics.com/cs-CZ/survey/state-of-html/2023">https://survey.devographics.com/cs-CZ/survey/state-of-html/2023</a>
+  </p>
+  
+  <h2>datalist</h2>
+  <p>
+    <input name="country" list="countries" type="text" placeholder="datalis">
+    <datalist id="countries">
+      <option>Afghanistan</option>
+      <option>Canada</option>
+    </datalist>
+  </p>
+  
+  <h2>autocomplete</h2>
+  <p>
+    <input name="address_firstline" autocomplete="billing street-address" placeholder="autocomplete" />
+  </p>
+  
+
+  <h2>video capture</h2>
+  <p>
+    <input type="file" accept="video/*" capture>
+  </p>
+  
+  <h2>date input with button</h2>
+  <p>
+    <input id="dateInput" type="date">
+    <button onclick="document.getElementById('dateInput').showPicker()">Select date</button>  
+  </p>
+  
+  <h2>details - summary with name</h2>
+  <details open name="sidebar_panel" id="main_info">
+    <summary>Main info</summary>
+    Longer content
+  </details>
+  <details name="sidebar_panel" id="style_settings">
+    <summary>Style</summary>
+    Style Longer content
+  </details>
+  <details name="sidebar_panel" id="style_settings">
+    <summary>Last</summary>
+    Last Longer content
+  </details>
+
+  
+  <h2>popover</h2>
+  <p>
+    <button popovertarget="foo">Toggle the popover</button>
+    <div id="foo" popover>Popover content</div>  
+  </p>
+
+</body>
+</html>

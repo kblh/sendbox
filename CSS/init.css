@@ -81,6 +81,23 @@ input, textarea {
 
 .box-shadow { box-shadow: 0 0 10px rgba(0,0,0,.4); }
 
+/*********************
+  stack
+*********************/
+
+.stack {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem; 
+}
+
+.stack--vertical {
+  flex-direction: column;
+  align-items: normal;
+}
+
+
 /********************
   table
 ********************/

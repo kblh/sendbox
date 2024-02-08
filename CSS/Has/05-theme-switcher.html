@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>:has theme switcher</title>
+  <link rel="stylesheet" href="../init.css">
+</head>
+<body>
+  <h1>:has theme switcher</h1>
+  <p>Lorem ipsum <a href="">dolor sit</a>, amet consectetur adipisicing elit. Quia velit autem molestias hic placeat delectus similique minima odio sequi saepe voluptatem provident pariatur, praesentium, et voluptas excepturi, id voluptates dignissimos?</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aliquid eius at recusandae corrupti laudantium perferendis magnam doloribus eligendi amet! Suscipit, obcaecati. Quaerat tempora nisi dolorem nihil sapiente error eaque.</p>
+  <p><img src="http://satyr.dev/200x100" alt=""></p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aliquid eius at recusandae corrupti laudantium perferendis magnam doloribus eligendi amet! Suscipit, obcaecati. Quaerat tempora nisi dolorem nihil sapiente error eaque.</p>
+  <p><img src="http://satyr.dev/200x100" alt=""></p>
+  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque, quisquam earum! Rem, alias necessitatibus accusamus deserunt quia odit eius pariatur laboriosam vel? Nihil quae nostrum doloribus, minus enim officiis optio?</p>
+
+  <p><label><input type="checkbox" class="theme-switcher"> switch theme</label></p>
+<style>
+
+  :is(html) {
+    --bg: #eee;
+    --text: #333;
+    --link: var(--colorPrimary700)
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    accent-color: var(--link);
+  }
+
+  a { color: var(--link); }
+
+  body:has(.theme-switcher:checked) {
+    --bg: #333;
+    --text: #fff;
+    --link: var(--colorSecondary700)
+  }
+
+</style>
+</body>
+</html>

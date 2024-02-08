@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>:has basic</title>
+  <link rel="stylesheet" href="../init.css">
+</head>
+<body>
+  <h1>:has</h1>
+  <p><a target="_blank" href="https://codepen.io/jensimmons/pen/bGoMydw">:has() Demo #2 — Teaser cards</a></p>
+
+  <div class="continer">
+
+    <div class="article">
+      <h2>Article title</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure enim quae voluptates placeat. Impedit aliquam similique totam aliquid blanditiis corrupti eveniet numquam iste, mollitia beatae quas temporibus aperiam eligendi ut.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut dolorum dolorem animi maxime ipsum rerum! Impedit architecto eius quasi, nisi totam a, eligendi maxime enim aut maiores mollitia ab sunt?</p>
+    </div>
+
+    <div class="article">
+      <h2>Article title</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut dolorum dolorem animi maxime ipsum rerum! Impedit architecto eius quasi, nisi totam a, eligendi maxime enim aut maiores mollitia ab sunt?</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure enim quae voluptates placeat. Impedit aliquam similique totam aliquid blanditiis corrupti eveniet numquam iste, mollitia beatae quas temporibus aperiam eligendi ut.</p>
+    </div>
+
+    <div class="article">
+      <h2>Article 2</h2>
+      <img src="http://satyr.dev/200x100" alt="">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ea magni nostrum unde dolor! Quia qui laboriosam mollitia tempore cumque iusto porro, sed ex, nesciunt illum laborum ipsum, corporis distinctio!</p>
+    </div>
+  
+
+    <div class="article">
+      <h2>Article title</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, consequatur. Quisquam, nemo in esse optio sequi dolorem illum fuga officiis quam expedita? Accusamus voluptatem eius nemo. Ut porro est ad!</p>
+      <img src="http://satyr.dev/200x100" alt="">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam fuga ipsa totam cupiditate quia. Animi autem pariatur nihil, nam magni ad cupiditate dolore alias aliquam. Minus perspiciatis officia atque placeat.</p>
+      <img src="http://satyr.dev/200x100" alt="">
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt doloremque atque quisquam fugiat consectetur illum iste ullam perferendis sapiente amet, dicta neque cum ipsa, ipsam voluptatibus accusantium officia a veritatis!</p>
+    </div>
+
+    <div class="article">
+      <h2>Article Video</h2>
+      <h3>Subtitle</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat ratione rerum illum, doloribus recusandae nesciunt corrupti incidunt aspernatur voluptate accusamus nostrum neque dolores? Architecto laudantium necessitatibus nostrum ut officia hic.</p>
+      <iframe width="500" height="315" src="https://www.youtube.com/embed/ozHnQEO8UmM?si=ycrbcOBN8x1Ou5m6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate magnam dolorem obcaecati ipsum velit vitae temporibus sunt eaque eos fuga aliquam repellat, doloribus optio in sit corrupti, eligendi id ipsam!</p>
+    </div>
+
+    <div class="article">
+      <h2>Brain explosion</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ea impedit itaque alias non aliquam recusandae minus autem asperiores ipsa. Similique quas ipsam asperiores sapiente facere exercitationem, voluptate iure veniam?</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet alias autem vitae incidunt? Doloremque eos molestiae dolores quia sed nam dolorum! Illo amet impedit officiis iure minus magni blanditiis fugiat!</p>
+      <img src="https://web.dev/static/articles/5-css-snippets-every-front-end-developer-should-know-in-2024/image/has-meme.jpg" alt=":has">
+    </div>
+
+  </div>
+
+<style>
+  .continer {
+    max-width: 600px;
+    padding: 1rem;
+    border: 3px dashed #ccc;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 2fr 2fr;
+  }
+
+  /* has img OR iframe*/
+  .article:has(img, iframe) {
+    grid-column: 1 / span 2;
+  }
+
+  /* has more then 1 img */
+  .article:has(img ~ img) {
+    background-color: #eee;
+    padding: 1rem;
+    columns: 2;
+  }
+
+  /* has iftame AND h3 */
+  .article:has(iframe):has(h3) {
+    background-color: #222;
+    color: #fff;
+    padding: 1rem;
+  }
+
+  /* dosn't have img */
+  .article:not(:has(img)) {
+    border-bottom: 10px dashed pink;
+  }
+
+  
+
+</style>
+
+</body>
+</html>

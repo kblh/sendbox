@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>:has blur answers</title>
+  <link rel="stylesheet" href="../init.css">
+</head>
+<body>
+  <h1>:has blur answers</h1>
+
+  <dl>
+    <dt>How much is 1 + 1</dt>
+    <dd>2</dd>
+    <dt>The highest mountain in Czech</dt>
+    <dd>Sněžka</dd>
+    <dt>How are you?</dt>
+    <dd>fine ... :-)</dd>
+  </dl>
+
+  <p>
+    <label><input type="checkbox" class="blur-answers"> blur answers</label>
+  </p>
+<style>
+
+  body:has(input.blur-answers:checked) dd {
+    filter: blur(10px);
+  }
+
+  dl > * {
+    padding: 1rem;
+  }
+
+  dt {
+    font-weight: bold;
+  }
+</style>
+
+</body>
+</html>
