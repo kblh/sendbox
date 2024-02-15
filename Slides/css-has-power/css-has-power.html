@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>CSS :has power</title>
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../_reveal.js_/css/reveal.css">
+		<link rel="stylesheet" href="../_reveal.js_/css/theme/white.css" id="theme">
+    <link rel="stylesheet" href="../../CSS/MicroTachyons/micro-tachyons.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../_reveal.js_/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../_reveal.js_/css/print/pdf.css' : '../_reveal.js_/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+  <style>
+    .logo {
+      position: absolute;
+			top: 50px;
+			right: 50px;
+    }
+  </style>
+
+	</head>
+<body>
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+	<section data-background="images/etn-bg.png">
+		<div style="width: 200px;">&nbsp;</div>
+		<h1>CSS :has power</h1>
+		<p>
+			<small>Petr Koláček</small>
+		</p>
+		<div><img src="images/etn-core.png" class="plain" width="300"></div>
+	</section>
+
+
+<!-- ############################################### -->
+<section>
+	<h2>article :has ...</h2>
+	<div data-markdown>
+		```
+/* has img OR iframe */
+.article:has(img, iframe) { ... }
+
+/* has more then 1 img */
+.article:has(img ~ img) { ... }
+
+/* has iframe AND h3 */
+.article:has(iframe):has(h3) { ... }
+
+/* dosn't have img */
+.article:not(:has(img)) { ... }
+		```
+	</div>
+	<p>
+		<a target="_blank" href="https://codepen.io/kblh/pen/MWxqxvo">Example</a> |
+  	<a target="_blank" href="https://codepen.io/jensimmons/pen/bGoMydw">Teaser cards</a>
+	</p>
+</section>
+
+
+<!-- ############################################### -->
+<section>
+	<h2>advanced examples</h2>
+	<div data-markdown>
+		```
+/* has no child */
+.cards:has(> *:empty) { ... }
+
+/* more then 6 cards */
+.cards:has(> *:nth-child(7n)) { ... }
+
+/* element before .active */
+.cards *:has(+ .active) { ... }
+
+/* select all siblings but not me */
+.cards:has(.card:hover) .card:not(:hover) { ... }
+		```
+	</div>
+	<p>
+		<a target="_blank" href="https://codepen.io/kblh/pen/PoLyewN">Example</a> |
+  	<a target="_blank" href="https://codepen.io/smashingmag/pen/rNrpymj">Magnifiing</a>
+	</p>
+</section>
+
+
+<!-- ############################################### -->
+<section>
+	<h2>forms</h2>
+	<div data-markdown>
+		```
+/* label with invalid input (checkbox) */
+label:has(:invalid) { ... }
+
+/* label beside invalid input */
+label:has(+:invalid) { ... }
+
+/* fieldset with invalid input */
+fieldset:has(:invalid) { ... }
+
+/* invalid form buttons */
+form:has(:invalid) button[type="submit"] { ... }
+		```
+	</div>
+	<p>
+		<a target="_blank" href="https://codepen.io/kblh/pen/wvOYjgJ">Example</a>
+	</p>
+</section>
+
+
+<!-- ############################################### -->
+<section>
+	<h2>blur answers</h2>
+	<div data-markdown>
+		```
+body:has(input.blur-answers:checked) dd {
+	filter: blur(10px);
+}
+		```
+	</div>
+	<p>
+		<a target="_blank" href="https://codepen.io/kblh/pen/zYbmmzv">Example</a>
+	</p>
+</section>
+
+
+<!-- ############################################### -->
+<section>
+	<h2>theme switcher</h2>
+	<div data-markdown>
+		```
+body:has(.theme-switcher:checked) {
+	...
+}
+		```
+	</div>
+	<p>
+		<a target="_blank" href="https://codepen.io/kblh/pen/WNmaadP">Example</a>
+	</p>
+</section>
+
+
+
+<!-- ############################################### -->
+<section>
+	<h2>:has attribute</h2>
+	<div data-markdown>
+		```
+.article:has(img[src$=".avif"]) {
+	...
+}
+		```
+	</div>
+	<p>
+		<a target="_blank" href="https://codepen.io/kblh/pen/bGZmmMO">Example</a>
+	</p>
+</section>
+
+
+
+<!-- ############################################### -->
+<section>
+	<h2>anywhere</h2>
+
+	<div data-markdown>
+		```
+:has(meta[property="article:tag"]) { ... }  
+
+:has(script[src$="analytics.js"]) { ... } 
+
+		```
+	</div>
+
+	<div data-markdown="./code/meta.md"></div>
+</section>
+
+
+<!-- 
+	:has(a[href^="http"]) article::before {
+	color: red;
+	content: 'Careful! This page contains external links.';
+}
+ -->
+
+<!-- ############################################### -->
+<section>
+	<h2>rating</h2>
+	<div data-markdown>
+		```
+/* Previous siblings of hovered star */
+.star:has(~ .star:hover),
+
+/* Star has a checked radio */
+.star:has(:checked),
+
+/* Previous siblings of a checked star */
+.star:has(~ .star :checked) {
+	--starColor: var(--starOn)
+}
+		
+		```
+	</div>
+	<p>
+		<a target="_blank" href="https://codepen.io/kblh/pen/GReYwre">Example</a>
+	</p>
+</section>
+
+
+<!-- ############################################### -->
+<section>
+	<h2>range</h2>
+	<div data-markdown>
+		```
+/* Starting element of range */
+[data-range="start"] { ... }
+
+/* Ending element of range */
+[data-range="end"] { ... }
+
+/* All elements inside of range */
+[data-range="start"] ~ :has(~ [data-range="end"]):not([data-range]) { ... }
+
+/* First element inside of range */
+[data-range="start"] + :has(~ [data-range="end"]):not([data-range]) { ... }
+
+/* Last element inside of range */
+[data-range="start"] ~ :has(+ [data-range="end"]):not([data-range]) { ... }
+		
+		```
+	</div>
+	<p>
+		<a target="_blank" href="https://codepen.io/kblh/pen/wvOYQWV">Example</a> |
+  	<a target="_blank" href="https://codepen.io/smashingmag/pen/RwBxpjE">Multi-range selection</a> |
+		<a target="_blank" href="https://codepen.io/jh3y/pen/GRBNvvX">Calendar</a>
+	</p>
+</section>
+
+
+
+
+	<!-- ############################################### -->
+	<!-- <section data-background="images/etn-hub.jpg">
+	</section> -->
+
+
+	<section style="text-align: left;" data-transition="slide" data-background="#e06436" data-background-transition="zoom" class="c-inverse">
+		<h1>A to je konec.</h1>
+		<h2>Dotazy?</h2>
+	</section>
+
+
+</div>
+</div>
+
+<script src="../_reveal.js_/lib/js/head.min.js"></script>
+<script src="../_reveal.js_/js/reveal.js"></script>
+<script src="../_reveal.js_/js/jQuery.js"></script>
+<script src="../_reveal.js_/js/jquery.vide.min.js"></script>
+
+<script>
+
+// More info https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+	controls: true,
+	progress: true,
+	history: true,
+	center: false,
+
+	transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+	// More info https://github.com/hakimel/reveal.js#dependencies
+	dependencies: [
+		{ src: '../_reveal.js_/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+		{ src: '../_reveal.js_/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: '../_reveal.js_/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: '../_reveal.js_/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+		{ src: '../_reveal.js_/plugin/search/search.js', async: true },
+		{ src: '../_reveal.js_/plugin/zoom-js/zoom.js', async: true },
+		{ src: '../_reveal.js_/plugin/notes/notes.js', async: true }
+	]
+});
+
+</script>
+
+</body>
+</html>

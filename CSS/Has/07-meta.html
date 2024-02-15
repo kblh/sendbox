@@ -6,6 +6,7 @@
   <title>:has mata</title>
   <link rel="stylesheet" href="../init.css">
   <meta property="article:tag" content="DuckTales">
+  <script src="../../JS/HTMX/js/unpkg.com_htmx.org@1.9.4_dist_htmx.min.js"></script>
 </head>
 <body>
   <h1>:has meta tag</h1>
@@ -23,7 +24,14 @@
         border-bottom: 1rem dotted #b0d;
       } 
     }
-  </style>
+
+    :has(script[src$="htmx.min.js"]) {
+      h2 {
+        border-top: 1rem dotted green;
+      } 
+    }
+
+</style>
     
 </body>
 </html>
