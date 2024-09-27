@@ -1,0 +1,88 @@
+:root {
+  --primary: goldenrod;
+  --primaryLight: lightgoldenrodyellow;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /* background-color: lightgoldenrodyellow; */
+  font-size: 1.4rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.title {
+  padding: 4rem 0;
+  height: 100vh;
+
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background: repeating-linear-gradient( -45deg, var(--primaryLight), var(--primaryLight) 15px, transparent 15px, transparent 30px );
+}
+
+.content {
+  /* padding: 2rem 0; */
+  width: 600px;
+  margin: auto;
+}
+
+h1, h2, h3 {
+  color: var(--primary);
+}
+
+h1 {
+  font-size: 5rem;
+  text-align: center;
+  padding: 0;
+
+}
+
+.scroll-watcher {
+  height: 1rem;
+  position: fixed;
+  top: 0;
+  z-index: 1111;
+  background-color: var(--primary);
+  width: 100%;
+  scale: 0 1;
+  transform-origin: left;
+  animation: scroll-watcher linear;
+  animation-timeline: scroll();
+}
+
+@keyframes scroll-watcher {
+  to { scale: 1 1; }
+}
+
+img {
+  filter: brightness(1.3) invert(0.17) saturate(2.6) url('#grain') grayscale(1);
+  /* filter: brightness(1) invert(1) saturate(1) url('#grain') grayscale(0); */
+  animation: fade-in linear forwards;
+  animation-timeline: view(50px);
+  /* animation-range: 25vh 75vh; */
+  animation-range: contain;
+  /* animation-range-start: 100px; */
+  /* animation-range-end: 100px; */
+  outline: 1px dashed var(--primary);
+  /* background-color: lightgoldenrodyellow; */
+  padding: 1rem;
+  margin: 1rem 0;
+  transform: scale(1);
+}
+
+@keyframes fade-in {
+  /* 0% { 
+    transform: scale(.8);
+    opacity: 0; 
+  } */
+  50% { 
+    transform: scale(1.2);
+    /* opacity: .5;  */
+  }
+  100% { 
+    transform: scale(1);
+    /* opacity: 1;  */
+  }
+}
+
+

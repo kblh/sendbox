@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Scroll Driven Animation</title>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 2rem;
+      }
+
+      .container {
+        scroll-snap-type: both mandatory;
+        overflow-y: scroll;
+        max-height: 100vh;
+      }
+
+      section {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Arial';
+        text-align: center;
+        scroll-snap-align: start;
+      }
+
+      img {
+        width: 80%;
+        max-width: 900px;
+      }
+
+      .dark {
+        background-color: #333;
+        color: #fff;
+
+        a {
+          color: orangered;
+        }
+      }
+
+      .light {
+        background-color: #eee;
+        color: #111;
+
+        a {
+          color: orange;
+        }
+      }
+
+      h1 {
+        font-size: 4em;
+      }
+
+      h2 {
+        font-size: 2em;
+      }
+
+      .zoom-max {
+        animation: zoom-max linear;
+        animation-timeline: view();
+        animation-range: exit -80%;
+      }
+
+      .fade-in {
+        animation: fade-in linear;
+        animation-timeline: view();
+        animation-range: cover 0% contain 50%;
+      }
+
+      .slide-from-left {
+        animation: slide-from-left linear;
+        animation-timeline: view();
+        animation-range: cover 0% contain 50%;
+      }
+
+      .rotate-in {
+        animation: rotate-in linear;
+        animation-timeline: view();
+        animation-range: cover 0% contain 50%;
+      }
+
+      @keyframes zoom-max {
+        to {
+          transform: scale(5);
+          opacity: 0;
+        }
+      }
+
+      @keyframes fade-in {
+        from {
+          transform: scale(2);
+          opacity: 0;
+        }
+
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slide-from-left {
+        from {
+          transform: translateX(-100%);
+        }
+
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes rotate-in {
+        from {
+          transform: translateX(100%) scale(2) rotate(-360deg);
+          opacity: 0;
+        }
+
+        to {
+          transform: translateX(0) scale(1) rotate(0);
+          opacity: 1;
+        }
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <div class="container">
+
+      <section class="dark">
+        <h1 class="zoom-max">CSS Scroll Driven Animation</h1>
+      </section>
+
+      <section class="light">
+        <div class="fade-in">
+          <h2>Scrollbar</h2>
+          <p>
+            <a target="_blank" href="https://codepen.io/kblh/pen/rNXamWX">https://codepen.io/kblh/pen/rNXamWX</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="dark">
+        <div class="rotate-in">
+          <h2>Images</h2>
+          <p>
+            <a target="_blank" href="https://codepen.io/kblh/pen/VwoYWPd">https://codepen.io/kblh/pen/VwoYWPd</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="light">
+        <div class="slide-from-left">
+          <h2>Images 2</h2>
+          <p>
+            <a target="_blank" href="https://codepen.io/kblh/pen/VwoYrqq">https://codepen.io/kblh/pen/VwoYrqq</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="dark">
+        <div class="fade-in">
+          <h2>Vertical scrolling</h2>
+          <p>
+            <a target="_blank" href="https://codepen.io/kblh/pen/vYoEbod">https://codepen.io/kblh/pen/vYoEbod</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="light">
+        <div>
+          <h2>Can I Use?</h2>
+          <a target="_blank" href="https://caniuse.com/?search=animation-timeline">
+            <img class="fade-in" src="animation-timeline.png" alt="">
+          </a>
+        </div>
+      </section>
+
+      <section class="light">
+        <div>
+          <h2>Progressive enhancement</h2>
+          <pre class="fade-in">
+    @supports (animation-timeline: scroll()) { ... }    
+    
+    @media (prefers-reduced-motion: no-preference) { ... }
+        </pre>
+          <p>Polyfill: flackr.github.io/scroll-timeline/dist/scroll-timeline.js</p>
+        </div>
+      </section>
+
+      <section class="light">
+        <div>
+          <h2>Tools & Examples</h2>
+          <p><a href="https://scroll-driven-animations.style/">scroll-driven-animations.style</a> (Bramus Van Damme)</p>
+          <p><a href="https://www.youtube.com/playlist?list=PLNYkxOF6rcICM3ttukz9x5LCNOHfWBVnn">Youtube Tutorial</a>
+            (Bramus Van Damme)</p>
+          <p><a
+              href="https://scroll-driven-animations.style/tools/view-timeline/ranges/#range-start-name=cover&range-start-percentage=0&range-end-name=cover&range-end-percentage=100&view-timeline-axis=block&view-timeline-inset=0&subject-size=smaller&subject-animation=reveal&interactivity=clicktodrag&show-areas=yes&show-fromto=yes&show-labels=yes">View
+              Timeline Ranges Visualizer</a></p>
+        </div>
+      </section>
+    </div>
+
+  </body>
+
+</html>

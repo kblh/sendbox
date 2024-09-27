@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>polpover</title>
+    <link rel="stylesheet" href="../init.css">
+    <style>
+      .pop-button {
+        anchor-name: --toggle-btn;
+      }
+
+      #my-popover {
+        position-anchor: --toggle-btn;
+      }
+
+      #my-popover:popover-open {
+        /* position: absolute; */
+        /* top: 0; */
+        background-color: lightsteelblue;
+        padding: 1rem;
+        /* margin: 0; */
+        /* top: 30px;
+        left: 30px; */
+      }
+
+      #my-popover::backdrop {
+        background-color: rgba(0, 0, 0, 0.75);
+      }
+
+      #menu {
+        border: 0;
+        margin-right: 0;
+        box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        max-width: 100vw;
+        width: 200px;
+        height: 100%;
+      }
+
+      #menu ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      #menu ul li {
+        padding: 1ch;
+      }
+
+      #menu::backdrop {
+        background-color: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(2px);
+      }
+
+      #menu:popover-open {
+        animation: slideIn 150ms ease-in-out;
+      }
+
+      @keyframes slideIn {
+        0% {
+          translate: 100% 0 0;
+        }
+
+        100% {
+          translate: 0 0 0;
+        }
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <h1>popover</h1>
+    <p><a href="https://dev.to/link2twenty/future-of-css-popover-api-3ba0"
+        target="_blank">https://dev.to/link2twenty/future-of-css-popover-api-3ba0</a></p>
+
+    <p>
+      <button class="pop-button" popovertarget="my-popover">open Popover</button>
+    <div popover id="my-popover">Greetings, one and all!</div>
+    </p>
+
+    <p>
+      <button popovertarget="menu" popovertargetaction="toggle">open menu</button>
+    </p>
+
+    <nav id="menu" popover="auto">
+      <ul>
+        <li><a href="/items/1">Item 1</a></li>
+        <li><a href="/items/1">Item 2</a></li>
+        <li><a href="/items/1">Item 3</a></li>
+      </ul>
+    </nav>
+
+  </body>
+
+</html>
